@@ -1,0 +1,21 @@
+{
+  "prettier.requireConfig": true,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "all",
+  "snippets.snipmate.enable": true,
+  "html.enable": false,
+  "html.format.enable": true,
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "markdown",
+    "Markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
