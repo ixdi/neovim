@@ -91,7 +91,6 @@ call plug#begin()
 
 " UI and colors
 Plug 'flrnprz/plastic.vim'
-
 Plug 'lilydjwg/colorizer'                 " show colors from CSS
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'ryanoasis/vim-devicons'             " icons
