@@ -53,24 +53,24 @@ let g:python_host_prog = $ASDF_DIR . '/usr/bin/python2'
 "let g:python3_host_prog = $ASDF_DIR . '/installs/python/3.5.0/bin/python'
 let g:python3_host_prog = $ASDF_DIR . '/usr/bin/python3'
 
-" Autocommands
 if has("autocmd")
+  " Autocommands
   filetype plugin indent on
 
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it for commit messages, when the position is invalid, or when
-    " inside an event handler (happens when dropping a file on gvim).
     \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
 
   " Automatically clean trailing whitespace
-  autocmd BufWritePre * :%s/\s\+$//e
+  " autocmd BufWritePre * :%s/\s\+$/e
+  autocmd BufWritePre * :StripWhitespace
 
   autocmd BufRead,BufNewFile *.html set filetype=html.handlebars syntax=mustache
   autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-
 endif
 
 " Open current file in Marked
@@ -91,6 +91,7 @@ call plug#begin()
 
 " UI and colors
 Plug 'flrnprz/plastic.vim'
+
 Plug 'lilydjwg/colorizer'                 " show colors from CSS
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'ryanoasis/vim-devicons'             " icons
@@ -101,7 +102,8 @@ Plug 'sheerun/vim-polyglot'               " Rules for different languages
 Plug 'dyng/ctrlsf.vim'                    " Search features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
-Plug 'ctrlpvim/ctrlp.vim'                 " easy switch buffers
+Plug '/usr/local/opt/fzf'                 " FuzzyFinder need to be installed first on the system
+Plug 'junegunn/fzf.vim'
 
 " File Navigation
 Plug 'easymotion/vim-easymotion'          " Move like the wind!
@@ -152,10 +154,7 @@ nnoremap <expr> i IndentWithI()
 
 " Remap the increment and decrement features of Vim
 nnoremap <A-a> <C-a>
-nnoremap å <C-a>
-
 nnoremap <A-x> <C-x>
-nnoremap ≈ <C-x>
 
 set completeopt-=preview
 
@@ -163,11 +162,11 @@ set completeopt-=preview
 syntax on
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
-if has("termguicolors")  " set true colors
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  endif
+if (has("termguicolors"))  " set true colors
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 set background=dark
 colorscheme plastic
 
@@ -184,9 +183,6 @@ nnoremap bds :bufdo bd<CR>
 
 " Exit insert mode
 inoremap jj <ESC>
-
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
@@ -215,19 +211,14 @@ vmap <leader>T :'<, '>Tabularize / \zs
 
 " Surround
 "insert new chars wrapping word under cursor
-nmap <leader>s ysiw
+nmap <leader>s <esc>ysiw
 " change char on cursor with new one
-nmap <leader>S cs
+nmap <leader>S <esc>cs
 "cs"' substitute " by '
 
 " Fugitive git
 nnoremap <F12> :Gstatus<CR>
 nnoremap <F4> :Gcommit<cr>
-
-"CtrlP plugin
-nmap <F6> :CtrlPMRU<CR>
-" make CtrlP so much faster
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " ctrlsf
 nmap <C-F> <Plug>CtrlSFPrompt
@@ -249,11 +240,7 @@ nnoremap Y y$
 " stripwhitespace
 noremap <F7> :StripWhitespace<cr>
 
-" Enable snipMate compatibility feature.
-" let g:neosnippet#enable_snipmate_compatibility = 1
-
 " Sort
-" map <leader>so :g/{$/+,/^}/-sort<cr>
 nnoremap <leader>so vi}:sort<CR>
 
 " Import cost
@@ -269,4 +256,56 @@ let g:doge_mapping_comment_jump_backward = '4'
 
 " Comment
 map <leader>c <c-_><c-_>
+
+" Mustache
+let g:mustache_abbreviations = 1
+
+" Airline
+" let g:airline_section_x = '%{PencilMode()}'
+" Configure the Tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#neomake#enabled = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1 " Enable the patched Powerline fonts
+" let g:airline_theme='plastic'
+
+" Incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Autohighlight Settings
+set hlsearch
+let g:incsearch#auto_nohlsearch = 0
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" Gitgutter
+cnoreabbrev Gundo GitGutterUndoHunk
+
+let g:gitgutter_max_signs = 3500  " default value
+
+set updatetime=1000
+map <leader>g :GitGutterToggle<cr>
+nmap <leader>gn <Plug>GitGutterNextHunk
+nmap <leader>gp <Plug>GitGutterPrevHunk
+highlight link GitGutterChangeLine DiffText
+highlight GitGutterAdd    guifg=#009900 guibg=#222233 ctermfg=2 ctermbg=0
+highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
+highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
+let g:gitgutter_enabled = 0
+
+" FuzzyFinder
+nmap <F6> :Files<cr>
+nmap <F8> :Buffers<cr>
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
