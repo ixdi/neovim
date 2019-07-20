@@ -21,7 +21,8 @@ Plug 'sheerun/vim-polyglot'               " Rules for different languages
 Plug 'dyng/ctrlsf.vim'                    " Search features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
-Plug 'ctrlpvim/ctrlp.vim'                 " easy switch buffers
+Plug '/usr/local/opt/fzf'                 " FuzzyFinder need to be installed first on the system
+Plug 'junegunn/fzf.vim'
 
 " File Navigation
 Plug 'easymotion/vim-easymotion'          " Move like the wind!
