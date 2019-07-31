@@ -1,4 +1,4 @@
-# neovim
+# Neovim
 Config files for my neovim
 
 ## Install
