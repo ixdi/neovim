@@ -230,9 +230,10 @@ let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_ignore_dir = ['node_modules', '.meteor', 'packages']
 
 " Indent
-" indent from selected bracket
-nmap <leader>o <esc>=i}
-nmap <leader>og <esc>gg=G
+" select all file and indent
+nmap <leader>o <esc>ggVG=
+" indent bracket
+nmap <leader>oo <esc>=i}
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -251,6 +252,9 @@ map <Leader>k <Plug>(easymotion-prefix)
 
 " vim doge
 map <Leader>d :DogeGenerate<cr>
+" let g:doge_mapping = '<leader>D'
+let g:doge_mapping_comment_jump_forward = 'n'
+let g:doge_mapping_comment_jump_backward = 'p'
 
 " Comment
 map <leader>c <c-_><c-_>
