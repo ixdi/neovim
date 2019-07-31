@@ -55,3 +55,4 @@ Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 " Language Support
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
+Run ```:PlugUdate to update all plugins```
