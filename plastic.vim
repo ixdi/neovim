@@ -146,7 +146,7 @@ call <sid>hi('Type', s:blue, s:none, 'none', {})
 
 call <sid>hi('Special', s:yellow, s:none, 'none', {})
 
-call <sid>hi('Underlined', s:blue, s:none, 'underline', {})
+call <sid>hi('Underlined', s:blue, s:none, 'none', {})
 
 call <sid>hi('Ignore', s:none, s:none, 'none', {})
 

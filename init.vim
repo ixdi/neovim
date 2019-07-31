@@ -201,6 +201,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <leader>tf :NERDTreeFind<CR>
+let g:NERDTreeWinSize = '35'
 
 " Tabularize
 nmap <leader>t :Tabularize /
@@ -226,12 +227,12 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_winsize = '30%'
 let g:ctrlsf_search_mode = 'async'
 let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_ignore_dir = ['node_modules', '.meteor', 'packages']
 
 " Indent
-"indent command
-map <F9> gg=G
 " indent from selected bracket
 nmap <leader>o <esc>=i}
+nmap <leader>og <esc>gg=G
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -249,9 +250,7 @@ nnoremap <leader>so vi}:sort<CR>
 map <Leader>k <Plug>(easymotion-prefix)
 
 " vim doge
-let g:doge_mapping = '<leader>D'
-let g:doge_mapping_comment_jump_forward = '6'
-let g:doge_mapping_comment_jump_backward = '4'
+map <Leader>d :DogeGenerate<cr>
 
 " Comment
 map <leader>c <c-_><c-_>
@@ -302,8 +301,9 @@ highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
 let g:gitgutter_enabled = 0
 
 " FuzzyFinder
-nmap <F6> :Files<cr>
-nmap <F8> :Buffers<cr>
+nmap <F6> <esc>:History<cr>
+nmap <F8> <esc>:Buffers<cr>
+nmap <F9> <esc>:Files<cr>
 
 " Fast saving
 nmap <leader>w :w!<cr>

@@ -36,6 +36,7 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.config/nvim/fzf-history'
 
 " [Buffers] Jump to the existing window if possible
+let g:fzf_files_jump = 1
 let g:fzf_buffers_jump = 1
 
 " [[B]Commits] Customize the options used by 'git log':
