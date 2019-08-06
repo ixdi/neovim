@@ -196,7 +196,7 @@ nmap <leader>s <esc>cs
 " replace tag for anotherone
 nmap <leader>st <esc>cstt
 "insert new chars wrapping word under cursor
-nmap <leader>sl <esc>ysiw
+nmap <leader>sw <esc>ysiw
 " S<tag> will wrap visual selected text with <tag>
 
 " Fugitive git
@@ -291,3 +291,10 @@ nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
 
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible)( ? \<"C-p>" : \<"C-h>">>)
