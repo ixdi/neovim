@@ -2,7 +2,10 @@
 Config files for my neovim
 
 ## Install
-junegunn/vim-plug
+Install ```ripgrep``` command line utility (necesary for coc) https://github.com/BurntSushi/ripgrep
+
+Install junegunn/vim-plug
+
 ```
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -13,7 +16,6 @@ Then run ```:PlugUpgrade to update plugin```
 ```
 " UI and colors
 Plug 'flrnprz/plastic.vim'
-Plug 'lilydjwg/colorizer'                 " show colors from CSS
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Rules for different languages
@@ -23,8 +25,6 @@ Plug 'sheerun/vim-polyglot'               " Rules for different languages
 Plug 'dyng/ctrlsf.vim'                    " Search features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
-Plug '/usr/local/opt/fzf'                 " FuzzyFinder need to be installed first on the system
-Plug 'junegunn/fzf.vim'
 
 " File Navigation
 Plug 'easymotion/vim-easymotion'          " Move like the wind!
@@ -56,3 +56,7 @@ Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 Run ```:PlugUdate to update all plugins```
+
+Run ```:CocInstall coc-html coc-json coc-highlight coc-emmet coc-snippets coc-lists coc-yank coc-tailwindcss```
+
+See https://github.com/neoclide/coc.nvim for Coc project
