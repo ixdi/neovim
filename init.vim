@@ -53,6 +53,20 @@ let g:python_host_prog = $ASDF_DIR . '/usr/bin/python2'
 "let g:python3_host_prog = $ASDF_DIR . '/installs/python/3.5.0/bin/python'
 let g:python3_host_prog = $ASDF_DIR . '/usr/bin/python3'
 
+" indent file mantaining position on save
+function! s:removeSpaces()
+  let _s=@/
+  let l = line('.')
+  let c = col('.')
+  " let save_cursor = getpos(".")
+  " let old_query = getreg('/')
+  normal ggVG=
+  " call setpos('.', save_cursor)
+  " call setreg('/', old_query)
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
 if has("autocmd")
   " Autocommands
   filetype plugin indent on
@@ -61,30 +75,24 @@ if has("autocmd")
   " Don't do it for commit messages, when the position is invalid, or when
   " inside an event handler (happens when dropping a file on gvim).
   autocmd BufReadPost *
-    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 
   " Automatically clean trailing whitespace
-  " autocmd BufWritePre * :%s/\s\+$/e
-  autocmd BufWritePre * :StripWhitespace
+  autocmd BufWritePre * :%s/\s\+$//e
+  " Remove trialing lines
+  autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
+
+  autocmd BufWritePre * :call <sid>removeSpaces()
 
   autocmd BufRead,BufNewFile *.html set filetype=html.handlebars syntax=mustache
   autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-endif
 
-" Open current file in Marked
-function! MarkedPreview()
-  :w
-  exec ':silent !open -a "Marked 2.app" ' . shellescape('%:p')
-  redraw!
-endfunction
-nnoremap <leader>md :call MarkedPreview()<CR>
-" Open current repo in Tower
-function! OpenInGitTower()
-  call system('gittower `git rev-parse --show-toplevel`')
-endfunction
-nnoremap <leader>gt :call OpenInGitTower()<CR>
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+  autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
+
+endif
 
 " Specify plugins
 call plug#begin()
@@ -103,7 +111,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'ntpeters/vim-better-whitespace'     " show and remove end whitespaces
 Plug 'jiangmiao/auto-pairs'               " autoclose tags
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
@@ -221,9 +228,9 @@ nmap <leader>oo <esc>=i}
 nnoremap Y y$
 
 " stripwhitespace
-noremap <F7> :StripWhitespace<cr>
+noremap <F7> :%s/\s\+$//e<cr>
 
-" Sort
+" Sort css
 nnoremap <leader>so vi}:sort<CR>
 
 " Import cost
@@ -276,34 +283,34 @@ let g:gitgutter_enabled = 0
 nmap <leader>w :w!<cr>
 
 " Coc configurations
-  imap <C-l> <Plug>(coc-snippets-expand)  " snippets expand
-  nmap <silent> <C-c> <Plug>(coc-cursors-position)
+imap <C-l> <Plug>(coc-snippets-expand)  " snippets expand
+nmap <silent> <C-c> <Plug>(coc-cursors-position)
 
-  nmap <F6> <esc>:CocList --number-select --normal mru<cr>
-  nmap <F8> <esc>:CocList --number-select buffers<cr>
-  nmap <F9> <esc>:CocList --number-select files<cr>
-  nmap <F10> <esc>:CocListResume<cr>
-  nmap <C-F> <esc>:CocList grep<cr>
-  " grep word under cursor
-  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
+nmap <F6> <esc>:CocList --number-select --normal mru<cr>
+nmap <F8> <esc>:CocList --number-select buffers<cr>
+nmap <F9> <esc>:CocList --number-select files<cr>
+nmap <F10> <esc>:CocListResume<cr>
+nmap <C-F> <esc>:CocList grep<cr>
+" grep word under cursor
+command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
 
-  function! s:GrepArgs(...)
-    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-      \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-    return join(list, "\n")
-  endfunction
+function! s:GrepArgs(...)
+  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+  return join(list, "\n")
+endfunction
 
-  " Keymapping for grep word under cursor with interactive mode
-  nnoremap <silent> <leader>cf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+" Keymapping for grep word under cursor with interactive mode
+nnoremap <silent> <leader>cf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
 
-  " goto definitions
-  nmap <silent> <leader>dd <Plug>(coc-definition)
-  nmap <silent> <leader>dr <Plug>(coc-references)
-  nmap <silent> <leader>dj <Plug>(coc-implementation)
+" goto definitions
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
 
-  "multiple cursors search word under cursor
-  nmap <silent> <C-d> <Plug>(coc-cursors-word)*
-  "search multiple cursors incrementally
-  xmap <silent> <C-n> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+"multiple cursors search word under cursor
+nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+"search multiple cursors incrementally
+xmap <silent> <C-n> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
-  nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
+nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
