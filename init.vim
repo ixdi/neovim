@@ -76,6 +76,7 @@ if has("autocmd")
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
   autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
 " Specify plugins
@@ -293,8 +294,17 @@ nmap <silent> <leader>dj <Plug>(coc-implementation)
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ \s''
+endfunction'
+
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible)( ? \<"C-p>" : \<"C-h>">>)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible( ? )\"C-p><" : "\<S-Tab">>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR">"
+" make <cr> select the first completion item and confirm the completion when no item has been selected
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"

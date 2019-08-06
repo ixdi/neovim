@@ -1,4 +1,10 @@
 {
+  "coc.source.around.priority": 1,
+  "coc.source.buffer.priority": 2,
+  "coc.source.file.priority": 3,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.minTriggerInputLength": 2,
+  "suggest.snippetIndicator": "►",
   "prettier.requireConfig": true,
   "prettier.singleQuote": true,
   "prettier.jsxSingleQuote": true,
