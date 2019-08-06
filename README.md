@@ -53,6 +53,6 @@ Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 Run ```:PlugUdate to update all plugins```
 
-Run ```:CocInstall coc-html coc-json coc-highlight coc-emmet coc-snippets coc-lists coc-yank coc-tailwindcss```
+Run ```:CocInstall coc-html coc-json coc-highlight coc-emmet coc-snippets coc-lists coc-yank```
 
 See https://github.com/neoclide/coc.nvim for Coc project
