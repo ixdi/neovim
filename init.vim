@@ -91,27 +91,18 @@ call plug#begin()
 
 " UI and colors
 Plug 'flrnprz/plastic.vim'
-Plug 'lilydjwg/colorizer'                 " show colors from CSS
 Plug 'vim-airline/vim-airline'            " Handy info
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Rules for different languages
-
 
 " Project Navigation
 Plug 'dyng/ctrlsf.vim'                    " Search features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
-Plug '/usr/local/opt/fzf'                 " FuzzyFinder need to be installed first on the system
-Plug 'junegunn/fzf.vim'
-
-" File Navigation
-Plug 'easymotion/vim-easymotion'          " Move like the wind!
-Plug 'haya14busa/incsearch.vim'           " Better search highlighting
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'mg979/vim-visual-multi'             " select multi
 Plug 'ntpeters/vim-better-whitespace'     " show and remove end whitespaces
 Plug 'jiangmiao/auto-pairs'               " autoclose tags
 Plug 'alvan/vim-closetag'                 " html autoclose
@@ -200,7 +191,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nmap <leader>tf :NERDTreeFind<CR>
+nmap <leader>f :NERDTreeFind<CR>
 let g:NERDTreeWinSize = '35'
 
 " Tabularize
@@ -219,15 +210,6 @@ nmap <leader>S <esc>cs
 " Fugitive git
 nnoremap <F12> :Gstatus<CR>
 nnoremap <F4> :Gcommit<cr>
-
-" ctrlsf
-nmap <C-F> <Plug>CtrlSFPrompt
-vmap <C-F> <Plug>CtrlSFVwordPath
-let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_winsize = '30%'
-let g:ctrlsf_search_mode = 'async'
-let g:ctrlsf_default_view_mode = 'compact'
-let g:ctrlsf_ignore_dir = ['node_modules', '.meteor', 'packages']
 
 " Indent
 " select all file and indent
@@ -269,25 +251,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 
 let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#neomake#enabled = 1
+let g:airline#extensions#neomake#enabled = 0
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1 " Enable the patched Powerline fonts
+let g:airline#extensions#coc#enabled = 1
 " let g:airline_theme='plastic'
-
-" Incsearch
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Autohighlight Settings
-set hlsearch
-let g:incsearch#auto_nohlsearch = 0
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
 
 " Gitgutter
 cnoreabbrev Gundo GitGutterUndoHunk
@@ -304,11 +272,38 @@ highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
 highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
 let g:gitgutter_enabled = 0
 
-" FuzzyFinder
-nmap <F6> <esc>:History<cr>
-nmap <F8> <esc>:Buffers<cr>
-nmap <F9> <esc>:Files<cr>
-
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Coc configurations
+  imap <C-l> <Plug>(coc-snippets-expand)  " snippets expand
+  nmap <silent> <C-c> <Plug>(coc-cursors-position)
+
+  nmap <F6> <esc>:CocList --number-select --normal mru<cr>
+  nmap <F8> <esc>:CocList --number-select buffers<cr>
+  nmap <F9> <esc>:CocList --number-select files<cr>
+  nmap <F10> <esc>:CocListResume<cr>
+  nmap <C-F> <esc>:CocList grep<cr>
+  " grep word under cursor
+  command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
+
+  function! s:GrepArgs(...)
+    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+      \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+    return join(list, "\n")
+  endfunction
+
+  " Keymapping for grep word under cursor with interactive mode
+  nnoremap <silent> <leader>cf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+
+  " goto definitions
+  nmap <silent> <leader>dd <Plug>(coc-definition)
+  nmap <silent> <leader>dr <Plug>(coc-references)
+  nmap <silent> <leader>dj <Plug>(coc-implementation)
+
+  "multiple cursors search word under cursor
+  nmap <silent> <C-d> <Plug>(coc-cursors-word)*
+  "search multiple cursors incrementally
+  xmap <silent> <C-n> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+  nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
