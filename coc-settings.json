@@ -8,7 +8,7 @@
   "html.format.enable": true,
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
-  "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*"],
+  "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*", "**/packages/*"],
   "yank.enableCompletion": false,
   "yank.limit": 50,
   "yank.highlight.enable": false,
