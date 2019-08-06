@@ -30,7 +30,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'jiangmiao/auto-pairs'               " autoclose tags
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 
@@ -52,6 +51,6 @@ Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 Run ```:PlugUdate to update all plugins```
 
-Run ```:CocInstall coc-html coc-json coc-highlight coc-emmet coc-snippets coc-lists coc-yank```
+Run ```:CocInstall coc-html coc-json coc-css coc-highlight coc-emmet coc-snippets coc-lists coc-yank coc-pairs coc-eslint coc-prettier```
 
 See https://github.com/neoclide/coc.nvim for Coc project
