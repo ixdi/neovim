@@ -8,6 +8,7 @@
   "html.format.enable": true,
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
+  "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*"],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
