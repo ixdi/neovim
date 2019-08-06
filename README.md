@@ -30,7 +30,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'ntpeters/vim-better-whitespace'     " show and remove end whitespaces
 Plug 'jiangmiao/auto-pairs'               " autoclose tags
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
