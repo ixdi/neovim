@@ -31,6 +31,7 @@ Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
+Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
