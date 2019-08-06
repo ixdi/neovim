@@ -53,20 +53,6 @@ let g:python_host_prog = $ASDF_DIR . '/usr/bin/python2'
 "let g:python3_host_prog = $ASDF_DIR . '/installs/python/3.5.0/bin/python'
 let g:python3_host_prog = $ASDF_DIR . '/usr/bin/python3'
 
-" indent file mantaining position on save
-function! s:removeSpaces()
-  let _s=@/
-  let l = line('.')
-  let c = col('.')
-  " let save_cursor = getpos(".")
-  " let old_query = getreg('/')
-  normal ggVG=
-  " call setpos('.', save_cursor)
-  " call setreg('/', old_query)
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
 if has("autocmd")
   " Autocommands
   filetype plugin indent on
@@ -83,8 +69,6 @@ if has("autocmd")
   autocmd BufWritePre * :%s/\s\+$//e
   " Remove trialing lines
   autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
-
-  autocmd BufWritePre * :call <sid>removeSpaces()
 
   autocmd BufRead,BufNewFile *.html set filetype=html.handlebars syntax=mustache
   autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
@@ -252,8 +236,6 @@ map <leader>c <c-_><c-_>
 let g:mustache_abbreviations = 1
 
 " Airline
-" let g:airline_section_x = '%{PencilMode()}'
-" Configure the Tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 
@@ -281,6 +263,10 @@ let g:gitgutter_enabled = 0
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Auto pairs
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutToggle = '<C-p>'
 
 " Coc configurations
 imap <C-l> <Plug>(coc-snippets-expand)  " snippets expand
