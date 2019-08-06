@@ -88,16 +88,15 @@ Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Rules for different languages
 
 " Project Navigation
-Plug 'dyng/ctrlsf.vim'                    " Search features
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'jiangmiao/auto-pairs'               " autoclose tags
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
+Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
@@ -192,11 +191,13 @@ nmap <leader>T :Tabularize / \zs
 vmap <leader>T :'<, '>Tabularize / \zs
 
 " Surround
+" change char on cursor with new one, cs"' substitute " by '
+nmap <leader>s <esc>cs
+" replace tag for anotherone
+nmap <leader>st <esc>cstt
 "insert new chars wrapping word under cursor
-nmap <leader>s <esc>ysiw
-" change char on cursor with new one
-nmap <leader>S <esc>cs
-"cs"' substitute " by '
+nmap <leader>sl <esc>ysiw
+" S<tag> will wrap visual selected text with <tag>
 
 " Fugitive git
 nnoremap <F12> :Gstatus<CR>
@@ -207,9 +208,6 @@ nnoremap <F4> :Gcommit<cr>
 nmap <leader>o <esc>ggVG=
 " indent bracket
 nmap <leader>oo <esc>=i}
-
-" Yank from cursor to end of line
-nnoremap Y y$
 
 " stripwhitespace
 noremap <F7> :%s/\s\+$//e<cr>
@@ -264,19 +262,17 @@ let g:gitgutter_enabled = 0
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Auto pairs
-let g:AutoPairsFlyMode = 0
-let g:AutoPairsShortcutToggle = '<C-p>'
-
 " Coc configurations
-imap <C-l> <Plug>(coc-snippets-expand)  " snippets expand
+imap <C-e> <Plug>(coc-snippets-expand)  " snippets expand
 nmap <silent> <C-c> <Plug>(coc-cursors-position)
 
 nmap <F6> <esc>:CocList --number-select --normal mru<cr>
+nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
 nmap <F8> <esc>:CocList --number-select buffers<cr>
 nmap <F9> <esc>:CocList --number-select files<cr>
 nmap <F10> <esc>:CocListResume<cr>
-nmap <C-F> <esc>:CocList grep<cr>
+nmap <C-l> <esc>:CocListResume<cr>
+nmap <C-f> <esc>:CocList grep<cr>
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
 
@@ -287,16 +283,11 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <leader>cf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
 
 " goto definitions
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>dj <Plug>(coc-implementation)
-
-"multiple cursors search word under cursor
-nmap <silent> <C-d> <Plug>(coc-cursors-word)*
-"search multiple cursors incrementally
-xmap <silent> <C-n> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
 
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
