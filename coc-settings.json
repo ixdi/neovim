@@ -9,6 +9,9 @@
   "eslint.enable": true,
   "eslint.autoFixOnSave": true,
   "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*"],
+  "yank.enableCompletion": false,
+  "yank.limit": 50,
+  "yank.highlight.enable": false,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "html",
