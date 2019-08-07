@@ -42,7 +42,6 @@ Plug 'airblade/vim-gitgutter'             " Git show changes
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
 Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 
