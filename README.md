@@ -18,7 +18,8 @@ Then run ```:PlugUpgrade to update plugin```
 ```
 " UI and colors
 Plug 'flrnprz/plastic.vim'
-Plug 'vim-airline/vim-airline'            " Handy info
+Plug 'itchyny/lightline.vim'              " Lightline status bar
+Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Rules for different languages
 
