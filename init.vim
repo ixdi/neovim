@@ -84,9 +84,10 @@ call plug#begin()
 
 " UI and colors
 Plug 'flrnprz/plastic.vim'
-Plug 'vim-airline/vim-airline'            " Handy info
+Plug 'itchyny/lightline.vim'              " Lightline status bar
+Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
 Plug 'ryanoasis/vim-devicons'             " icons
-Plug 'sheerun/vim-polyglot'               " Rules for different languages
+Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 
 " Project Navigation
 Plug 'scrooloose/nerdtree'
@@ -167,6 +168,9 @@ inoremap jj <ESC>
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
 
+" insert new line and set cursor before on insert mode
+imap <A-enter> <cr><C-o>O
+
 " Copy/paste between vim instances
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
@@ -220,9 +224,8 @@ nnoremap <leader>so vi}:sort<CR>
 
 " vim doge
 map <leader>d :DogeGenerate<cr>
-" let g:doge_mapping = '<leader>D'
-let g:doge_mapping_comment_jump_forward = '<C-n>'
-let g:doge_mapping_comment_jump_backward = '<C-p>'
+let g:doge_mapping_comment_jump_forward = '<A-n>'
+let g:doge_mapping_comment_jump_backward = '<A-p>'
 
 " Comment
 map <leader>c <c-_><c-_>
@@ -230,16 +233,25 @@ map <leader>c <c-_><c-_>
 " Mustache
 let g:mustache_abbreviations = 1
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+      \ ]},
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#neomake#enabled = 0
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1 " Enable the patched Powerline fonts
-let g:airline#extensions#coc#enabled = 1
-" let g:airline_theme='plastic'
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#shorten_path = 1
+let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " Gitgutter
 cnoreabbrev Gundo GitGutterUndoHunk
@@ -264,7 +276,7 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
 " Coc configurations
-imap <C-e> <Plug>(coc-snippets-expand)  " snippets expand
+imap <C-e> <Plug>(coc-snippets-expand)
 
 nmap <F6> <esc>:CocList --number-select --normal mru<cr>
 nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
@@ -307,3 +319,6 @@ inoremap <expr> <S-Tab> pumvisible( ? )\"C-p><" : "\<S-Tab">>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR">"
 " make <cr> select the first completion item and confirm the completion when no item has been selected
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+
+let g:coc_status_error_sign = '•'
+let g:coc_status_warning_sign = '•'
