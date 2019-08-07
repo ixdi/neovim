@@ -108,7 +108,6 @@ Plug 'airblade/vim-gitgutter'             " Git show changes
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'honza/vim-snippets'
 Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 
@@ -219,14 +218,11 @@ nnoremap <leader>so vi}:sort<CR>
 " Import cost
 " map <leader>ic :ImportCost<cr>
 
-" Easymotion
-map <Leader>k <Plug>(easymotion-prefix)
-
 " vim doge
-map <Leader>d :DogeGenerate<cr>
+map <leader>d :DogeGenerate<cr>
 " let g:doge_mapping = '<leader>D'
-let g:doge_mapping_comment_jump_forward = 'n'
-let g:doge_mapping_comment_jump_backward = 'p'
+let g:doge_mapping_comment_jump_forward = '<C-n>'
+let g:doge_mapping_comment_jump_backward = '<C-p>'
 
 " Comment
 map <leader>c <c-_><c-_>
@@ -263,9 +259,12 @@ let g:gitgutter_enabled = 0
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Multiple cursors
+let g:multi_cursor_exit_from_insert_mode = 1
+let g:multi_cursor_exit_from_visual_mode = 1
+
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)  " snippets expand
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
 
 nmap <F6> <esc>:CocList --number-select --normal mru<cr>
 nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
@@ -289,7 +288,7 @@ nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').
 " goto definitions
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>dj <Plug>(coc-implementation)
+nmap <silent> <leader>di <Plug>(coc-implementation)
 
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
 
