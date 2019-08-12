@@ -139,6 +139,12 @@ nnoremap <A-x> <C-x>
 
 set completeopt-=preview
 
+" move between views
+nnoremap <A-J> <C-W><C-J>
+nnoremap <A-K> <C-W><C-K>
+nnoremap <A-L> <C-W><C-L>
+nnoremap <A-H> <C-W><C-H>
+
 " syntax and color
 syntax on
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
