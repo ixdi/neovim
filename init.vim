@@ -140,10 +140,13 @@ nnoremap <A-x> <C-x>
 set completeopt-=preview
 
 " move between views
-nmap <A-j> <C-W>j
-nmap <A-k> <C-W>k
-nmap <A-l> <C-W>l
-nmap <A-h> <C-W>h
+nmap <A-j> <C-w>j
+nmap <A-k> <C-w>k
+nmap <A-l> <C-w>l
+nmap <A-h> <C-w>h
+nmap <A-Up> <C-w>_
+nmap <A-Right> <C-w>|
+nmap <A-Down> <C-w>=
 
 " syntax and color
 syntax on
