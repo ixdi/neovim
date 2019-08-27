@@ -99,6 +99,7 @@ Plug 'tomtom/tcomment_vim'                " Comments
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
+Plug 'mattn/emmet-vim'                    " Emmet
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
@@ -284,6 +285,10 @@ nmap <leader>w :w!<cr>
 let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,html.handlebars EmmetInstall
+
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
 
@@ -331,3 +336,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 
 let g:coc_status_error_sign = '•'
 let g:coc_status_warning_sign = '•'
+
+" Controls annotations (cheat)
+" <C-o> go to last opened buffer
