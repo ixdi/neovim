@@ -100,6 +100,8 @@ Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
+Plug 'gko/vim-layout'                     " Layout
+Plug 'wellle/targets.vim'                 " More text objects to operate on
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
@@ -339,3 +341,4 @@ let g:coc_status_warning_sign = '•'
 
 " Controls annotations (cheat)
 " <C-o> go to last opened buffer
+" <leader>1 to 3 to set different layouts
