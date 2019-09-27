@@ -291,9 +291,19 @@ let g:multi_cursor_exit_from_visual_mode = 1
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,html.handlebars EmmetInstall
 
+" Devicons
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_ctrlp = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:DevIconsEnableFolderExtensionPatternMatching = 0
+let g:WebDevIconsOS = 'Darwin'
+
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
 
+nmap <F5> <esc>:CocList -A --normal yank<cr>
 nmap <F6> <esc>:CocList --number-select --normal mru<cr>
 nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
 nmap <F8> <esc>:CocList --number-select buffers<cr>
