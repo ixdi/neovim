@@ -352,3 +352,9 @@ let g:coc_status_warning_sign = '•'
 " Controls annotations (cheat)
 " <C-o> go to last opened buffer
 " <leader>1 to 3 to set different layouts
+
+nmap <silent> <leader>tl :CocList todolist<cr>
+nmap <leader>ti :CocCommand todolist.create<cr>
+nmap <leader>te :CocCommand todolist.export<cr>
+"clear all notifications
+nmap <leader>tc :CocCommand todolist.clearNotice<cr>
