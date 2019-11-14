@@ -308,7 +308,7 @@ nmap <F6> <esc>:CocList --number-select --normal mru<cr>
 nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
 nmap <F8> <esc>:CocList --number-select buffers<cr>
 nmap <F9> <esc>:CocList --number-select files<cr>
-nmap <F10> <esc>:CocListResume<cr>
+nmap <F10> <esc>:CocUpdate<cr>
 nmap <C-l> <esc>:CocListResume<cr>
 nmap <C-f> <esc>:CocList grep<cr>
 " grep word under cursor
