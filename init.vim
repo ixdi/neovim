@@ -221,7 +221,7 @@ nnoremap <F4> :Gcommit<cr>
 
 " Indent
 " select all file and indent
-nmap <leader>o <esc>ggVG=
+nmap <leader>o <esc>gg=G<C-o>
 " indent bracket
 nmap <leader>oo <esc>=i}
 
