@@ -328,8 +328,6 @@ nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>di <Plug>(coc-implementation)
 
-nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
-
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
   let col = col('.') - 1
