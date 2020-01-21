@@ -1,4 +1,5 @@
 {
+  "npm.binPath": "/bin/npm",
   "coc.preferences.formatOnSaveFiletypes": [
     "Markdown",
     "css",
@@ -12,6 +13,8 @@
   "coc.source.around.priority": 1,
   "coc.source.buffer.priority": 2,
   "coc.source.file.priority": 3,
+  "smartf.timeout":3000,
+  "smartf.jumpOnTrigger":false,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "html.enable": false,
@@ -27,5 +30,9 @@
   "suggest.triggerAfterInsertEnter": true,
   "yank.enableCompletion": false,
   "yank.highlight.enable": false,
-  "yank.limit": 50
+  "yank.limit": 50,
+  "css.validate":false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false
 }

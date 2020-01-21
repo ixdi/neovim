@@ -186,6 +186,8 @@ imap <A-enter> <cr><C-o>O
 " Copy/paste between vim instances
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
+nmap p ]p
+nmap P ]P
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -356,3 +358,14 @@ nmap <leader>ti :CocCommand todolist.create<cr>
 nmap <leader>te :CocCommand todolist.export<cr>
 "clear all notifications
 nmap <leader>tc :CocCommand todolist.clearNotice<cr>
+
+" coc-smartf, press <esc> to cancel.
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+nmap <F1> <Plug>(coc-smartf-repeat)
+nmap <S-F1> <Plug>(coc-smartf-repeat-opposite)
+
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#a890F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#b09f96
+augroup end
