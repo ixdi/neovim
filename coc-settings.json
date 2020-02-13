@@ -31,6 +31,7 @@
   "yank.enableCompletion": false,
   "yank.highlight.enable": false,
   "yank.limit": 50,
+  "list.source.tags.command": "ctags -R --options=.ctags",
   "css.validate":false,
   "less.validate": false,
   "scss.validate": false,

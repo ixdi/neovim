@@ -184,8 +184,8 @@ map <silent> <leader>m <Esc>:noh<CR>
 imap <A-enter> <cr><C-o>O
 
 " Copy/paste between vim instances
-vmap <leader>y :w! /tmp/vitmp<CR>
-nmap <leader>p :r! cat /tmp/vitmp<CR>
+nmap <leader>y "+y
+nmap <leader>p "+]p
 nmap p ]p
 nmap P ]P
 
@@ -306,7 +306,7 @@ let g:WebDevIconsOS = 'Darwin'
 imap <C-e> <Plug>(coc-snippets-expand)
 
 nmap <F5> <esc>:CocList -A --normal yank<cr>
-nmap <F6> <esc>:CocList --number-select --normal mru<cr>
+nmap <F6> <esc>:CocList --number-select tags<cr>
 nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
 nmap <F8> <esc>:CocList --number-select buffers<cr>
 nmap <F9> <esc>:CocList --number-select files<cr>
@@ -353,6 +353,16 @@ let g:coc_status_warning_sign = '•'
 " <C-o> go to last opened buffer
 " <leader>1 to 3 to set different layouts
 
+"tags
+nmap <leader>t <C-]>
+nmap <leader>tt <C-t>
+
+"session
+nmap <silent> <leader>ss :CocCommand session.save<cr>
+nmap <silent> <leader>sl :CocCommand session.load<cr>
+
+
+" todo
 nmap <silent> <leader>tl :CocList todolist<cr>
 nmap <leader>ti :CocCommand todolist.create<cr>
 nmap <leader>te :CocCommand todolist.export<cr>
