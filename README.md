@@ -1,18 +1,19 @@
 # Neovim
-Config files for my neovim
+Config files for my neovim. See Coc Project at https://github.com/neoclide/coc.nvim
 
 ## Install
+Install ```nodejs``` required for Coc plugin
+
 Install ```ripgrep``` command line utility (necesary for coc) https://github.com/BurntSushi/ripgrep
 
 Install ```ctags``` command line
 
-Install junegunn/vim-plug
-
+Install ```junegunn/vim-plug```
 ```
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-Then run ```:PlugUpgrade to update plugin```
+Then run ```:PlugUpgrade to update vim-plug``` and ```:PlugUdate to update all plugins``` to update all plugins
 
 ## Plugins
 ```
@@ -49,21 +50,8 @@ Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 " Language Support
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
-Run ```:PlugUdate to update all plugins```
 
-Run ```:CocInstall
-    coc-yank
-    coc-tsserver
-    coc-todolist
-    coc-snippets
-    coc-prettier
-    coc-pairs
-    coc-lists
-    coc-json
-    coc-html
-    coc-highlight
-    coc-eslint
-    coc-css
+Finally install coc plugins
 ```
-
-See https://github.com/neoclide/coc.nvim for Coc project
+:CocInstall coc-yank coc-tsserver coc-todolist coc-snippets coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python
+```
