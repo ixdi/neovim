@@ -1,6 +1,8 @@
 # Neovim
 Config files for my neovim. See Coc Project at https://github.com/neoclide/coc.nvim
 
+Clone the repo to ```~/.config/nvim```
+
 ## Install
 Install ```nodejs``` required for Coc plugin
 
@@ -34,6 +36,9 @@ Plug 'tomtom/tcomment_vim'                " Comments
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
+Plug 'mattn/emmet-vim'                    " Emmet
+Plug 'gko/vim-layout'                     " Layout
+Plug 'wellle/targets.vim'                 " More text objects to operate on
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
