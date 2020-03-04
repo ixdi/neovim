@@ -15,7 +15,7 @@ Install ```junegunn/vim-plug```
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-Then run ```:PlugUpgrade to update vim-plug``` and ```:PlugUdate to update all plugins``` to update all plugins
+Then run ```:PlugUpgrade``` to update vim-plug and ```:PlugUdate``` to update all plugins
 
 ## Plugins
 ```
