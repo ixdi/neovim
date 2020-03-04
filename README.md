@@ -4,7 +4,7 @@ Config files for my neovim. See Coc Project at https://github.com/neoclide/coc.n
 ## Install
 Install ```nodejs``` required for Coc plugin
 
-Install ```ripgrep``` command line utility (necesary for coc) https://github.com/BurntSushi/ripgrep
+Install ```ripgrep``` command line utility (used by coc) https://github.com/BurntSushi/ripgrep
 
 Install ```ctags``` command line
 
