@@ -241,6 +241,8 @@ map <leader>d :DogeGenerate<cr>
 let g:doge_mapping_comment_jump_forward = '<A-n>'
 let g:doge_mapping_comment_jump_backward = '<A-p>'
 
+let g:doge_doc_standard_python = 'google'
+
 " Comment
 map <leader>c <c-_><c-_>
 
