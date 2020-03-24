@@ -17,6 +17,8 @@
   "smartf.jumpOnTrigger":false,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
+  "eslint.packageManager": "npm",
+  "eslint.run": "onType",
   "html.enable": false,
   "html.format.enable": true,
   "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*", "**/packages/*"],
