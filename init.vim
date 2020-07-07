@@ -184,8 +184,8 @@ map <silent> <leader>m <Esc>:noh<CR>
 imap <A-enter> <cr><C-o>O
 
 " Copy/paste between vim instances
-nmap <leader>y "+y
-nmap <leader>p "+]p
+vmap <leader>y "*y
+nmap <leader>p "*p
 nmap p ]p
 nmap P ]P
 
