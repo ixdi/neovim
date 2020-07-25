@@ -92,6 +92,7 @@ Plug 'sheerun/vim-polyglot'               " Syntax and indent for different lang
 " Project Navigation
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
+Plug 'Yggdroot/indentLine'
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
@@ -201,6 +202,20 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <leader>f :NERDTreeFind<CR>
 let g:NERDTreeWinSize = '35'
+
+"Nerdtree git
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
 " Tabularize
 nmap <leader>t :Tabularize /
