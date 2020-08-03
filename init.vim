@@ -85,7 +85,9 @@ call plug#begin()
 " UI and colors
 Plug 'flrnprz/plastic.vim'
 Plug 'itchyny/lightline.vim'              " Lightline status bar
-Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
+" Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
+Plug 'maximbaz/lightline-ale'
+Plug 'josa42/vim-lightline-coc'
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 
@@ -99,7 +101,7 @@ Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
-Plug 'terryma/vim-multiple-cursors'       " Multiple cursors
+Plug 'mg979/vim-visual-multi'            " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
 Plug 'gko/vim-layout'                     " Layout
 Plug 'wellle/targets.vim'                 " More text objects to operate on
@@ -205,17 +207,17 @@ let g:NERDTreeWinSize = '35'
 
 "Nerdtree git
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+      \ "Modified"  : "✹",
+      \ "Staged"    : "✚",
+      \ "Untracked" : "✭",
+      \ "Renamed"   : "➜",
+      \ "Unmerged"  : "═",
+      \ "Deleted"   : "✖",
+      \ "Dirty"     : "✗",
+      \ "Clean"     : "✔︎",
+      \ 'Ignored'   : '☒',
+      \ "Unknown"   : "?"
+      \ }
 
 " Tabularize
 nmap <leader>t :Tabularize /
@@ -265,20 +267,35 @@ map <leader>c <c-_><c-_>
 let g:mustache_abbreviations = 1
 
 " lightline
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
 let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \   [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-      \ ]},
+      \   'left': [
+      \   [ 'mode', 'paste'],
+      \   [ 'coc_errors', 'coc_warnings' ],
+      \   [ 'coc_status'],
+      \   [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'FugitiveHead',
       \ },
       \ }
+let g:lightline.separator = {
+	\   'left': '', 'right': ''
+  \}
 
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
+" lightline-buffers
+" let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+" let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+" let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+" lightline-coc register compoments:
+call lightline#coc#register()
 
 let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#shorten_path = 1
@@ -354,9 +371,9 @@ function! s:check_back_space() abort
 endfunction'
 
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible( ? )\"C-p><" : "\<S-Tab">>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR">"
