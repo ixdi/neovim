@@ -285,9 +285,9 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead',
       \ },
       \ }
-let g:lightline.separator = {
-	\   'left': '', 'right': ''
-  \}
+" let g:lightline.separator = {
+" 	\   'left': '', 'right': ''
+"   \}
 
 " lightline-buffers
 " let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
@@ -363,6 +363,9 @@ nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').
 nmap <silent> <leader>dd <Plug>(coc-definition)
 nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>di <Plug>(coc-implementation)
+" coc eslint errors keymappings
+nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
 
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
@@ -394,7 +397,6 @@ nmap <leader>tt <C-t>
 "session
 nmap <silent> <leader>ss :CocCommand session.save<cr>
 nmap <silent> <leader>sl :CocCommand session.load<cr>
-
 
 " todo
 nmap <silent> <leader>tl :CocList todolist<cr>
