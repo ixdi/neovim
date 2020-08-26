@@ -70,7 +70,7 @@ if has("autocmd")
   " Remove trialing lines
   autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 
-  autocmd BufRead,BufNewFile *.html set filetype=html.handlebars syntax=mustache
+  autocmd BufRead,BufNewFile .html set filetype=handlebars
   autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
 
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
