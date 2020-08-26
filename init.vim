@@ -92,7 +92,7 @@ Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 
 " Project Navigation
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 Plug 'Yggdroot/indentLine'
 
