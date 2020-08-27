@@ -325,7 +325,7 @@ let g:multi_cursor_exit_from_visual_mode = 1
 
 " Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,html.handlebars EmmetInstall
+" autocmd FileType html,css,html.handlebars EmmetInstall
 
 " Devicons
 let g:webdevicons_enable_nerdtree = 1
