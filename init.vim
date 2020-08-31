@@ -53,31 +53,29 @@ let g:python_host_prog = $ASDF_DIR . '/usr/bin/python2'
 "let g:python3_host_prog = $ASDF_DIR . '/installs/python/3.5.0/bin/python'
 let g:python3_host_prog = $ASDF_DIR . '/usr/bin/python3'
 
-if has("autocmd")
-  " Autocommands
-  filetype plugin indent on
+" Autocommands
+filetype plugin indent on
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
+" When editing a file, always jump to the last known cursor position.
+" Don't do it for commit messages, when the position is invalid, or when
+" inside an event handler (happens when dropping a file on gvim).
+autocmd BufReadPost *
+      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
 
-  " Automatically clean trailing whitespace
-  autocmd BufWritePre * :%s/\s\+$//e
-  " Remove trialing lines
-  autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
+" Automatically clean trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+" Remove trialing lines
+autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 
-  autocmd BufRead,BufNewFile .html set filetype=handlebars
-  autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+autocmd BufReadPost,BufNewFile *.html set filetype=handlebars
+autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
 
-  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-  autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-endif
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Specify plugins
 call plug#begin()
@@ -191,6 +189,9 @@ vmap <leader>y "*y
 nmap <leader>p "*p
 nmap p ]p
 nmap P ]P
+
+" set handlebars file type
+nmap <leader>h :set filetype=handlebars<cr>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
