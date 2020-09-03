@@ -173,7 +173,7 @@ nnoremap bp :bprevious<CR>
 nnoremap bn :bnext<CR>
 nnoremap bd :bdelete<CR>
 nnoremap bl :buffers<CR>
-nnoremap bds :bufdo bd<CR>
+nnoremap bda :bufdo bd<CR>
 
 " Exit insert mode
 inoremap jj <ESC>
@@ -233,7 +233,6 @@ nmap <leader>s <esc>cs
 nmap <leader>st <esc>cstt
 "insert new chars wrapping word under cursor
 nmap <leader>sw <esc>ysiw
-" S<tag> will wrap visual selected text with <tag>
 
 " Fugitive git
 nnoremap <F12> :Gstatus<CR>
