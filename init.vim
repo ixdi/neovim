@@ -143,7 +143,7 @@ nnoremap <A-x> <C-x>
 
 set completeopt-=preview
 
-" move between views
+" move between views using Alt instead of Ctrl
 nmap <A-j> <C-w>j
 nmap <A-k> <C-w>k
 nmap <A-l> <C-w>l
@@ -204,7 +204,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <leader>f :NERDTreeFind<CR>
-let g:NERDTreeWinSize = '35'
+let g:NERDTreeWinSize = '45'
 
 "Nerdtree git
 let g:NERDTreeIndicatorMapCustom = {
