@@ -84,15 +84,16 @@ call plug#begin()
 Plug 'flrnprz/plastic.vim'
 Plug 'itchyny/lightline.vim'              " Lightline status bar
 " Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
-Plug 'maximbaz/lightline-ale'
-Plug 'josa42/vim-lightline-coc'
+Plug 'maximbaz/lightline-ale'             " show errors in statusline
+Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
+Plug 'gko/vim-layout'                     " Layout
 
 " Project Navigation
-Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'                 " file explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'                " show vertical lines in indented code
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
@@ -101,7 +102,6 @@ Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'            " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
-Plug 'gko/vim-layout'                     " Layout
 Plug 'wellle/targets.vim'                 " More text objects to operate on
 
 " Git
@@ -111,8 +111,10 @@ Plug 'airblade/vim-gitgutter'             " Git show changes
 " Task Running
 " Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
-" Autocomplete
+" COC is the base platform for multiple features!
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 
@@ -124,7 +126,7 @@ call plug#end()
 " Load plugin configurations
 " For some reason, a few plugins seem to have config options that cannot be
 
-" Normal Mode Remaps
+" History search
 nnoremap <silence> <F5> :set hlsearch! hlsearch?<CR>
 
 " -- Smart indent when entering insert mode with i on empty lines --------------
