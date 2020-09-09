@@ -1,5 +1,5 @@
 # Neovim
-Config files for my neovim. See Coc Project at https://github.com/neoclide/coc.nvim
+Config files for my neovim. See COC Project at https://github.com/neoclide/coc.nvim
 
 Clone the repo to ```~/.config/nvim```
 
@@ -10,12 +10,17 @@ Install ```ripgrep``` command line utility (used by coc) https://github.com/Burn
 
 Install ```ctags``` command line
 
-Install ```junegunn/vim-plug```
+Install ```junegunn/vim-plug``` to manage plugins
 ```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+
 Then run ```:PlugUpgrade``` to update vim-plug and ```:PlugUpdate``` to update all plugins
+
+Finally install specific COC plugins
+```
+:CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python coc-emmet coc-yaml
+```
 
 ## Plugins
 ```
@@ -61,10 +66,6 @@ Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 
-Finally install coc plugins
-```
-:CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python coc-emmet coc-yaml
-```
 ## Shortcuts
 ```
 let mapleader = ","
