@@ -67,7 +67,7 @@ Finally install coc plugins
 ```
 ## Shortcuts
 ```
-<leader>,
+let mapleader = ","
 
 " Exit insert mode
 jj
