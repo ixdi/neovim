@@ -63,7 +63,7 @@ Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
 Finally install coc plugins
 ```
-:CocInstall coc-yank coc-tsserver coc-todolist coc-snippets coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python
+:CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python coc-emmet coc-yaml
 ```
 ## Shortcuts
 ```
