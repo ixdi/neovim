@@ -69,8 +69,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Remove trialing lines
 autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 
-autocmd BufReadPost,BufNewFile *.html set filetype=handlebars
-autocmd BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+au BufReadPost,BufNewFile *.html set filetype=handlebars
+au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+au BufRead,BufNewFile *.scss set filetype=scss.css
 
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -87,7 +88,6 @@ Plug 'itchyny/lightline.vim'              " Lightline status bar
 Plug 'maximbaz/lightline-ale'             " show errors in statusline
 Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
 Plug 'ryanoasis/vim-devicons'             " icons
-Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 Plug 'gko/vim-layout'                     " Layout
 
 " Project Navigation
@@ -119,6 +119,10 @@ Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 
 " Language Support
+Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'othree/html5.vim'
+Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
 call plug#end()
