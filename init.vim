@@ -69,10 +69,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Remove trialing lines
 autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 
-au BufReadPost,BufNewFile *.html set filetype=handlebars
-au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-au BufRead,BufNewFile *.scss set filetype=scss.css
-
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
@@ -122,7 +118,7 @@ Plug 'kkoomen/vim-doge'                   " Generate jsDoc
 Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'othree/html5.vim'
-Plug 'elzr/vim-json'
+" Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
 call plug#end()
@@ -421,3 +417,8 @@ augroup Smartf
   autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#a890F0
   autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#b09f96
 augroup end
+
+" autoload
+au BufReadPost,BufNewFile *.html set filetype=handlebars
+au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+au BufRead,BufNewFile *.scss set filetype=scss.css
