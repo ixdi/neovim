@@ -99,6 +99,7 @@ Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'            " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
 Plug 'wellle/targets.vim'                 " More text objects to operate on
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
@@ -422,3 +423,9 @@ augroup end
 au BufReadPost,BufNewFile *.html set filetype=handlebars
 au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
 au BufRead,BufNewFile *.scss set filetype=scss.css
+
+" Markdown preview
+" example
+nmap <C-m>p <Plug>MarkdownPreview
+nmap <C-m>s <Plug>MarkdownPreviewStop
+nmap <C-m> <Plug>MarkdownPreviewToggle
