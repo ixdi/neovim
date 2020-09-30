@@ -368,7 +368,7 @@ nmap <silent> <leader>dr <Plug>(coc-references)
 nmap <silent> <leader>di <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
 
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
