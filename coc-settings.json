@@ -1,8 +1,8 @@
 {
   "npm.binPath": "/bin/npm",
   "coc.preferences.formatOnSaveFiletypes": [
-    "Markdown",
     "css",
+    "scss",
     "html",
     "javascript",
     "javascriptreact",
@@ -19,7 +19,7 @@
   "eslint.enable": true,
   "eslint.packageManager": "npm",
   "eslint.run": "onType",
-  "html.enable": false,
+  "html.enable": true,
   "html.format.enable": true,
   "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*", "**/packages/*"],
   "prettier.jsxSingleQuote": true,
@@ -34,8 +34,8 @@
   "yank.highlight.enable": false,
   "yank.limit": 50,
   "list.source.tags.command": "ctags -R --options=.ctags",
-  "css.validate":false,
+  "css.validate": true,
   "less.validate": false,
-  "scss.validate": false,
+  "scss.validate": true,
   "wxss.validate": false
 }

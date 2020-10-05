@@ -74,6 +74,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" polyglot, need to be called before plugin load
+let g:polyglot_disabled = ['html5']
+
 " Specify plugins
 call plug#begin()
 
