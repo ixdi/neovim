@@ -116,14 +116,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
-Plug 'kkoomen/vim-doge'                   " Generate jsDoc
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 
 " Language Support
-Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
-Plug 'cakebaker/scss-syntax.vim'
 Plug 'othree/html5.vim'
-" Plug 'elzr/vim-json'
+" Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -260,7 +261,8 @@ nnoremap <leader>so vi}:sort<CR>
 " map <leader>ic :ImportCost<cr>
 
 " vim doge
-map <leader>d :DogeGenerate<cr>
+" map <leader>d :DogeGenerate<cr>
+let g:doge_mapping = '<Leader>d'
 let g:doge_mapping_comment_jump_forward = '<A-n>'
 let g:doge_mapping_comment_jump_backward = '<A-p>'
 
