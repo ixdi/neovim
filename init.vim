@@ -132,7 +132,7 @@ call plug#end()
 " For some reason, a few plugins seem to have config options that cannot be
 
 " History search
-nnoremap <silence> <F5> :set hlsearch! hlsearch?<CR>
+nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
 
 " -- Smart indent when entering insert mode with i on empty lines --------------
 function! IndentWithI()
@@ -145,19 +145,19 @@ endfunction
 nnoremap <expr> i IndentWithI()
 
 " Remap the increment and decrement features of Vim
-nnoremap <A-a> <C-a>
-nnoremap <A-x> <C-x>
+nnoremap <silent> <A-a> <C-a>
+nnoremap <silent> <A-x> <C-x>
 
 set completeopt-=preview
 
 " move between views using Alt instead of Ctrl
-nmap <A-j> <C-w>j
-nmap <A-k> <C-w>k
-nmap <A-l> <C-w>l
-nmap <A-h> <C-w>h
-nmap <A-Up> <C-w>_
-nmap <A-Right> <C-w>|
-nmap <A-Down> <C-w>=
+nnoremap <silent> <A-j> <C-w>j
+nnoremap <silent> <A-k> <C-w>k
+nnoremap <silent> <A-l> <C-w>l
+nnoremap <silent> <A-h> <C-w>h
+nnoremap <silent> <A-Up> <C-w>_
+nnoremap <silent> <A-Right> <C-w>|
+nnoremap <silent> <A-Down> <C-w>=
 
 " syntax and color
 syntax on
@@ -183,7 +183,7 @@ nnoremap bl :buffers<CR>
 nnoremap bda :bufdo bd<CR>
 
 " Exit insert mode
-inoremap jj <ESC>
+inoremap <silent> jj <ESC>
 
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
@@ -192,10 +192,10 @@ map <silent> <leader>m <Esc>:noh<CR>
 imap <A-enter> <cr><C-o>O
 
 " Copy/paste between vim instances
-vmap <leader>y "*y
-nmap <leader>p "*p
-nmap p ]p
-nmap P ]P
+vmap <silent> <leader>y "*y
+nmap <silent> <leader>p "*p
+nmap <silent> p ]p
+nmap <silent> P ]P
 
 " set handlebars file type
 nmap <leader>h :set filetype=handlebars<cr>
@@ -204,13 +204,13 @@ nmap <leader>h :set filetype=handlebars<cr>
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 "NerdTree
-map <F3> :NERDTreeToggle<CR>
+map <silent><special> <F3> :NERDTreeToggle<CR>
 "open nerdtree on enter if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nmap <leader>f :NERDTreeFind<CR>
+nmap <silent> <leader>f :NERDTreeFind<CR>
 let g:NERDTreeWinSize = '45'
 
 "Nerdtree git
@@ -227,35 +227,35 @@ let g:NERDTreeIndicatorMapCustom = {
       \ "Unknown"   : "?"
       \ }
 
-" Tabularize
-nmap <leader>t :Tabularize /
-vmap <leader>t :'<, '>Tabularize /
-nmap <leader>T :Tabularize / \zs
-vmap <leader>T :'<, '>Tabularize / \zs
+"nore Tabularize
+noremap <leader>t :Tabularize /
+vnoremap <leader>t :'<, '>Tabularize /
+noremap <leader>T :Tabularize / \zs
+vnoremap <leader>T :'<, '>Tabularize / \zs
 
 " Surround
 " change char on cursor with new one, cs"' substitute " by '
-nmap <leader>s <esc>cs
+nmap <silent> <leader>s <esc>cs
 " replace tag for anotherone
-nmap <leader>st <esc>cstt
+nmap <silent> <leader>st <esc>cstt
 "insert new chars wrapping word under cursor
-nmap <leader>sw <esc>ysiw
+nmap <silent> <leader>sw <esc>ysiw
 
 " Fugitive git
-nnoremap <F12> :Gstatus<CR>
-nnoremap <F4> :Gcommit<cr>
+nnoremap <special> <F12> :Gstatus<CR>
+nnoremap <special> <F4> :Gcommit<cr>
 
 " Indent
 " select all file and indent
-nmap <leader>o <esc>gg=G<C-o>
+noremap <silent> <leader>o <esc>gg=G<C-o>
 " indent bracket
-nmap <leader>oo <esc>=i}
+noremap <silent> <leader>oo <esc>=i}
 
 " stripwhitespace
-noremap <F7> :%s/\s\+$//e<cr>
+noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 
 " Sort css
-nnoremap <leader>so vi}:sort<CR>
+nnoremap <silent> <leader>so vi}:sort<CR>
 
 " Import cost
 " map <leader>ic :ImportCost<cr>
@@ -269,7 +269,7 @@ let g:doge_mapping_comment_jump_backward = '<A-p>'
 let g:doge_doc_standard_python = 'google'
 
 " Comment
-map <leader>c <c-_><c-_>
+map <silent> <leader>c <c-_><c-_>
 
 " Mustache
 let g:mustache_abbreviations = 1
@@ -315,9 +315,9 @@ cnoreabbrev Gundo GitGutterUndoHunk
 let g:gitgutter_max_signs = 3500  " default value
 
 set updatetime=1000
-map <leader>g :GitGutterToggle<cr>
-nmap <leader>gn <Plug>GitGutterNextHunk
-nmap <leader>gp <Plug>GitGutterPrevHunk
+noremap <leader>g :GitGutterToggle<cr>
+noremap <leader>gn <Plug>GitGutterNextHunk
+noremap <leader>gp <Plug>GitGutterPrevHunk
 highlight link GitGutterChangeLine DiffText
 highlight GitGutterAdd    guifg=#009900 guibg=#222233 ctermfg=2 ctermbg=0
 highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
@@ -347,14 +347,14 @@ let g:WebDevIconsOS = 'Darwin'
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
 
-nmap <F5> <esc>:CocList -A --normal yank<cr>
-nmap <F6> <esc>:CocList --number-select tags<cr>
-nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
-nmap <F8> <esc>:CocList --number-select buffers<cr>
-nmap <F9> <esc>:CocList --number-select files<cr>
-nmap <F10> <esc>:CocUpdate<cr>
-nmap <C-l> <esc>:CocListResume<cr>
-nmap <C-f> <esc>:CocList grep<cr>
+noremap <special> <F5> <esc>:CocList -A --normal yank<cr>
+noremap <special> <F6> <esc>:CocList --number-select tags<cr>
+noremap <special> <C-p> <esc>:CocList --number-select --normal mru<cr>
+noremap <special> <F8> <esc>:CocList --number-select buffers<cr>
+noremap <special> <F9> <esc>:CocList --number-select files<cr>
+noremap <special> <F10> <esc>:CocUpdate<cr>
+noremap <C-l> <esc>:CocListResume<cr>
+noremap <C-f> <esc>:CocList grep<cr>
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
 
@@ -368,12 +368,12 @@ endfunction
 nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
 
 " goto definitions
-nmap <silent> <leader>dd <Plug>(coc-definition)
-nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>di <Plug>(coc-implementation)
+nmap <leader>dd <Plug>(coc-definition)
+nmap <leader>dr <Plug>(coc-references)
+nmap <leader>di <Plug>(coc-implementation)
 " coc eslint errors keymappings
-nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>e <Plug>(coc-diagnostic-next)
+nmap <leader>ep <Plug>(coc-diagnostic-prev)
+nmap <leader>e <Plug>(coc-diagnostic-next)
 
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
@@ -399,25 +399,25 @@ let g:coc_status_warning_sign = '•'
 " <leader>1 to 3 to set different layouts
 
 "tags
-nmap <leader>t <C-]>
+nmap <leader>tg <C-]>
 nmap <leader>tt <C-t>
 
 "session
-nmap <silent> <leader>ss :CocCommand session.save<cr>
-nmap <silent> <leader>sl :CocCommand session.load<cr>
+noremap <leader>ss :CocCommand session.save<cr>
+noremap <leader>sl :CocCommand session.load<cr>
 
 " todo
-nmap <silent> <leader>tl :CocList todolist<cr>
-nmap <leader>ti :CocCommand todolist.create<cr>
-nmap <leader>te :CocCommand todolist.export<cr>
+noremap <leader>tl :CocList todolist<cr>
+noremap <leader>ti :CocCommand todolist.create<cr>
+noremap <leader>te :CocCommand todolist.export<cr>
 "clear all notifications
-nmap <leader>tc :CocCommand todolist.clearNotice<cr>
+noremap <leader>tc :CocCommand todolist.clearNotice<cr>
 
 " coc-smartf, press <esc> to cancel.
 nmap f <Plug>(coc-smartf-forward)
 nmap F <Plug>(coc-smartf-backward)
-nmap <F1> <Plug>(coc-smartf-repeat)
-nmap <S-F1> <Plug>(coc-smartf-repeat-opposite)
+nmap <special> <F1> <Plug>(coc-smartf-repeat)
+nmap <special> <S-F1> <Plug>(coc-smartf-repeat-opposite)
 
 augroup Smartf
   autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#a890F0
@@ -430,7 +430,6 @@ au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filet
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
-" example
 nmap <C-m>p <Plug>MarkdownPreview
 nmap <C-m>s <Plug>MarkdownPreviewStop
 nmap <C-m> <Plug>MarkdownPreviewToggle
