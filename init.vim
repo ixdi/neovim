@@ -47,11 +47,6 @@ set numberwidth=5
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
-" Point to the Python executables in `asdf`
-"let g:python_host_prog = $ASDF_DIR . '/installs/python/2.7.10/bin/python'
-let g:python_host_prog = $ASDF_DIR . '/usr/bin/python2'
-"let g:python3_host_prog = $ASDF_DIR . '/installs/python/3.5.0/bin/python'
-let g:python3_host_prog = $ASDF_DIR . '/usr/bin/python3'
 
 " Autocommands
 filetype plugin indent on
