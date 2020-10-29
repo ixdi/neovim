@@ -150,9 +150,9 @@ nnoremap <silent> <A-j> <C-w>j
 nnoremap <silent> <A-k> <C-w>k
 nnoremap <silent> <A-l> <C-w>l
 nnoremap <silent> <A-h> <C-w>h
-nnoremap <silent> <A-Up> <C-w>_
-nnoremap <silent> <A-Right> <C-w>|
-nnoremap <silent> <A-Down> <C-w>=
+nnoremap <silent> <A-H> <C-w>_
+nnoremap <silent> <A-L> <C-w>|
+nnoremap <silent> <A-J> <C-w>=
 
 " syntax and color
 syntax on
@@ -230,11 +230,11 @@ vnoremap <leader>T :'<, '>Tabularize / \zs
 
 " Surround
 " change char on cursor with new one, cs"' substitute " by '
-nmap <silent> <leader>s <esc>cs
+nmap <silent> <leader>sc <esc>cs
 " replace tag for anotherone
 nmap <silent> <leader>st <esc>cstt
 "insert new chars wrapping word under cursor
-nmap <silent> <leader>sw <esc>ysiw
+nmap <silent> <leader>s <esc>ysiw
 
 " Fugitive git
 nnoremap <special> <F12> :Gstatus<CR>
