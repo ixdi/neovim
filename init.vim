@@ -252,6 +252,9 @@ noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 " Sort css
 nnoremap <silent> <leader>so vi}:sort<CR>
 
+" Select into claudators
+noremap <silent> <leader>ss <esc>vib
+
 " Import cost
 " map <leader>ic :ImportCost<cr>
 
@@ -398,8 +401,8 @@ nmap <leader>tg <C-]>
 nmap <leader>tt <C-t>
 
 "session
-noremap <leader>ss :CocCommand session.save<cr>
-noremap <leader>sl :CocCommand session.load<cr>
+noremap <leader>ssave :CocCommand session.save<cr>
+noremap <leader>sload :CocCommand session.load<cr>
 
 " todo
 noremap <leader>tl :CocList todolist<cr>
