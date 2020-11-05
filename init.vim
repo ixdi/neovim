@@ -253,7 +253,7 @@ noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 nnoremap <silent> <leader>so vi}:sort<CR>
 
 " Select into claudators
-noremap <silent> <leader>ss <esc>vib
+nmap <leader>v <esc>vib
 
 " Import cost
 " map <leader>ic :ImportCost<cr>
@@ -363,7 +363,7 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+" nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
 
 " goto definitions
 nmap <leader>dd <Plug>(coc-definition)
