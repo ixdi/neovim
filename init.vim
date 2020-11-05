@@ -254,6 +254,7 @@ nnoremap <silent> <leader>so vi}:sort<CR>
 
 " Select into claudators
 nmap <leader>v <esc>vib
+nmap <leader>V <esc>vab
 
 " Import cost
 " map <leader>ic :ImportCost<cr>
