@@ -27,12 +27,8 @@ set nofoldenable                   " disable folding
 set gdefault                       " By default add g flag to search/replace. Add g to toggle.
 set undodir=~/.config/nvim/undodir
 set undofile                       " Maintain undo history between sessions
-
-set mouse=a " Enable moouse in all in all modes.
-
-" Don't show whitespace, since saving will clean it up automatically anyway
-set nolist
-
+set mouse=a                        " Enable moouse in all in all modes.
+set nolist                         " Don't show whitespace, since saving will clean it up automatically anyway
 set foldmethod=indent
 set textwidth=0
 
@@ -94,7 +90,7 @@ Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'tomtom/tcomment_vim'                " Comments
 Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
-Plug 'mg979/vim-visual-multi'            " Multiple cursors
+Plug 'mg979/vim-visual-multi'             " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
 Plug 'wellle/targets.vim'                 " More text objects to operate on
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
@@ -161,7 +157,7 @@ set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-25
 if (has("termguicolors"))  " set true colors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+  set notermguicolors
 endif
 set background=dark
 colorscheme plastic
@@ -221,6 +217,34 @@ let g:NERDTreeIndicatorMapCustom = {
       \ 'Ignored'   : '☒',
       \ "Unknown"   : "?"
       \ }
+
+" NERDTrees File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', 'none')
+call NERDTreeHighlightFile('md', 'magenta', 'none', 'magenta', 'none')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', 'none')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', 'none')
+call NERDTreeHighlightFile('json', 'magenta', 'none', 'magenta', 'none')
+call NERDTreeHighlightFile('yaml', 'magenta', 'none', 'magenta', 'none')
+call NERDTreeHighlightFile('html', 'cyan', 'none', 'cyan', 'none')
+call NERDTreeHighlightFile('styl', 'green', 'none', 'green', 'none')
+call NERDTreeHighlightFile('css', 'green', 'none', 'green', 'none')
+call NERDTreeHighlightFile('coffee', 'red', 'none', 'red', 'none')
+call NERDTreeHighlightFile('js', 'yellow', 'none', 'yellow', 'none')
+call NERDTreeHighlightFile('py', 'yellow', 'none', 'yellow', 'none')
+call NERDTreeHighlightFile('php', 'magenta', 'none', 'magenta', 'none')
+call NERDTreeHighlightFile('txt', 'gray', 'none', 'gray', 'none')
+call NERDTreeHighlightFile('pem', 'black', 'none', 'black', 'none')
+call NERDTreeHighlightFile('vim', 'white', 'none', 'white', 'none')
+call NERDTreeHighlightFile('ds_store', 'gray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('gitconfig', 'gray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('gitignore', 'gray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('bashrc', 'gray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('bashprofile', 'gray', 'none', '#686868', 'none')
 
 "nore Tabularize
 noremap <leader>t :Tabularize /
@@ -338,37 +362,14 @@ let g:user_emmet_install_global = 0
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_ctrlp = 1
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
-let g:DevIconsEnableFolderExtensionPatternMatching = 0
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
-" let g:WebDevIconsOS = 'Darwin'
-" NERDTrees File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', 'none')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', 'none')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', 'none')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', 'none')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', 'none')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', 'none')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'none')
+let g:WebDevIconsOS = 'Darwin'
 
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
