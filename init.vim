@@ -46,6 +46,9 @@ set splitright
 
 " Autocommands
 filetype plugin indent on
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
@@ -70,15 +73,6 @@ let g:polyglot_disabled = ['html5']
 
 " Specify plugins
 call plug#begin()
-
-" UI and colors
-Plug 'flrnprz/plastic.vim'
-Plug 'itchyny/lightline.vim'              " Lightline status bar
-" Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
-Plug 'maximbaz/lightline-ale'             " show errors in statusline
-Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
-Plug 'ryanoasis/vim-devicons'             " icons
-Plug 'gko/vim-layout'                     " Layout
 
 " Project Navigation
 Plug 'preservim/nerdtree'                 " file explorer
@@ -116,6 +110,19 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
+
+" UI and colors
+Plug 'itchyny/lightline.vim'              " Lightline status bar
+" Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
+Plug 'maximbaz/lightline-ale'             " show errors in statusline
+Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
+Plug 'gko/vim-layout'                     " Layout
+Plug 'flrnd/plastic.vim'                  " color schemes
+Plug 'lifepillar/vim-solarized8'
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'ryanoasis/vim-devicons'             " icons
 
 call plug#end()
 
@@ -151,16 +158,17 @@ nnoremap <silent> <A-L> <C-w>|
 nnoremap <silent> <A-J> <C-w>=
 
 " syntax and color
-syntax on
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
 if (has("termguicolors"))  " set true colors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set notermguicolors
+  set termguicolors
+  " set notermguicolors
 endif
 set background=dark
 colorscheme plastic
+" colorscheme gruvbox
 
 if filereadable($DOTFILES . "/nvim/init.local.vim")
   source $DOTFILES/nvim/init.local.vim
@@ -369,7 +377,12 @@ let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsOS = 'Darwin'
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
+
 
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
@@ -460,3 +473,19 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 nmap <C-m>p <Plug>MarkdownPreview
 nmap <C-m>s <Plug>MarkdownPreviewStop
 nmap <C-m> <Plug>MarkdownPreviewToggle
+
+" Pangloss JS syntax heighlight
+" Enable JSDoc highlighting
+let g:javascript_plugin_jsdoc = 1
+" JavaScript Concealing
+" let g:javascript_conceal = 0
+" let g:javascript_conceal_function       = "ƒ"
+" let g:javascript_conceal_null           = "ø"
+" let g:javascript_conceal_this           = "@"
+" let g:javascript_conceal_return         = "⇚"
+" let g:javascript_conceal_undefined      = "¿"
+" let g:javascript_conceal_NaN            = "ℕ"
+" let g:javascript_conceal_prototype      = "¶"
+" let g:javascript_conceal_static         = "•"
+" let g:javascript_conceal_super          = "Ω"
+" let g:javascript_conceal_arrow_function = "⇒"
