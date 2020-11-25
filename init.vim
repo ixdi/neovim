@@ -122,6 +122,7 @@ Plug 'flrnd/plastic.vim'                  " color schemes
 Plug 'lifepillar/vim-solarized8'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'ixdi/vim-one.git'
 Plug 'ryanoasis/vim-devicons'             " icons
 
 call plug#end()
@@ -158,6 +159,7 @@ nnoremap <silent> <A-L> <C-w>|
 nnoremap <silent> <A-J> <C-w>=
 
 " syntax and color
+"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
 if (has("termguicolors"))  " set true colors
@@ -167,8 +169,9 @@ if (has("termguicolors"))  " set true colors
   " set notermguicolors
 endif
 set background=dark
-colorscheme plastic
+" colorscheme plastic
 " colorscheme gruvbox
+colorscheme one
 
 if filereadable($DOTFILES . "/nvim/init.local.vim")
   source $DOTFILES/nvim/init.local.vim
@@ -228,31 +231,31 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " NERDTrees File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('md', 'magenta', 'none', 'magenta', 'none')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('json', 'magenta', 'none', 'magenta', 'none')
-call NERDTreeHighlightFile('yaml', 'magenta', 'none', 'magenta', 'none')
+call NERDTreeHighlightFile('jade', 'LightGreen', 'none', 'LightGreen', 'none')
+call NERDTreeHighlightFile('ini', 'LightYellow', 'none', 'LightYellow', 'none')
+call NERDTreeHighlightFile('md', 'LightMagenta', 'none', 'LightMagenta', 'none')
+call NERDTreeHighlightFile('config', 'LightYellow', 'none', 'LightYellow', 'none')
+call NERDTreeHighlightFile('conf', 'LightYellow', 'none', 'LightYellow', 'none')
+call NERDTreeHighlightFile('json', 'LightMagenta', 'none', 'LightMagenta', 'none')
+call NERDTreeHighlightFile('yaml', 'LightMagenta', 'none', 'LightMagenta', 'none')
 call NERDTreeHighlightFile('html', 'cyan', 'none', 'cyan', 'none')
-call NERDTreeHighlightFile('styl', 'green', 'none', 'green', 'none')
-call NERDTreeHighlightFile('css', 'green', 'none', 'green', 'none')
+call NERDTreeHighlightFile('styl', 'LightGreen', 'none', 'LightGreen', 'none')
+call NERDTreeHighlightFile('css', 'LightGreen', 'none', 'LightGreen', 'none')
 call NERDTreeHighlightFile('coffee', 'red', 'none', 'red', 'none')
-call NERDTreeHighlightFile('js', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('py', 'yellow', 'none', 'yellow', 'none')
-call NERDTreeHighlightFile('php', 'magenta', 'none', 'magenta', 'none')
-call NERDTreeHighlightFile('txt', 'gray', 'none', 'gray', 'none')
+call NERDTreeHighlightFile('js', 'LightYellow', 'none', 'LightYellow', 'none')
+call NERDTreeHighlightFile('py', 'LightYellow', 'none', 'LightYellow', 'none')
+call NERDTreeHighlightFile('php', 'LightMagenta', 'none', 'LightMagenta', 'none')
+call NERDTreeHighlightFile('txt', 'LightGray', 'none', 'LightGray', 'none')
 call NERDTreeHighlightFile('pem', 'black', 'none', 'black', 'none')
 call NERDTreeHighlightFile('vim', 'white', 'none', 'white', 'none')
-call NERDTreeHighlightFile('ds_store', 'gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitconfig', 'gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitignore', 'gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashrc', 'gray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashprofile', 'gray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('ds_store', 'LightGray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('gitconfig', 'LightGray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('gitignore', 'LightGray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('bashrc', 'LightGray', 'none', '#686868', 'none')
+call NERDTreeHighlightFile('bashprofile', 'LightGray', 'none', '#686868', 'none')
 
 "nore Tabularize
 noremap <leader>t :Tabularize /
@@ -312,7 +315,7 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [
       \   [ 'mode', 'paste'],
