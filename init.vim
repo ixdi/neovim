@@ -315,7 +315,7 @@ function! LightlineFilename()
   return filename . modified
 endfunction
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [
       \   [ 'mode', 'paste'],
