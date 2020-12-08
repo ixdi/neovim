@@ -2,35 +2,35 @@ let mapleader = ","
 let &runtimepath .= "," . $DOTFILES . "/nvim"  " Add DOTFILES to runtimepath
 let &packpath .= "," . $DOTFILES . "/nvim"
 
-set shell=zsh                      " Set bash as the prompt for Vim
-set backspace=2                    " Backspace deletes like most programs in insert mode
-set nobackup
-set nowritebackup
-set noswapfile                     " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=200
-set ruler                          " show the cursor position all the time
-set showcmd                        " display incomplete commands
-set laststatus=2                   " Always display the status line
 set autowrite                      " Automatically :write before running commands
+set backspace=2                    " Backspace deletes like most programs in insert mode
+set expandtab
+set foldmethod=indent
+set gdefault                       " By default add g flag to search/replace. Add g to toggle.
+set hidden
+set history=200
+set inccommand=nosplit
+set laststatus=2                   " Always display the status line
+set list listchars=tab:»·,trail:·  " Display extra whitespace characters
+set mouse=a                        " Enable moouse in all in all modes.
+set nobackup
+set nofoldenable                   " Disable folding
+set nolist                         " Don't show whitespace, since saving will clean it up automatically anyway
 set noshowmode
+set noswapfile                     " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set nowritebackup
+set ruler                          " Show the cursor position all the time
+set scrolloff=3
+set shell=zsh                      " Set bash as the prompt for Vim
+set shiftround
+set shiftwidth=2
+set showcmd                        " Display incomplete commands
+set tabstop=2
+set textwidth=90
 set timeoutlen=500
 set ttimeoutlen=0
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-set scrolloff=3
-set list listchars=tab:»·,trail:·  " Display extra whitespace characters
-set hidden
-set inccommand=nosplit
-set nofoldenable                   " disable folding
-set gdefault                       " By default add g flag to search/replace. Add g to toggle.
 set undodir=~/.config/nvim/undodir
 set undofile                       " Maintain undo history between sessions
-set mouse=a                        " Enable moouse in all in all modes.
-set nolist                         " Don't show whitespace, since saving will clean it up automatically anyway
-set foldmethod=indent
-set textwidth=0
 
 " Line numbers
 set number
