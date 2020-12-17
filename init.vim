@@ -4,6 +4,7 @@ let &packpath .= "," . $DOTFILES . "/nvim"
 
 set autowrite                      " Automatically :write before running commands
 set backspace=2                    " Backspace deletes like most programs in insert mode
+set smartindent
 set expandtab
 set foldmethod=indent
 set gdefault                       " By default add g flag to search/replace. Add g to toggle.
@@ -110,7 +111,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 Plug 'pangloss/vim-javascript'
-" Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 
 " UI and colors
 Plug 'itchyny/lightline.vim'              " Lightline status bar
@@ -190,8 +191,10 @@ inoremap <silent> jj <ESC>
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
 
+" Set Ctrl+o
+inoremap <silent> oo <C-o>
 " insert new line and set cursor before on insert mode
-imap <A-enter> <cr><C-o>O
+imap <silent> <A-enter> <cr><C-o>O
 
 " Copy/paste between vim instances
 vmap <silent> <leader>y "*y
