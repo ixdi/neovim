@@ -23,7 +23,7 @@ Finally install specific COC plugins
 ```
 
 ## Plugins
-```
+```vim
 " UI and colors
 Plug 'flrnprz/plastic.vim'                " Plastic theme
 Plug 'itchyny/lightline.vim'              " Lightline status bar
@@ -67,7 +67,7 @@ Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 
 ## Shortcuts
-```
+```vim
 let mapleader = ","
 
 " Exit insert mode
@@ -113,6 +113,8 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 "NerdTree
 map <F3> :NERDTreeToggle<CR>
+" find current file in NerdTree
+nmap <silent> <leader>f :NERDTreeFind<CR>
 
 " Tabularize
 nmap <leader>t :Tabularize /
@@ -194,4 +196,9 @@ nmap f <Plug>(coc-smartf-forward)
 nmap F <Plug>(coc-smartf-backward)
 nmap <F1> <Plug>(coc-smartf-repeat)
 nmap <S-F1> <Plug>(coc-smartf-repeat-opposite)
+
+" Markdown preview
+nmap <C-m>p <Plug>MarkdownPreview
+nmap <C-m>s <Plug>MarkdownPreviewStop
+nmap <C-m> <Plug>MarkdownPreviewToggle
 ```

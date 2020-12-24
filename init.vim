@@ -63,7 +63,7 @@ autocmd BufReadPost *
 autocmd BufWritePre * :%s/\s\+$//e
 " Remove trialing lines
 autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
-
+" Mark extra whitespace as red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
@@ -129,7 +129,6 @@ Plug 'ryanoasis/vim-devicons'             " icons
 call plug#end()
 
 " Load plugin configurations
-" For some reason, a few plugins seem to have config options that cannot be
 
 " History search
 nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
@@ -292,6 +291,7 @@ nnoremap <silent> <leader>so vi}:sort<CR>
 
 " Select into claudators
 nmap <leader>v <esc>vib
+" Select into claudators (included)
 nmap <leader>vv <esc>vab
 
 " Import cost
