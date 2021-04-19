@@ -4,7 +4,7 @@ let &packpath .= "," . $DOTFILES . "/nvim"
 
 set autowrite                      " Automatically :write before running commands
 set backspace=2                    " Backspace deletes like most programs in insert mode
-set smartindent
+set conceallevel=0                 " Text like " is shown normally
 set expandtab
 set foldmethod=indent
 set gdefault                       " By default add g flag to search/replace. Add g to toggle.
@@ -13,7 +13,7 @@ set history=200
 set inccommand=nosplit
 set laststatus=2                   " Always display the status line
 set list listchars=tab:»·,trail:·  " Display extra whitespace characters
-set mouse=a                        " Enable moouse in all in all modes.
+set mouse=a                        " Enable mouse in all in all modes.
 set nobackup
 set nofoldenable                   " Disable folding
 set nolist                         " Don't show whitespace, since saving will clean it up automatically anyway
@@ -26,8 +26,9 @@ set shell=zsh                      " Set bash as the prompt for Vim
 set shiftround
 set shiftwidth=2
 set showcmd                        " Display incomplete commands
+set smartindent
 set tabstop=2
-set textwidth=90
+set textwidth=120
 set timeoutlen=500
 set ttimeoutlen=0
 set undodir=~/.config/nvim/undodir
@@ -108,7 +109,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 Plug 'othree/html5.vim'
 " Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'elzr/vim-json'
+" Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
@@ -125,6 +126,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'ixdi/vim-one.git'
 Plug 'ryanoasis/vim-devicons'             " icons
+Plug 'frazrepo/vim-rainbow'
 
 call plug#end()
 
@@ -190,8 +192,6 @@ inoremap <silent> jj <ESC>
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
 
-" Set Ctrl+o
-inoremap <silent> oo <C-o>
 " insert new line and set cursor before on insert mode
 imap <silent> <A-enter> <cr><C-o>O
 
@@ -495,3 +495,9 @@ let g:javascript_plugin_jsdoc = 1
 " let g:javascript_conceal_static         = "•"
 " let g:javascript_conceal_super          = "Ω"
 " let g:javascript_conceal_arrow_function = "⇒"
+
+" Rainbow
+au FileType js,javascript call rainbow#load()
+
+" indentLine (forces conceallevel to 2 every time so fix it)
+let g:indentLine_setConceal = 0
