@@ -77,9 +77,10 @@ let g:polyglot_disabled = ['html5']
 call plug#begin()
 
 " Project Navigation
-Plug 'preservim/nerdtree'                 " file explorer
-Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
+ Plug 'preservim/nerdtree'                 " file explorer
+ Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 Plug 'Yggdroot/indentLine'                " show vertical lines in indented code
+Plug 'mcchrish/nnn.vim'                   " nnn editor
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
@@ -151,14 +152,14 @@ nnoremap <silent> <A-x> <C-x>
 
 set completeopt-=preview
 
-" move between views using Alt instead of Ctrl
-nnoremap <silent> <A-j> <C-w>j
-nnoremap <silent> <A-k> <C-w>k
-nnoremap <silent> <A-l> <C-w>l
-nnoremap <silent> <A-h> <C-w>h
-nnoremap <silent> <A-H> <C-w>_
-nnoremap <silent> <A-L> <C-w>|
-nnoremap <silent> <A-J> <C-w>=
+" " move between views using Alt instead of Ctrl
+" nnoremap <silent> <A-j> <C-w>j
+" nnoremap <silent> <A-k> <C-w>k
+" nnoremap <silent> <A-l> <C-w>l
+" nnoremap <silent> <A-h> <C-w>h
+" nnoremap <silent> <A-H> <C-w>_
+" nnoremap <silent> <A-L> <C-w>|
+" nnoremap <silent> <A-J> <C-w>=
 
 " syntax and color
 "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -501,3 +502,10 @@ au FileType js,javascript call rainbow#load()
 
 " indentLine (forces conceallevel to 2 every time so fix it)
 let g:indentLine_setConceal = 0
+
+" nnn
+let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-x>': 'split',
+      \ '<c-v>': 'vsplit' }
