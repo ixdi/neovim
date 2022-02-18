@@ -14,6 +14,7 @@
   "coc.source.around.priority": 1,
   "coc.source.buffer.priority": 2,
   "coc.source.file.priority": 3,
+  "list.source.grep.excludePatterns": ["**/node_modules/**", "ketcher", "*trajectory-server*", "**/public/**","**/.meteor/**", "**/externals/**"],
   "smartf.timeout":3000,
   "smartf.jumpOnTrigger":false,
   "eslint.alwaysShowStatus": true,

@@ -100,7 +100,7 @@ Plug 'airblade/vim-gitgutter'             " Git show changes
 " Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
 " COC is the base platform for multiple features!
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
@@ -121,11 +121,8 @@ Plug 'itchyny/lightline.vim'              " Lightline status bar
 Plug 'maximbaz/lightline-ale'             " show errors in statusline
 Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
 Plug 'gko/vim-layout'                     " Layout
-Plug 'flrnd/plastic.vim'                  " color schemes
-Plug 'lifepillar/vim-solarized8'
-Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
-Plug 'ixdi/vim-one.git'
+Plug 'ixdi/vim-one'
+" Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'frazrepo/vim-rainbow'
 
@@ -172,8 +169,7 @@ if (has("termguicolors"))  " set true colors
   " set notermguicolors
 endif
 set background=dark
-" colorscheme plastic
-" colorscheme gruvbox
+let g:one_allow_italics = 1 " italic for comments
 colorscheme one
 
 if filereadable($DOTFILES . "/nvim/init.local.vim")
@@ -504,8 +500,11 @@ au FileType js,javascript call rainbow#load()
 let g:indentLine_setConceal = 0
 
 " nnn
-let g:nnn#layout = { 'left': '~20%' } " or right, up, down
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
       \ '<c-x>': 'split',
       \ '<c-v>': 'vsplit' }
+" Floating window (neovim latest and vim with patch 8.2.191)
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+" Left panel
+" let g:nnn#layout = { 'left': '~20%' } " or right, up, down
