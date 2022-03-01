@@ -1,9 +1,11 @@
 # Neovim
+
 Config files for my neovim. See COC Project at https://github.com/neoclide/coc.nvim
 
 Clone the repo to ```~/.config/nvim```
 
 ## Installation
+
 Install ```nodejs``` required by Coc plugin
 
 Install ```ripgrep``` command line utility (used by coc) https://github.com/BurntSushi/ripgrep
@@ -18,11 +20,12 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 Then run ```:PlugUpgrade``` to update vim-plug and ```:PlugUpdate``` to update all plugins
 
 Finally install specific COC plugins
-```
+```vim
 :CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-python coc-emmet coc-yaml
 ```
 
 ## Plugins
+
 ```vim
 " UI and colors
 Plug 'flrnprz/plastic.vim'                " Plastic theme
@@ -67,6 +70,7 @@ Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 ```
 
 ## Shortcuts
+
 ```vim
 let mapleader = ","
 
@@ -85,7 +89,7 @@ jj
 
 " move between views using Alt instead of Ctrl
 <A-j> <C-w>j
-<A-k> <C-w>k
+<A-k> <C-w>kcoc-yank 1.2.1 ~/.config/coc/extensions/node_modules/coc-yank
 <A-l> <C-w>l
 <A-h> <C-w>h
 <A-Up> <C-w>_
