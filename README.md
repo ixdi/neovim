@@ -74,131 +74,168 @@ let mapleader = ","
 jj
 
 " Fast saving
-nmap <leader>w :w!<cr>
+<leader>w :w!<cr>
 
 " History search
-nnoremap <silence> <F5> :set hlsearch! hlsearch?<CR>
+<silence> <F5> :set hlsearch! hlsearch?<CR>
 
 " Remap the increment and decrement features of Vim
-nnoremap <A-a> <C-a>
-nnoremap <A-x> <C-x>
+<A-a> <C-a>
+<A-x> <C-x>
 
 " move between views using Alt instead of Ctrl
-nmap <A-j> <C-w>j
-nmap <A-k> <C-w>k
-nmap <A-l> <C-w>l
-nmap <A-h> <C-w>h
-nmap <A-Up> <C-w>_
-nmap <A-Right> <C-w>|
-nmap <A-Down> <C-w>=
+<A-j> <C-w>j
+<A-k> <C-w>k
+<A-l> <C-w>l
+<A-h> <C-w>h
+<A-Up> <C-w>_
+<A-Right> <C-w>|
+<A-Down> <C-w>=
 
 " Buffer configuration
-nnoremap bp :bprevious<CR>
-nnoremap bn :bnext<CR>
-nnoremap bd :bdelete<CR>
-nnoremap bl :buffers<CR>
-nnoremap bda :bufdo bd<CR>
+bp :bprevious<CR>
+bn :bnext<CR>
+bd :bdelete<CR>
+bl :buffers<CR>
+bda :bufdo bd<CR>
 
 " Copy/paste between vim instances
-vmap <leader>y "*y
-nmap <leader>p "*p
-nmap p ]p
-nmap P ]P
+<leader>y "*y
+<leader>p "*p
+p ]p
+P ]P
 
 " set handlebars file type
-nmap <leader>h :set filetype=handlebars<cr>
+<leader>h :set filetype=handlebars<cr>
 
 " Search and replace word under cursor (,*)
-nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+<leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 "NerdTree
-map <F3> :NERDTreeToggle<CR>
+<F3> :NERDTreeToggle<CR>
 " find current file in NerdTree
-nmap <silent> <leader>f :NERDTreeFind<CR>
+<silent> <leader>f :NERDTreeFind<CR>
 
 " Tabularize
-nmap <leader>t :Tabularize /
-vmap <leader>t :'<, '>Tabularize /
-nmap <leader>T :Tabularize / \zs
-vmap <leader>T :'<, '>Tabularize / \zs
+<leader>t :Tabularize /
+<leader>t :'<, '>Tabularize /
+<leader>T :Tabularize / \zs
+<leader>T :'<, '>Tabularize / \zs
 
 " Surround
 " change char on cursor with new one, cs"' substitute " by '
-nmap <leader>s <esc>cs
+<leader>s <esc>cs
 " replace tag for anotherone
-nmap <leader>st <esc>cstt
+<leader>st <esc>cstt
 "insert new chars wrapping word under cursor
-nmap <leader>sw <esc>ysiw
+<leader>sw <esc>ysiw
 
 " Fugitive git
-nnoremap <F12> :Gstatus<CR>
-nnoremap <F4> :Gcommit<cr>
+<F12> :Gstatus<CR>
+<F4> :Gcommit<cr>
 
 " Indent
 " select all file and indent
-nmap <leader>o <esc>gg=G<C-o>
+<leader>o <esc>gg=G<C-o>
 " indent bracket
-nmap <leader>oo <esc>=i}
+<leader>oo <esc>=i}
 
 " stripwhitespace
-noremap <F7> :%s/\s\+$//e<cr>
+<F7> :%s/\s\+$//e<cr>
 
 " Sort css
-nnoremap <leader>so vi}:sort<CR>
+<leader>so vi}:sort<CR>
 
 " Import cost
-" map <leader>ic :ImportCost<cr>
+<leader>ic :ImportCost<cr>
 
 " vim doge code comment autocompletion
-map <leader>d :DogeGenerate<cr>
+<leader>d :DogeGenerate<cr>
 
 " Comment lines
-map <leader>c <c-_><c-_>
+<leader>c <c-_><c-_>
 
-" Show different lists
-nmap <F5> <esc>:CocList -A --normal yank<cr>
-nmap <F6> <esc>:CocList --number-select tags<cr>
-nmap <C-p> <esc>:CocList --number-select --normal mru<cr>
-nmap <F8> <esc>:CocList --number-select buffers<cr>
-nmap <F9> <esc>:CocList --number-select files<cr>
-nmap <F10> <esc>:CocUpdate<cr>
-nmap <C-l> <esc>:CocListResume<cr>
-nmap <C-f> <esc>:CocList grep<cr>
-
-" Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+" Lists configurations
+<C-e> <Plug>(coc-snippets-expand)
+" Coc lists
+<C-l> <esc>:CocListResume<cr>
+<C-f> <esc>:CocList grep<cr>
+" search for yank
+<silent> <space>y :<C-u>CocList --number-select yank<cr>
+" search for files
+<silent> <space>f :<C-u>CocList --number-select files<cr>
+" search for most recently used
+<silent> <space>u :<C-u>CocList --number-select mru<cr>
+<silent> <space>e :<C-u>CocList diagnostics<cr>
+<silent> <space>c :<C-u>CocList commands<cr>
+" show symbols of the current document
+<silent> <space>o :<C-u>CocList --number-select outline<cr>
+" search workspace symbols
+<silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
+" default actions to prev or next item
+<silent> <space>j :<C-u>CocList CocNext<cr>
+<silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
-nmap <silent> <leader>dd <Plug>(coc-definition)
-nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>di <Plug>(coc-implementation)
+<leader>dd <Plug>(coc-definition)
+<leader>dr <Plug>(coc-references)
+<leader>di <Plug>(coc-implementation)
 " coc eslint errors keymappings
-nmap <silent> <leader>ep <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
+<leader>ep <Plug>(coc-diagnostic-prev)
+<leader>e <Plug>(coc-diagnostic-next)
+
+" Show documentation when K is pushed
+<silent> K :call CocAction('doHover')<CR>
+
+" Highlight the symbol under cursor when holding on it
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+<leader>rn <Plug>(coc-rename)
+
+" Use to rewrite a function inside (cif) or around (caf)
+if <Plug>(coc-funcobj-i)
+af <Plug>(coc-funcobj-a)
+
+" Use tab to range select the block where cursor is in
+<silent> <TAB> <Plug>(coc-range-select)
+
+" use :OR to organize the imports
+command! -nargs=0 OR :call CocAction('runCommand','editor.action.organizeImport')
+
+" Keymapping for grep word under cursor with interactive mode
+<silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+
+" goto definitions
+<silent> <leader>dd <Plug>(coc-definition)
+<silent> <leader>dr <Plug>(coc-references)
+<silent> <leader>di <Plug>(coc-implementation)
+" coc eslint errors keymappings
+<silent> <leader>ep <Plug>(coc-diagnostic-prev)
+<silent> <leader>en <Plug>(coc-diagnostic-next)
 
 "tags
-nmap <leader>t <C-]>
-nmap <leader>tt <C-t>
+<leader>t <C-]>
+<leader>tt <C-t>
 
 "session
-nmap <silent> <leader>ss :CocCommand session.save<cr>
-nmap <silent> <leader>sl :CocCommand session.load<cr>
+<silent> <leader>ss :CocCommand session.save<cr>
+<silent> <leader>sl :CocCommand session.load<cr>
 
 " todo
-nmap <silent> <leader>tl :CocList todolist<cr>
-nmap <leader>ti :CocCommand todolist.create<cr>
-nmap <leader>te :CocCommand todolist.export<cr>
+<silent> <leader>tl :CocList todolist<cr>
+<leader>ti :CocCommand todolist.create<cr>
+<leader>te :CocCommand todolist.export<cr>
+
 "clear all notifications
-nmap <leader>tc :CocCommand todolist.clearNotice<cr>
+<leader>tc :CocCommand todolist.clearNotice<cr>
 
 " coc-smartf, press <esc> to cancel.
-nmap f <Plug>(coc-smartf-forward)
-nmap F <Plug>(coc-smartf-backward)
-nmap <F1> <Plug>(coc-smartf-repeat)
-nmap <S-F1> <Plug>(coc-smartf-repeat-opposite)
+f <Plug>(coc-smartf-forward)
+F <Plug>(coc-smartf-backward)
 
 " Markdown preview
-nmap <C-m>p <Plug>MarkdownPreview
-nmap <C-m>s <Plug>MarkdownPreviewStop
-nmap <C-m> <Plug>MarkdownPreviewToggle
+<C-m>p <Plug>MarkdownPreview
+<C-m>s <Plug>MarkdownPreviewStop
+<C-m> <Plug>MarkdownPreviewToggle
 ```
