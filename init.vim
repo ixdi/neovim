@@ -77,10 +77,9 @@ let g:polyglot_disabled = ['html5']
 call plug#begin()
 
 " Project Navigation
- Plug 'preservim/nerdtree'                 " file explorer
- Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
+Plug 'preservim/nerdtree'                 " file explorer
+Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 Plug 'Yggdroot/indentLine'                " show vertical lines in indented code
-Plug 'mcchrish/nnn.vim'                   " nnn editor
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
@@ -108,7 +107,6 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 
 " Language Support
 Plug 'othree/html5.vim'
-" Plug 'sheerun/vim-polyglot'               " Syntax and indent for different languages
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
@@ -283,13 +281,8 @@ noremap <silent> <leader>oo <esc>=i}
 " stripwhitespace
 noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 
-" Sort css
+" Sort blocks
 nnoremap <silent> <leader>so vi}:sort<CR>
-
-" Select into claudators
-nmap <leader>v <esc>vib
-" Select into claudators (included)
-nmap <leader>vv <esc>vab
 
 " Import cost
 " map <leader>ic :ImportCost<cr>
@@ -299,7 +292,6 @@ nmap <leader>vv <esc>vab
 let g:doge_mapping = '<Leader>d'
 let g:doge_mapping_comment_jump_forward = '<A-n>'
 let g:doge_mapping_comment_jump_backward = '<A-p>'
-
 let g:doge_doc_standard_python = 'google'
 
 " Comment
@@ -367,7 +359,6 @@ let g:multi_cursor_exit_from_visual_mode = 1
 
 " Emmet
 let g:user_emmet_install_global = 0
-" autocmd FileType html,css,html.handlebars EmmetInstall
 
 " Devicons
 let g:webdevicons_enable_nerdtree = 1
@@ -386,29 +377,26 @@ if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
 
-
 " Coc configurations
 imap <C-e> <Plug>(coc-snippets-expand)
-
-noremap <special> <F5> <esc>:CocList -A --normal yank<cr>
-noremap <special> <F6> <esc>:CocList --number-select tags<cr>
-noremap <special> <C-p> <esc>:CocList --number-select --normal mru<cr>
-noremap <special> <F8> <esc>:CocList --number-select buffers<cr>
-noremap <special> <F9> <esc>:CocList --number-select files<cr>
-noremap <special> <F10> <esc>:CocUpdate<cr>
+" Coc lists
 noremap <C-l> <esc>:CocListResume<cr>
 noremap <C-f> <esc>:CocList grep<cr>
-" grep word under cursor
-command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep'.<q-args>
-
-function! s:GrepArgs(...)
-  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-  return join(list, "\n")
-endfunction
-
-" Keymapping for grep word under cursor with interactive mode
-" nnoremap <silent> <leader>vf :exe 'CocList --normal --input='.expand('<cword>').' grep'<cr>
+" search for yank
+nnoremap <silent> <space>y :<C-u>CocList --number-select yank<cr>
+" search for files
+nnoremap <silent> <space>f :<C-u>CocList --number-select files<cr>
+" search for most recently used
+nnoremap <silent> <space>u :<C-u>CocList --number-select mru<cr>
+nnoremap <silent> <space>e :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>c :<C-u>CocList commands<cr>
+" show symbols of the current document
+nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
+" search workspace symbols
+nnoremap <silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
+" default actions to prev or next item
+nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
+nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
 nmap <leader>dd <Plug>(coc-definition)
@@ -417,6 +405,26 @@ nmap <leader>di <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <leader>ep <Plug>(coc-diagnostic-prev)
 nmap <leader>e <Plug>(coc-diagnostic-next)
+
+" Show documentation when K is pushed
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+" Highlight the symbol under cursor when holding on it
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use to rewrite a function inside (cif) or around (caf)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use tab to range select the block where cursor is in
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" use :OR to organize the imports
+command! -nargs=0 OR :call CocAction('runCommand','editor.action.organizeImport')
 
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
@@ -435,11 +443,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR">"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 let g:coc_status_error_sign = '•'
-let g:coc_status_warning_sign = '•'
-
-" Controls annotations (cheat)
-" <C-o> go to last opened buffer
-" <leader>1 to 3 to set different layouts
+let g:coc_status_warning_sign = '*'
 
 "tags
 nmap <leader>tg <C-]>
@@ -448,13 +452,6 @@ nmap <leader>tt <C-t>
 "session
 noremap <leader>ssave :CocCommand session.save<cr>
 noremap <leader>sload :CocCommand session.load<cr>
-
-" todo
-noremap <leader>tl :CocList todolist<cr>
-noremap <leader>ti :CocCommand todolist.create<cr>
-noremap <leader>te :CocCommand todolist.export<cr>
-"clear all notifications
-noremap <leader>tc :CocCommand todolist.clearNotice<cr>
 
 " coc-smartf, press <esc> to cancel.
 nmap f <Plug>(coc-smartf-forward)
@@ -473,8 +470,6 @@ au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filet
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
-nmap <C-m>p <Plug>MarkdownPreview
-nmap <C-m>s <Plug>MarkdownPreviewStop
 nmap <C-m> <Plug>MarkdownPreviewToggle
 
 " Pangloss JS syntax heighlight
@@ -493,18 +488,8 @@ let g:javascript_plugin_jsdoc = 1
 " let g:javascript_conceal_super          = "Ω"
 " let g:javascript_conceal_arrow_function = "⇒"
 
-" Rainbow
+" Rainbow, improves parenthesis
 au FileType js,javascript call rainbow#load()
 
 " indentLine (forces conceallevel to 2 every time so fix it)
 let g:indentLine_setConceal = 0
-
-" nnn
-let g:nnn#action = {
-      \ '<c-t>': 'tab split',
-      \ '<c-x>': 'split',
-      \ '<c-v>': 'vsplit' }
-" Floating window (neovim latest and vim with patch 8.2.191)
-let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
-" Left panel
-" let g:nnn#layout = { 'left': '~20%' } " or right, up, down
