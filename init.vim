@@ -269,8 +269,8 @@ nmap <silent> <leader>st <esc>cstt
 nmap <silent> <leader>s <esc>ysiw
 
 " Fugitive git
-nmap <silent> <F12> :G status<CR>
-nmap <silent> <F4> :G commit<cr>
+nmap <silent> <leader>g :Git<CR>
+nmap <silent> <leader>gc :Git commit<cr>
 
 " Indent
 " select all file and indent
@@ -340,15 +340,15 @@ cnoreabbrev Gundo GitGutterUndoHunk
 
 let g:gitgutter_max_signs = 3500  " default value
 
-set updatetime=1000
-noremap <leader>g :GitGutterToggle<cr>
-noremap <leader>gn <Plug>GitGutterNextHunk
-noremap <leader>gp <Plug>GitGutterPrevHunk
-highlight link GitGutterChangeLine DiffText
-highlight GitGutterAdd    guifg=#009900 guibg=#222233 ctermfg=2 ctermbg=0
-highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
-highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
-let g:gitgutter_enabled = 0
+" set updatetime=1000
+" noremap <leader>g :GitGutterToggle<cr>
+" noremap <leader>gn <Plug>GitGutterNextHunk
+" noremap <leader>gp <Plug>GitGutterPrevHunk
+" highlight link GitGutterChangeLine DiffText
+" highlight GitGutterAdd    guifg=#009900 guibg=#222233 ctermfg=2 ctermbg=0
+" highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
+" highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
+" let g:gitgutter_enabled = 0
 
 " Fast saving
 nmap <leader>w :w!<cr>
