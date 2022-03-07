@@ -93,7 +93,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View 
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
-Plug 'airblade/vim-gitgutter'             " Git show changes
+" Plug 'airblade/vim-gitgutter'             " Git show changes
 
 " Task Running
 " Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
@@ -269,8 +269,8 @@ nmap <silent> <leader>st <esc>cstt
 nmap <silent> <leader>s <esc>ysiw
 
 " Fugitive git
-nnoremap <special> <F12> :Gstatus<CR>
-nnoremap <special> <F4> :Gcommit<cr>
+nmap <silent> <F12> :G status<CR>
+nmap <silent> <F4> :G commit<cr>
 
 " Indent
 " select all file and indent
@@ -394,6 +394,8 @@ nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
 " search workspace symbols
 nnoremap <silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
+" Git
+nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
 " default actions to prev or next item
 nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
 nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
