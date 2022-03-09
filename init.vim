@@ -205,8 +205,8 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 "NerdTree
 map <silent><special> <F3> :NERDTreeToggle<CR>
 "open nerdtree on enter if no file specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <silent> <leader>f :NERDTreeFind<CR>
@@ -286,13 +286,6 @@ nnoremap <silent> <leader>so vi}:sort<CR>
 
 " Import cost
 " map <leader>ic :ImportCost<cr>
-
-" vim doge
-" map <leader>d :DogeGenerate<cr>
-let g:doge_mapping = '<Leader>d'
-let g:doge_mapping_comment_jump_forward = '<A-n>'
-let g:doge_mapping_comment_jump_backward = '<A-p>'
-let g:doge_doc_standard_python = 'google'
 
 " Comment
 map <silent> <leader>c <c-_><c-_>
@@ -495,3 +488,11 @@ au FileType js,javascript call rainbow#load()
 
 " indentLine (forces conceallevel to 2 every time so fix it)
 let g:indentLine_setConceal = 0
+
+" vim doge
+" map <leader>d :DogeGenerate<cr>
+let g:doge_mapping = '<leader>d'
+let g:doge_comment_interactive = 1
+let g:doge_mapping_comment_jump_forward = '<leader>n'
+let g:doge_mapping_comment_jump_backward = '<A-p>'
+let g:doge_doc_standard_python = 'google'
