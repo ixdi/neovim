@@ -21,7 +21,7 @@ Then run ```:PlugUpgrade``` to update vim-plug and ```:PlugUpdate``` to update a
 
 Finally install specific COC plugins
 ```vim
-:CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-pyright coc-emmet coc-yaml
+:CocInstall coc-yank coc-tsserver coc-snippets coc-stylelintplus coc-smartf coc-marketplace coc-prettier coc-pairs coc-lists coc-json coc-html coc-highlight coc-eslint coc-css coc-pyright coc-emmet coc-yaml coc-git coc-markdownlint
 ```
 
 ## Plugins
@@ -53,7 +53,6 @@ Plug 'wellle/targets.vim'                 " More text objects to operate on
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
-Plug 'airblade/vim-gitgutter'             " Git show changes
 
 " Task Running
 " Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
