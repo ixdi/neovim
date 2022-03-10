@@ -26,6 +26,9 @@
   "json.enable": true,
   "json.format.enable": true,
   "list.source.files.excludePatterns": ["**/node_modules/*", "**/.meteor/*", "**/packages/*"],
+  "markdownlint.config": {
+    "line-length": false
+  },
   "prettier.jsxSingleQuote": true,
   "prettier.requireConfig": true,
   "prettier.singleQuote": true,
