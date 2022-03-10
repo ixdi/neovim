@@ -203,13 +203,14 @@ nmap <leader>h :set filetype=handlebars<cr>
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 "NerdTree
+map <silent><special> <space>e :NERDTreeToggle<CR>
 map <silent><special> <F3> :NERDTreeToggle<CR>
+nmap <silent> <leader>f :NERDTreeFind<CR>
 "open nerdtree on enter if no file specified
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " close nerdtree if is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nmap <silent> <leader>f :NERDTreeFind<CR>
 let g:NERDTreeWinSize = '45'
 
 "Nerdtree git
@@ -381,7 +382,7 @@ nnoremap <silent> <space>y :<C-u>CocList --number-select yank<cr>
 nnoremap <silent> <space>f :<C-u>CocList --number-select files<cr>
 " search for most recently used
 nnoremap <silent> <space>u :<C-u>CocList --number-select mru<cr>
-nnoremap <silent> <space>e :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 " show symbols of the current document
 nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
