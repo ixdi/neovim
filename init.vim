@@ -401,6 +401,8 @@ nmap <leader>di <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <leader>ep <Plug>(coc-diagnostic-prev)
 nmap <leader>e <Plug>(coc-diagnostic-next)
+" view documentation of the symbol under the cursor
+nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
 
 " Show documentation when K is pushed
 nnoremap <silent> K :call CocAction('doHover')<CR>
