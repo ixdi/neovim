@@ -1,3 +1,4 @@
+" terminal font: nerd-jetbrains-mono
 let mapleader = ","
 let &runtimepath .= "," . $DOTFILES . "/nvim"  " Add DOTFILES to runtimepath
 let &packpath .= "," . $DOTFILES . "/nvim"
