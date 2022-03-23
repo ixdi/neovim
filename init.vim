@@ -104,6 +104,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lock
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Language Support
 Plug 'othree/html5.vim'
@@ -402,9 +403,9 @@ nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
 nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
-nmap <leader>dd <Plug>(coc-definition)
-nmap <leader>dr <Plug>(coc-references)
-nmap <leader>di <Plug>(coc-implementation)
+nmap <leader>_ <Plug>(coc-definition)
+nmap <leader>rr <Plug>(coc-references)
+nmap <leader>ii <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <leader>ep <Plug>(coc-diagnostic-prev)
 nmap <leader>e <Plug>(coc-diagnostic-next)
@@ -506,3 +507,8 @@ let g:doge_comment_interactive = 1
 let g:doge_mapping_comment_jump_forward = '<leader>n'
 let g:doge_mapping_comment_jump_backward = '<A-p>'
 let g:doge_doc_standard_python = 'google'
+
+" pydocstring
+nmap <silent> <leader>dd <Plug>(pydocstring)
+" sphinx, google or numpy
+let g:pydocstring_formatter = 'google'
