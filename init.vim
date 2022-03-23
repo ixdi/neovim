@@ -372,7 +372,14 @@ if exists("g:loaded_webdevicons")
 endif
 
 " Coc configurations
+" ==================
+
+" Coc snippets
 imap <C-e> <Plug>(coc-snippets-expand)
+" Select text for visual placeholder of snippet.
+vmap <C-s> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-j>'
+let g:coc_snippet_prev = '<c-k>'
 " Coc lists
 noremap <C-l> <esc>:CocListResume<cr>
 noremap <C-f> <esc>:CocList grep<cr>
