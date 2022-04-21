@@ -404,7 +404,7 @@ nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
 nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
-nmap <leader>_ <Plug>(coc-definition)
+nmap <leader>dd <Plug>(coc-definition)
 nmap <leader>rr <Plug>(coc-references)
 nmap <leader>ii <Plug>(coc-implementation)
 " coc eslint errors keymappings
@@ -477,7 +477,7 @@ au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filet
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
-nmap <C-m> <Plug>MarkdownPreviewToggle
+nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
 
 " Pangloss JS syntax heighlight
 " Enable JSDoc highlighting
