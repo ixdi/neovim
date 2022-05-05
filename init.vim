@@ -513,3 +513,26 @@ let g:doge_doc_standard_python = 'google'
 nmap <silent> <leader>dd <Plug>(pydocstring)
 " sphinx, google or numpy
 let g:pydocstring_formatter = 'google'
+
+" Install all coc-extensions
+let g:coc_global_extensions = [
+            \ 'coc-yank',
+            \ 'coc-stylelintplus',
+            \ 'coc-snippets',
+            \ 'coc-smartf',
+            \ 'coc-prettier',
+            \ 'coc-pairs',
+            \ 'coc-marketplace',
+            \ 'coc-lists',
+            \ 'coc-html',
+            \ 'coc-highlight',
+            \ 'coc-git',
+            \ 'coc-eslint',
+            \ 'coc-emmet',
+            \ 'coc-yaml',
+            \ 'coc-tsserver',
+            \ 'coc-pyright',
+            \ 'coc-markdownlint',
+            \ 'coc-json',
+            \ 'coc-css',
+            \ ]
