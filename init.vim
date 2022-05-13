@@ -108,12 +108,12 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Language Support
-Plug 'othree/html5.vim'
-Plug 'cakebaker/scss-syntax.vim'
+"Plug 'othree/html5.vim'
+"Plug 'cakebaker/scss-syntax.vim'
 " Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+"Plug 'pangloss/vim-javascript'
+"Plug 'jelera/vim-javascript-syntax'
 
 " UI and colors
 Plug 'itchyny/lightline.vim'              " Lightline status bar
@@ -125,6 +125,7 @@ Plug 'ixdi/vim-one'
 " Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'frazrepo/vim-rainbow'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
@@ -536,3 +537,5 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-css',
             \ ]
+
+:source /home/scortes/.config/nvim/lua/init.lua
