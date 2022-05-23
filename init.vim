@@ -122,6 +122,8 @@ Plug 'maximbaz/lightline-ale'             " show errors in statusline
 Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
 Plug 'gko/vim-layout'                     " Layout
 Plug 'ixdi/vim-one'
+Plug 'EdenEast/nightfox.nvim' " Vim-Plug
+
 " Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'frazrepo/vim-rainbow'
@@ -171,7 +173,7 @@ if (has("termguicolors"))  " set true colors
 endif
 set background=dark
 let g:one_allow_italics = 1 " italic for comments
-colorscheme one
+colorscheme nordfox
 
 if filereadable($DOTFILES . "/nvim/init.local.vim")
   source $DOTFILES/nvim/init.local.vim
@@ -513,7 +515,7 @@ let g:doge_doc_standard_python = 'google'
 " pydocstring
 nmap <silent> <leader>dd <Plug>(pydocstring)
 " sphinx, google or numpy
-let g:pydocstring_formatter = 'google'
+let g:pydocstring_formatter = 'sphinx'
 
 " Install all coc-extensions
 let g:coc_global_extensions = [
