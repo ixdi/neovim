@@ -27,7 +27,8 @@ set shell=zsh                      " Set bash as the prompt for Vim
 set shiftround
 set shiftwidth=2
 set showcmd                        " Display incomplete commands
-set smartindent
+" set smartindent
+set cindent
 set tabstop=2
 set textwidth=120
 set timeoutlen=500
