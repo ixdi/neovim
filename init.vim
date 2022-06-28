@@ -395,7 +395,7 @@ nnoremap <silent> <space>y :<C-u>CocList --number-select yank<cr>
 nnoremap <silent> <space>f :<C-u>CocList --number-select files<cr>
 " search for most recently used
 nnoremap <silent> <space>u :<C-u>CocList --number-select mru<cr>
-nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>di :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 " show symbols of the current document
 nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
@@ -408,8 +408,11 @@ nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
 nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
+nnoremap <silent> <space>d <Plug>(coc-definition)
 nmap <leader>dd <Plug>(coc-definition)
+nnoremap <silent> <space>r <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-references)
+nnoremap <silent> <space>i <Plug>(coc-implementation)
 nmap <leader>ii <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <leader>ep <Plug>(coc-diagnostic-prev)
