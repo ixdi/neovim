@@ -352,8 +352,10 @@ let g:gitgutter_max_signs = 3500  " default value
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>r :e<cr>
 
 " Multiple cursors
+
 let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
