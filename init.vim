@@ -547,3 +547,5 @@ let g:coc_global_extensions = [
             \ ]
 
 :source /home/scortes/.config/nvim/lua/init.lua
+
+autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'editor.action.organizeImport')
