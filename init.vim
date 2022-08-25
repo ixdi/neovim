@@ -95,10 +95,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View 
 
 " Git
 Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
-" Plug 'airblade/vim-gitgutter'             " Git show changes
-
-" Task Running
-" Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 
 " COC is the base platform for multiple features!
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
@@ -109,20 +105,12 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Language Support
-"Plug 'othree/html5.vim'
-"Plug 'cakebaker/scss-syntax.vim'
-" Plug 'elzr/vim-json'
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
-"Plug 'pangloss/vim-javascript'
-"Plug 'jelera/vim-javascript-syntax'
 
 " UI and colors
 Plug 'itchyny/lightline.vim'              " Lightline status bar
-" Plug 'mengelbrecht/lightline-bufferline'  " Buffer show for lightline
 Plug 'maximbaz/lightline-ale'             " show errors in statusline
 Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
-Plug 'gko/vim-layout'                     " Layout
-Plug 'ixdi/vim-one'
 Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 
 " Plug 'rakr/vim-one'
