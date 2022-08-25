@@ -423,7 +423,7 @@ nmap <leader>e <Plug>(coc-diagnostic-next)
 nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
 
 " Show documentation when K is pushed
-nnoremap <silent> K :call CocAction('doHover')<CR>
+nnoremap <silent> K :call CocActionAsync('doHover')<CR>
 
 " Highlight the symbol under cursor when holding on it
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -440,7 +440,7 @@ nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " use :OR to organize the imports
-command! -nargs=0 OR :call CocAction('runCommand','editor.action.organizeImport')
+command! -nargs=0 OR :call CocActionAsync('runCommand','editor.action.organizeImport')
 
 " Use tab for trigger completion with characters ahead and navigate.
 function! s:check_back_space() abort
@@ -548,7 +548,7 @@ let g:coc_global_extensions = [
 
 :source /home/scortes/.config/nvim/lua/init.lua
 
-autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.ts,*.js :call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " use TAB for the new coc popover window
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
