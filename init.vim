@@ -430,22 +430,6 @@ xmap <silent> <TAB> <Plug>(coc-range-select)
 " use :OR to organize the imports
 command! -nargs=0 OR :call CocActionAsync('runCommand','editor.action.organizeImport')
 
-" Use tab for trigger completion with characters ahead and navigate.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ \s''
-endfunction'
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible( ? )\"C-p><" : "\<S-Tab">>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR">"
-" make <cr> select the first completion item and confirm the completion when no item has been selected
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-
 let g:coc_status_error_sign = '•'
 let g:coc_status_warning_sign = '*'
 
@@ -544,7 +528,6 @@ inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\
 " remap for complete to use tab and <cr>
 inoremap <silent><expr> <TAB>
         \ coc#pum#visible() ? coc#pum#next(1):
-        \ <SID>check_back_space() ? "\<Tab>" :
-        \ coc#refresh()
+        \ "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
