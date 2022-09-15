@@ -1,3 +1,0 @@
-[submodule "plugged/vim-one"]
-	path = plugged/vim-one
-	url = https://github.com/ixdi/vim-one.git
