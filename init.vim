@@ -520,7 +520,7 @@ let g:coc_global_extensions = [
 
 :source /home/scortes/.config/nvim/lua/init.lua
 
-" autocmd BufWritePre *.ts,*.js :call CocActionAsync('runCommand', 'tsserver.organizeImports')
+autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'tsserver.organizeImports')
 
 " use TAB for the new coc popover window
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
