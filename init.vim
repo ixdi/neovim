@@ -521,7 +521,7 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ ]
 
-:source /home/scortes/.config/nvim/lua/init.lua
+lua require('init')
 
 autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'tsserver.organizeImports')
 
