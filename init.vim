@@ -118,6 +118,8 @@ Plug 'ryanoasis/vim-devicons'             " icons
 Plug 'frazrepo/vim-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'simrat39/symbols-outline.nvim'
+
 call plug#end()
 
 " Load plugin configurations
@@ -390,7 +392,8 @@ nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 " show symbols of the current document
 nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
 " search workspace symbols
-nnoremap <silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
+" nnoremap <silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
+nnoremap <silent> <space>s :SymbolsOutline<cr>
 " Git
 nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
 " default actions to prev or next item

@@ -42,3 +42,5 @@ parser_config.glimmer = {
     "html"
   }
 }
+
+require("symbols-outline").setup()
