@@ -79,8 +79,6 @@ let g:polyglot_disabled = ['html5']
 call plug#begin()
 
 " Project Navigation
-Plug 'preservim/nerdtree'                 " file explorer
-Plug 'Xuyuanp/nerdtree-git-plugin'        " show git changes in nerdtree
 Plug 'Yggdroot/indentLine'                " show vertical lines in indented code
 
 " Editing
@@ -114,7 +112,9 @@ Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
 Plug 'EdenEast/nightfox.nvim' " Vim-Plug
 
 " Plug 'rakr/vim-one'
-Plug 'ryanoasis/vim-devicons'             " icons
+" Plug 'ryanoasis/vim-devicons'             " icons
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'frazrepo/vim-rainbow'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -199,57 +199,9 @@ nmap <leader>h :set filetype=handlebars<cr>
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 "NerdTree
-map <silent><special> <space>e :NERDTreeToggle<CR>
-map <silent><special> <F3> :NERDTreeToggle<CR>
-nmap <silent> <leader>f :NERDTreeFind<CR>
-"open nerdtree on enter if no file specified
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" close nerdtree if is last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeWinSize = '45'
-
-"Nerdtree git
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-      \ "Modified"  : "✹",
-      \ "Staged"    : "✚",
-      \ "Untracked" : "✭",
-      \ "Renamed"   : "➜",
-      \ "Unmerged"  : "═",
-      \ "Deleted"   : "✖",
-      \ "Dirty"     : "✗",
-      \ "Clean"     : "✔︎",
-      \ 'Ignored'   : '☒',
-      \ "Unknown"   : "?"
-      \ }
-
-" NERDTrees File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-call NERDTreeHighlightFile('jade', 'LightGreen', 'none', 'LightGreen', 'none')
-call NERDTreeHighlightFile('ini', 'LightYellow', 'none', 'LightYellow', 'none')
-call NERDTreeHighlightFile('md', 'LightMagenta', 'none', 'LightMagenta', 'none')
-call NERDTreeHighlightFile('config', 'LightYellow', 'none', 'LightYellow', 'none')
-call NERDTreeHighlightFile('conf', 'LightYellow', 'none', 'LightYellow', 'none')
-call NERDTreeHighlightFile('json', 'LightMagenta', 'none', 'LightMagenta', 'none')
-call NERDTreeHighlightFile('yaml', 'LightMagenta', 'none', 'LightMagenta', 'none')
-call NERDTreeHighlightFile('html', 'cyan', 'none', 'cyan', 'none')
-call NERDTreeHighlightFile('styl', 'LightGreen', 'none', 'LightGreen', 'none')
-call NERDTreeHighlightFile('css', 'LightGreen', 'none', 'LightGreen', 'none')
-call NERDTreeHighlightFile('coffee', 'red', 'none', 'red', 'none')
-call NERDTreeHighlightFile('js', 'LightYellow', 'none', 'LightYellow', 'none')
-call NERDTreeHighlightFile('py', 'LightYellow', 'none', 'LightYellow', 'none')
-call NERDTreeHighlightFile('php', 'LightMagenta', 'none', 'LightMagenta', 'none')
-call NERDTreeHighlightFile('txt', 'LightGray', 'none', 'LightGray', 'none')
-call NERDTreeHighlightFile('pem', 'black', 'none', 'black', 'none')
-call NERDTreeHighlightFile('vim', 'white', 'none', 'white', 'none')
-call NERDTreeHighlightFile('ds_store', 'LightGray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitconfig', 'LightGray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('gitignore', 'LightGray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashrc', 'LightGray', 'none', '#686868', 'none')
-call NERDTreeHighlightFile('bashprofile', 'LightGray', 'none', '#686868', 'none')
+map <silent><special> <space>e :NvimTreeToggle<CR>
+map <silent><special> <F3> :NvimTreeToggle<CR>
+nmap <silent> <leader>f :NvimTreeFindFile<CR>
 
 "nore Tabularize
 noremap <leader>t :Tabularize /
