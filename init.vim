@@ -345,11 +345,10 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " LUA configs
 lua require('init')
 
-hi def IlluminatedWordText gui=underline
-hi def IlluminatedWordWrite gui=underline
-hi def IlluminatedWordRead gui=underline
-
 nnoremap <silent> <space>t :TodoQuickFix<cr>
+
+" Illuminate word under cursor
+nnoremap <silent> <space>l :IlluminateToggle<cr>
 
 " view symbols
 nnoremap <silent> <space>s :Vista!!<cr>
@@ -362,4 +361,4 @@ nnoremap <silent> s :HopPattern<cr>
 nnoremap <silent> <space>h :HopWord<cr>
 nnoremap <silent> <space>h1 :HopChar1<cr>
 nnoremap <silent> <space>h2 :HopChar2<cr>
-nnoremap <silent> <space>l :HopLine<cr>
+nnoremap <silent> <space>hl :HopLine<cr>
