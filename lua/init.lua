@@ -103,5 +103,6 @@ vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
 vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
 vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 
-require("todo-comments").setup {
-}
+require("todo-comments").setup {}
+require("nvim-surround").setup({})
+require('gitsigns').setup()

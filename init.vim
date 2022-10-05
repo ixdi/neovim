@@ -70,10 +70,7 @@ autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" polyglot, need to be called before plugin load
-let g:polyglot_disabled = ['html5']
+" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Specify plugins
 call plug#begin()
@@ -81,15 +78,11 @@ call plug#begin()
 " Project Navigation
 
 " Editing
-Plug 'tpope/vim-surround'                 " Change word surroundings
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'             " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
 Plug 'wellle/targets.vim'                 " More text objects to operate on
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
-
-" Git
-Plug 'tpope/vim-fugitive'                 " Git stuff in Vim
 
 " COC is the base platform for multiple features!
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
@@ -118,6 +111,8 @@ Plug 'windwp/nvim-ts-autotag' " Close tags using lua and treesitter
 Plug 'gbprod/yanky.nvim' " extended yank using lua
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim' " to highlight todo sections
+Plug 'kylechui/nvim-surround' " replace pair chars using lua
+Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
 
 call plug#end()
 
@@ -126,30 +121,7 @@ call plug#end()
 " History search
 nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
 
-" -- Smart indent when entering insert mode with i on empty lines --------------
-function! IndentWithI()
-  if len(getline('.')) == 0
-    return "\"_ddO"
-  else
-    return "i"
-  endif
-endfunction
-nnoremap <expr> i IndentWithI()
-
-" Remap the increment and decrement features of Vim
-nnoremap <silent> <A-a> <C-a>
-nnoremap <silent> <A-x> <C-x>
-
 set completeopt-=preview
-
-" " move between views using Alt instead of Ctrl
-" nnoremap <silent> <A-j> <C-w>j
-" nnoremap <silent> <A-k> <C-w>k
-" nnoremap <silent> <A-l> <C-w>l
-" nnoremap <silent> <A-h> <C-w>h
-" nnoremap <silent> <A-H> <C-w>_
-" nnoremap <silent> <A-L> <C-w>|
-" nnoremap <silent> <A-J> <C-w>=
 
 " syntax and color
 "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -182,22 +154,13 @@ inoremap <silent> jj <ESC>
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
 
-" insert new line and set cursor before on insert mode
-imap <silent> <A-enter> <cr><C-o>O
-
-" Copy/paste between vim instances
-vmap <silent> <leader>y "*y
-nmap <silent> <leader>p "*p
-nmap <silent> p ]p
-nmap <silent> P ]P
-
 " set handlebars file type
 nmap <leader>h :set filetype=handlebars<cr>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
-"NerdTree
+" Neovim tree using lua
 map <silent><special> <space>e :NvimTreeToggle<CR>
 map <silent><special> <F3> :NvimTreeToggle<CR>
 nmap <silent> <leader>f :NvimTreeFindFile<CR>
@@ -212,13 +175,14 @@ vnoremap <leader>T :'<, '>Tabularize / \zs
 " change char on cursor with new one, cs"' substitute " by '
 nmap <silent> <leader>sc <esc>cs
 " replace tag for anotherone
-nmap <silent> <leader>st <esc>cstt
+nmap <silent> <leader>st <esc>cst
 "insert new chars wrapping word under cursor
 nmap <silent> <leader>s <esc>ysiw
+"delete around. Using dst will remove the enclosing tag
+nmap <silent> <leader>ds <esc>ds
 
 " Fugitive git
-nmap <silent> <leader>g :Git<CR>
-nmap <silent> <leader>gc :Git commit<cr>
+nmap <silent> <leader>g :Gitsigns preview_hunk<CR>
 
 " Indent
 " select all file and indent
@@ -232,37 +196,14 @@ noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 " Sort blocks
 nnoremap <silent> <leader>so vi}:sort<CR>
 
-" Import cost
-" map <leader>ic :ImportCost<cr>
-
 " Comment
-" map <silent> <leader>c <c-_><c-_>
 map <silent> <leader>c gcc
-
-" Mustache
-let g:mustache_abbreviations = 1
-
-" Gitgutter
-cnoreabbrev Gundo GitGutterUndoHunk
-
-let g:gitgutter_max_signs = 3500  " default value
-
-" set updatetime=1000
-" noremap <leader>g :GitGutterToggle<cr>
-" noremap <leader>gn <Plug>GitGutterNextHunk
-" noremap <leader>gp <Plug>GitGutterPrevHunk
-" highlight link GitGutterChangeLine DiffText
-" highlight GitGutterAdd    guifg=#009900 guibg=#222233 ctermfg=2 ctermbg=0
-" highlight GitGutterChange guifg=#bbbb00 guibg=#222233 ctermfg=3 ctermbg=0
-" highlight GitGutterDelete guifg=#ff2222 guibg=#222233 ctermfg=1 ctermbg=0
-" let g:gitgutter_enabled = 0
 
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>r :e<cr>
 
 " Multiple cursors
-
 let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
@@ -313,9 +254,6 @@ nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
 " Show documentation when K is pushed
 nnoremap <silent> K :call CocActionAsync('doHover')<CR>
 
-" Highlight the symbol under cursor when holding on it
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -327,11 +265,8 @@ omap af <Plug>(coc-funcobj-a)
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
-" use :OR to organize the imports
-command! -nargs=0 OR :call CocActionAsync('runCommand','editor.action.organizeImport')
-
-let g:coc_status_error_sign = '•'
-let g:coc_status_warning_sign = '*'
+" organize imports when saving
+autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'tsserver.organizeImports')
 
 "tags
 nmap <leader>tg <C-]>
@@ -359,25 +294,6 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
-
-" Pangloss JS syntax heighlight
-" Enable JSDoc highlighting
-let g:javascript_plugin_jsdoc = 1
-" JavaScript Concealing
-" let g:javascript_conceal = 0
-" let g:javascript_conceal_function       = "ƒ"
-" let g:javascript_conceal_null           = "ø"
-" let g:javascript_conceal_this           = "@"
-" let g:javascript_conceal_return         = "⇚"
-" let g:javascript_conceal_undefined      = "¿"
-" let g:javascript_conceal_NaN            = "ℕ"
-" let g:javascript_conceal_prototype      = "¶"
-" let g:javascript_conceal_static         = "•"
-" let g:javascript_conceal_super          = "Ω"
-" let g:javascript_conceal_arrow_function = "⇒"
-
-" Rainbow, improves parenthesis
-au FileType js,javascript call rainbow#load()
 
 " indentLine (forces conceallevel to 2 every time so fix it)
 let g:indentLine_setConceal = 0
@@ -418,10 +334,6 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ ]
 
-lua require('init')
-
-autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'tsserver.organizeImports')
-
 " use TAB for the new coc popover window
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
@@ -431,6 +343,9 @@ inoremap <silent><expr> <TAB>
         \ "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" LUA configs
+lua require('init')
 
 hi def IlluminatedWordText guibg=underline
 hi def IlluminatedWordWrite guibg=underline
