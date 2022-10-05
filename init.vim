@@ -345,9 +345,9 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " LUA configs
 lua require('init')
 
-hi def IlluminatedWordText guibg=underline
-hi def IlluminatedWordWrite guibg=underline
-hi def IlluminatedWordRead guibg=underline
+hi def IlluminatedWordText gui=underline
+hi def IlluminatedWordWrite gui=underline
+hi def IlluminatedWordRead gui=underline
 
 nnoremap <silent> <space>t :TodoQuickFix<cr>
 
