@@ -51,8 +51,6 @@ parser_config.glimmer = {
   }
 }
 
-require("symbols-outline").setup()
-
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
@@ -81,7 +79,14 @@ require("nvim-tree").setup({
 
 require('lualine').setup()
 require('Comment').setup()
-require('leap').set_default_keymaps()
+require('hop').setup()
+-- Hop keybindings
+vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+vim.api.nvim_set_keymap('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>", {})
+vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>", {})
+
+
 require("nvim-autopairs").setup {}
 require('nvim-ts-autotag').setup()
 require("yanky").setup({})
@@ -106,3 +111,15 @@ vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 require("todo-comments").setup {}
 require("nvim-surround").setup({})
 require('gitsigns').setup()
+require('neoscroll').setup({
+    -- All these keys will be mapped to their corresponding default scrolling animation
+    mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>'},
+    hide_cursor = true,          -- Hide cursor while scrolling
+    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    easing_function = nil,       -- Default easing function
+    pre_hook = nil,              -- Function to run before the scrolling animation starts
+    post_hook = nil,             -- Function to run after the scrolling animation ends
+    performance_mode = true,    -- Disable "Performance Mode" on all buffers.
+})

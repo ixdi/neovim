@@ -81,7 +81,6 @@ call plug#begin()
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'             " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
-Plug 'wellle/targets.vim'                 " More text objects to operate on
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
 
 " COC is the base platform for multiple features!
@@ -95,24 +94,26 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 " Language Support
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
-" UI and colors
+" Neovim LUA
+" Some references here: https://jdhao.github.io/nvim-config/
 Plug 'nvim-lualine/lualine.nvim' " Statusline using lua
 Plug 'EdenEast/nightfox.nvim' " lua theme using treesitter
 Plug 'kyazdani42/nvim-web-devicons' " icons using lua
 Plug 'kyazdani42/nvim-tree.lua' " replace for nerdtree in lua
 Plug 'p00f/nvim-ts-rainbow' " colorize closing brackets
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " make a tree of relations. Used by some plugins
-Plug 'simrat39/symbols-outline.nvim' " View the code symbols references using lua
+Plug 'liuchengxu/vista.vim' " View the code symbols references using lua
 Plug 'RRethy/vim-illuminate' " Highlight identical words using lua
-Plug 'ggandor/leap.nvim' " Jump quickly to a certaing part of the code using lua
+Plug 'phaazon/hop.nvim' " Jump quickly to a certaing part of the code using lua
 Plug 'numToStr/Comment.nvim' " Comments using lua
 Plug 'windwp/nvim-autopairs' " autopairs using lua and treesitter
 Plug 'windwp/nvim-ts-autotag' " Close tags using lua and treesitter
 Plug 'gbprod/yanky.nvim' " extended yank using lua
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim' " lua functions I don't want to write twice
 Plug 'folke/todo-comments.nvim' " to highlight todo sections
 Plug 'kylechui/nvim-surround' " replace pair chars using lua
 Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
+Plug 'karb94/neoscroll.nvim' " smooth scroll
 
 call plug#end()
 
@@ -232,9 +233,6 @@ nnoremap <silent> <space>di :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 " show symbols of the current document
 nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
-" search workspace symbols
-" nnoremap <silent> <space>s :<C-u>CocList --number-select -I symbols<cr>
-nnoremap <silent> <space>s :SymbolsOutline<cr>
 " Git
 nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
 " default actions to prev or next item
@@ -352,3 +350,16 @@ hi def IlluminatedWordWrite guibg=underline
 hi def IlluminatedWordRead guibg=underline
 
 nnoremap <silent> <space>t :TodoQuickFix<cr>
+
+" view symbols
+nnoremap <silent> <space>s :Vista!!<cr>
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+
+" Hop to jump quickly
+nnoremap <silent> s :HopPattern<cr>
+nnoremap <silent> <space>h :HopWord<cr>
+nnoremap <silent> <space>h1 :HopChar1<cr>
+nnoremap <silent> <space>h2 :HopChar2<cr>
+nnoremap <silent> <space>l :HopLine<cr>
