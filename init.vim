@@ -79,12 +79,9 @@ let g:polyglot_disabled = ['html5']
 call plug#begin()
 
 " Project Navigation
-Plug 'Yggdroot/indentLine'                " show vertical lines in indented code
 
 " Editing
 Plug 'tpope/vim-surround'                 " Change word surroundings
-Plug 'tomtom/tcomment_vim'                " Comments
-Plug 'alvan/vim-closetag'                 " html autoclose
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'             " Multiple cursors
 Plug 'mattn/emmet-vim'                    " Emmet
@@ -106,19 +103,21 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
 " UI and colors
-Plug 'itchyny/lightline.vim'              " Lightline status bar
-Plug 'maximbaz/lightline-ale'             " show errors in statusline
-Plug 'josa42/vim-lightline-coc'           " show coc state in statusline
-Plug 'EdenEast/nightfox.nvim' " Vim-Plug
-
-" Plug 'rakr/vim-one'
-" Plug 'ryanoasis/vim-devicons'             " icons
-Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'frazrepo/vim-rainbow'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-Plug 'simrat39/symbols-outline.nvim'
+Plug 'nvim-lualine/lualine.nvim' " Statusline using lua
+Plug 'EdenEast/nightfox.nvim' " lua theme using treesitter
+Plug 'kyazdani42/nvim-web-devicons' " icons using lua
+Plug 'kyazdani42/nvim-tree.lua' " replace for nerdtree in lua
+Plug 'p00f/nvim-ts-rainbow' " colorize closing brackets
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " make a tree of relations. Used by some plugins
+Plug 'simrat39/symbols-outline.nvim' " View the code symbols references using lua
+Plug 'RRethy/vim-illuminate' " Highlight identical words using lua
+Plug 'ggandor/leap.nvim' " Jump quickly to a certaing part of the code using lua
+Plug 'numToStr/Comment.nvim' " Comments using lua
+Plug 'windwp/nvim-autopairs' " autopairs using lua and treesitter
+Plug 'windwp/nvim-ts-autotag' " Close tags using lua and treesitter
+Plug 'gbprod/yanky.nvim' " extended yank using lua
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/todo-comments.nvim' " to highlight todo sections
 
 call plug#end()
 
@@ -237,45 +236,11 @@ nnoremap <silent> <leader>so vi}:sort<CR>
 " map <leader>ic :ImportCost<cr>
 
 " Comment
-map <silent> <leader>c <c-_><c-_>
+" map <silent> <leader>c <c-_><c-_>
+map <silent> <leader>c gcc
 
 " Mustache
 let g:mustache_abbreviations = 1
-
-" lightline
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
-endfunction
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [
-      \   [ 'mode', 'paste'],
-      \   [ 'coc_errors', 'coc_warnings' ],
-      \   [ 'coc_status'],
-      \   [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \ },
-      \ }
-" let g:lightline.separator = {
-" 	\   'left': '', 'right': ''
-"   \}
-
-" lightline-buffers
-" let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-" let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-" let g:lightline.component_type   = {'buffers': 'tabsel'}
-
-" lightline-coc register compoments:
-call lightline#coc#register()
-
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#shorten_path = 1
-let g:lightline#bufferline#unnamed      = '[No Name]'
 
 " Gitgutter
 cnoreabbrev Gundo GitGutterUndoHunk
@@ -303,23 +268,6 @@ let g:multi_cursor_exit_from_visual_mode = 1
 
 " Emmet
 let g:user_emmet_install_global = 0
-
-" Devicons
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:DevIconsEnableFolderExtensionPatternMatching = 1
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsOS = 'Darwin'
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
 
 " Coc configurations
 " ==================
@@ -354,11 +302,8 @@ nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
 
 " goto definitions
 nnoremap <silent> <space>d <Plug>(coc-definition)
-nmap <leader>dd <Plug>(coc-definition)
 nnoremap <silent> <space>r <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-references)
 nnoremap <silent> <space>i <Plug>(coc-implementation)
-nmap <leader>ii <Plug>(coc-implementation)
 " coc eslint errors keymappings
 nmap <leader>ep <Plug>(coc-diagnostic-prev)
 nmap <leader>e <Plug>(coc-diagnostic-next)
@@ -486,3 +431,9 @@ inoremap <silent><expr> <TAB>
         \ "\<Tab>"
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
+
+hi def IlluminatedWordText guibg=underline
+hi def IlluminatedWordWrite guibg=underline
+hi def IlluminatedWordRead guibg=underline
+
+nnoremap <silent> <space>t :TodoQuickFix<cr>
