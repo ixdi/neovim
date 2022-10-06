@@ -81,10 +81,18 @@ require('lualine').setup()
 require('Comment').setup()
 require('hop').setup()
 -- Hop keybindings
-vim.api.nvim_set_keymap('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-vim.api.nvim_set_keymap('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-vim.api.nvim_set_keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>", {})
-vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>", {})
+vim.api.nvim_set_keymap('', 'f',
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+  , {})
+vim.api.nvim_set_keymap('', 'F',
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+  , {})
+vim.api.nvim_set_keymap('', 't',
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+  , {})
+vim.api.nvim_set_keymap('', 'T',
+  "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
+  , {})
 
 
 require("nvim-autopairs").setup {}
@@ -106,10 +114,10 @@ vim.g.clipboard = {
 
 require("yanky").setup({})
 -- Yank keymaps
-vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({"n","x"}, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
 vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
@@ -127,27 +135,28 @@ require("todo-comments").setup {}
 require("nvim-surround").setup({})
 require('gitsigns').setup()
 require('neoscroll').setup({
-    -- All these keys will be mapped to their corresponding default scrolling animation
-    mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>'},
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    easing_function = nil,       -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,             -- Function to run after the scrolling animation ends
-    performance_mode = true,    -- Disable "Performance Mode" on all buffers.
+  -- All these keys will be mapped to their corresponding default scrolling animation
+  mappings = { '<C-u>', '<C-d>', '<C-y>', '<C-e>' },
+  hide_cursor = true, -- Hide cursor while scrolling
+  stop_eof = true, -- Stop at <EOF> when scrolling downwards
+  respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  easing_function = nil, -- Default easing function
+  pre_hook = nil, -- Function to run before the scrolling animation starts
+  post_hook = nil, -- Function to run after the scrolling animation ends
+  performance_mode = true, -- Disable "Performance Mode" on all buffers.
 })
 
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pyright", "tsserver", "cssls", "dockerls", "eslint", "emmet_ls", "html", "jsonls", "marksman" },
-    automatic_installation = true,
+  ensure_installed = { "sumneko_lua", "pyright", "tsserver", "cssls", "dockerls", "eslint", "emmet_ls", "html", "jsonls",
+    "marksman" },
+  automatic_installation = true,
 })
 
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
   snippet = {
@@ -242,26 +251,6 @@ require('lspconfig')['marksman'].setup {
   capabilities = capabilities
 }
 
--- Null-ls
--- require("null-ls").setup({
---     sources = {
---         require("null-ls").builtins.code_actions.eslint_d,
---         require("null-ls").builtins.code_actions.gitsigns,
---         require("null-ls").builtins.code_actions.refactoring,
---         require("null-ls").builtins.diagnostics.eslint_d,
---         require("null-ls").builtins.diagnostics.hadolint,
---         require("null-ls").builtins.diagnostics.markdownlint,
---         require("null-ls").builtins.diagnostics.pycodestyle,
---         require("null-ls").builtins.diagnostics.pydocstyle,
---         require("null-ls").builtins.diagnostics.tidy,
---         require("null-ls").builtins.diagnostics.tsc,
---         require("null-ls").builtins.formatting.autopep8,
---         require("null-ls").builtins.formatting.cbfmt,
---         require("null-ls").builtins.formatting.eslint_d,
---         require("null-ls").builtins.formatting.fixjson,
---         require("null-ls").builtins.formatting.isort,
---         require("null-ls").builtins.formatting.prettierd,
---         require("null-ls").builtins.formatting.stylua,
---         require("null-ls").builtins.completion.spell,
---     },
--- })
+-- Telescope
+require('telescope').load_extension('fzf')
+require("telescope").load_extension("yank_history")

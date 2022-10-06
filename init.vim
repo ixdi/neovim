@@ -120,6 +120,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 call plug#end()
 
@@ -280,6 +281,7 @@ nnoremap <silent> <space>g <cmd>Telescope git_status<cr>
 nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
 nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
+nnoremap <leader>p :Telescope yank_history<cr>
 
 " Run formatter before saving
 autocmd BufWritePre * :lua vim.lsp.buf.formatting()
