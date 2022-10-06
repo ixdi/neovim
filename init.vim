@@ -6,6 +6,7 @@ let &packpath .= "," . $DOTFILES . "/nvim"
 set autowrite                      " Automatically :write before running commands
 set backspace=2                    " Backspace deletes like most programs in insert mode
 set clipboard=unnamedplus
+set completeopt=menu,menuone,noselect
 set conceallevel=0                 " Text like " is shown normally
 set expandtab
 set foldmethod=indent
@@ -71,21 +72,13 @@ autocmd BufWritePre * :%s#\($\n\s*\)\+\%$##e
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/
 
-" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " Specify plugins
 call plug#begin()
 
-" Project Navigation
-
-" Editing
+" classic vim
 Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'             " Multiple cursors
-Plug 'mattn/emmet-vim'                    " Emmet
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
-
-" COC is the base platform for multiple features!
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
@@ -116,15 +109,25 @@ Plug 'kylechui/nvim-surround' " replace pair chars using lua
 Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
 Plug 'karb94/neoscroll.nvim' " smooth scroll
 Plug 'jdhao/better-escape.vim' " scape quickly
+Plug 'williamboman/mason.nvim' " easy to install language servers
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig' " language server
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'dcampos/nvim-snippy' " snippets using lua
+Plug 'dcampos/cmp-snippy' " to use snippy with cmp
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
 
 call plug#end()
 
 " Load plugin configurations
+" ==========================
 
 " History search
 nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
-
-set completeopt-=preview
 
 " syntax and color
 "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
@@ -151,9 +154,6 @@ nnoremap bd :bdelete<CR>
 nnoremap bl :buffers<CR>
 nnoremap bda :bufdo bd<CR>
 
-" Exit insert mode
-" inoremap <silent> jj <ESC>
-
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
 
@@ -163,29 +163,11 @@ nmap <leader>h :set filetype=handlebars<cr>
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
-" Neovim tree using lua
-map <silent><special> <space>e :NvimTreeToggle<CR>
-map <silent><special> <F3> :NvimTreeToggle<CR>
-nmap <silent> <leader>f :NvimTreeFindFile<CR>
-
 "nore Tabularize
 noremap <leader>t :Tabularize /
 vnoremap <leader>t :'<, '>Tabularize /
 noremap <leader>T :Tabularize / \zs
 vnoremap <leader>T :'<, '>Tabularize / \zs
-
-" Surround
-" change char on cursor with new one, cs"' substitute " by '
-nmap <silent> <leader>sc <esc>cs
-" replace tag for anotherone
-nmap <silent> <leader>st <esc>cst
-"insert new chars wrapping word under cursor
-nmap <silent> <leader>s <esc>ysiw
-"delete around. Using dst will remove the enclosing tag
-nmap <silent> <leader>ds <esc>ds
-
-" Fugitive git
-nmap <silent> <leader>g :Gitsigns preview_hunk<CR>
 
 " Indent
 " select all file and indent
@@ -199,9 +181,6 @@ noremap <silent><special> <F7> :%s/\s\+$//e<cr>
 " Sort blocks
 nnoremap <silent> <leader>so vi}:sort<CR>
 
-" Comment
-map <silent> <leader>c gcc
-
 " Fast saving
 nmap <leader>w :w!<cr>
 nmap <leader>r :e<cr>
@@ -210,83 +189,6 @@ nmap <leader>r :e<cr>
 let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
-" Emmet
-let g:user_emmet_install_global = 0
-
-" Coc configurations
-" ==================
-
-" Coc snippets
-imap <C-e> <Plug>(coc-snippets-expand)
-" Select text for visual placeholder of snippet.
-vmap <C-s> <Plug>(coc-snippets-select)
-let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_prev = '<c-k>'
-" Coc lists
-noremap <C-l> <esc>:CocListResume<cr>
-noremap <C-f> <esc>:CocList grep<cr>
-" search for yank
-nnoremap <silent> <space>y :<C-u>CocList --number-select yank<cr>
-" search for files
-nnoremap <silent> <space>f :<C-u>CocList --number-select files<cr>
-" search for most recently used
-nnoremap <silent> <space>u :<C-u>CocList --number-select mru<cr>
-nnoremap <silent> <space>di :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>c :<C-u>CocList commands<cr>
-" show symbols of the current document
-nnoremap <silent> <space>o :<C-u>CocList --number-select outline<cr>
-" Git
-nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
-" default actions to prev or next item
-nnoremap <silent> <space>j :<C-u>CocList CocNext<cr>
-nnoremap <silent> <space>k :<C-u>CocList CocPrev<cr>
-
-" goto definitions
-nnoremap <silent> <space>d <Plug>(coc-definition)
-nnoremap <silent> <space>r <Plug>(coc-references)
-nnoremap <silent> <space>i <Plug>(coc-implementation)
-" coc eslint errors keymappings
-nmap <leader>ep <Plug>(coc-diagnostic-prev)
-nmap <leader>e <Plug>(coc-diagnostic-next)
-" view documentation of the symbol under the cursor
-nnoremap <silent> <space>h :call CocActionAsync('doHover')<cr>
-
-" Show documentation when K is pushed
-nnoremap <silent> K :call CocActionAsync('doHover')<CR>
-
-" Symbol renaming
-nmap <leader>rn <Plug>(coc-rename)
-
-" Use to rewrite a function inside (cif) or around (caf)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use tab to range select the block where cursor is in
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" organize imports when saving
-autocmd BufWritePre *.ts,*.js :call CocAction('runCommand', 'tsserver.organizeImports')
-
-"tags
-nmap <leader>tg <C-]>
-nmap <leader>tt <C-t>
-
-"session
-noremap <leader>ssave :CocCommand session.save<cr>
-noremap <leader>sload :CocCommand session.load<cr>
-
-" coc-smartf, press <esc> to cancel.
-nmap f <Plug>(coc-smartf-forward)
-nmap F <Plug>(coc-smartf-backward)
-nmap <special> <F1> <Plug>(coc-smartf-repeat)
-nmap <special> <S-F1> <Plug>(coc-smartf-repeat-opposite)
-
-augroup Smartf
-  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#a890F0
-  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#b09f96
-augroup end
-
 " autoload
 au BufReadPost,BufNewFile *.html set filetype=handlebars
 au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
@@ -294,9 +196,6 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
-
-" indentLine (forces conceallevel to 2 every time so fix it)
-let g:indentLine_setConceal = 0
 
 " vim doge
 " map <leader>d :DogeGenerate<cr>
@@ -311,43 +210,26 @@ nmap <silent> <leader>dd <Plug>(pydocstring)
 " sphinx, google or numpy
 let g:pydocstring_formatter = 'sphinx'
 
-" Install all coc-extensions
-let g:coc_global_extensions = [
-            \ 'coc-yank',
-            \ 'coc-stylelintplus',
-            \ 'coc-snippets',
-            \ 'coc-smartf',
-            \ 'coc-prettier',
-            \ 'coc-pairs',
-            \ 'coc-marketplace',
-            \ 'coc-lists',
-            \ 'coc-html',
-            \ 'coc-highlight',
-            \ 'coc-git',
-            \ 'coc-eslint',
-            \ 'coc-emmet',
-            \ 'coc-yaml',
-            \ 'coc-tsserver',
-            \ 'coc-pyright',
-            \ 'coc-markdownlint',
-            \ 'coc-json',
-            \ 'coc-css',
-            \ ]
-
-" use TAB for the new coc popover window
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-" remap for complete to use tab and <cr>
-inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#pum#next(1):
-        \ "\<Tab>"
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
-
 " LUA configs
+" ===========
 lua require('init')
 
+" tree using lua
+map <silent><special> <space>e :NvimTreeToggle<CR>
+map <silent><special> <F3> :NvimTreeToggle<CR>
+nmap <silent> <leader>f :NvimTreeFindFile<CR>
+
 nnoremap <silent> <space>t :TodoQuickFix<cr>
+
+" Surround
+" change char on cursor with new one, cs"' substitute " by '
+nmap <silent> <leader>sc <esc>cs
+" replace tag for anotherone
+nmap <silent> <leader>st <esc>cst
+"insert new chars wrapping word under cursor
+nmap <silent> <leader>s <esc>ysiw
+"delete around. Using dst will remove the enclosing tag
+nmap <silent> <leader>ds <esc>ds
 
 " Illuminate word under cursor
 nnoremap <silent> <space>l :IlluminateToggle<cr>
@@ -361,9 +243,12 @@ nnoremap <silent> <space>s :Vista!!<cr>
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
 
+" Comment
+map <silent> <leader>c gcc
+
 " Hop to jump quickly
 nnoremap <silent> s :HopPattern<cr>
-nnoremap <silent> <space>h :HopWord<cr>
+nnoremap <silent> <space>hw :HopWord<cr>
 nnoremap <silent> <space>h1 :HopChar1<cr>
 nnoremap <silent> <space>h2 :HopChar2<cr>
 nnoremap <silent> <space>hl :HopLine<cr>
@@ -371,3 +256,30 @@ nnoremap <silent> <space>hl :HopLine<cr>
 " scape quickly
 let g:better_escape_shortcut = 'jj'
 let g:better_escape_interval = 200
+
+" snippets
+imap <expr> <Tab> snippy#can_expand_or_advance() ? '<Plug>(snippy-expand-or-advance)' : '<Tab>'
+imap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+smap <expr> <Tab> snippy#can_jump(1) ? '<Plug>(snippy-next)' : '<Tab>'
+smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+xmap <Tab> <Plug>(snippy-cut-text)
+
+" Telescope
+nnoremap <silent> <space>f <cmd>Telescope find_files<cr>
+nnoremap <silent> <space>u <cmd>Telescope oldfiles<cr>
+nnoremap <C-f> <cmd>Telescope grep_string<cr>
+nnoremap <C-l> <cmd>Telescope quickfix<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent> <space>b <cmd>Telescope buffers<cr>
+nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <silent> <space>err <cmd>Telescope diagnostics<cr>
+nnoremap <silent> <space>d <cmd>Telescope lsp_definitions<cr>
+nnoremap <silent> <space>r <cmd>Telescope lsp_references<cr>
+nnoremap <silent> <space>i <cmd>Telescope lsp_implementations<cr>
+nnoremap <silent> <space>g <cmd>Telescope git_status<cr>
+nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
+nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
+nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
+
+" Run formatter before saving
+autocmd BufWritePre * :lua vim.lsp.buf.formatting()
