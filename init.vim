@@ -5,6 +5,7 @@ let &packpath .= "," . $DOTFILES . "/nvim"
 
 set autowrite                      " Automatically :write before running commands
 set backspace=2                    " Backspace deletes like most programs in insert mode
+set clipboard=unnamedplus
 set conceallevel=0                 " Text like " is shown normally
 set expandtab
 set foldmethod=indent
@@ -114,6 +115,7 @@ Plug 'folke/todo-comments.nvim' " to highlight todo sections
 Plug 'kylechui/nvim-surround' " replace pair chars using lua
 Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
 Plug 'karb94/neoscroll.nvim' " smooth scroll
+Plug 'jdhao/better-escape.vim' " scape quickly
 
 call plug#end()
 
@@ -150,7 +152,7 @@ nnoremap bl :buffers<CR>
 nnoremap bda :bufdo bd<CR>
 
 " Exit insert mode
-inoremap <silent> jj <ESC>
+" inoremap <silent> jj <ESC>
 
 " Clear last search (,qs)
 map <silent> <leader>m <Esc>:noh<CR>
@@ -349,6 +351,7 @@ nnoremap <silent> <space>t :TodoQuickFix<cr>
 
 " Illuminate word under cursor
 nnoremap <silent> <space>l :IlluminateToggle<cr>
+hi def IlluminatedWordText gui=bold
 
 " view symbols
 nnoremap <silent> <space>s :Vista!!<cr>
@@ -362,3 +365,7 @@ nnoremap <silent> <space>h :HopWord<cr>
 nnoremap <silent> <space>h1 :HopChar1<cr>
 nnoremap <silent> <space>h2 :HopChar2<cr>
 nnoremap <silent> <space>hl :HopLine<cr>
+
+" scape quickly
+let g:better_escape_shortcut = 'jj'
+let g:better_escape_interval = 200

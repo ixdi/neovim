@@ -89,6 +89,21 @@ vim.api.nvim_set_keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction =
 
 require("nvim-autopairs").setup {}
 require('nvim-ts-autotag').setup()
+
+-- Use xsel instead of xclip
+vim.g.clipboard = {
+  name = "xsel_override",
+  copy = {
+    ["+"] = "xsel --input --clipboard",
+    ["*"] = "xsel --input --primary",
+  },
+  paste = {
+    ["+"] = "xsel --output --clipboard",
+    ["*"] = "xsel --output --primary",
+  },
+  cache_enabled = 1,
+}
+
 require("yanky").setup({})
 -- Yank keymaps
 vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
