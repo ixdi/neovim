@@ -352,6 +352,8 @@ nnoremap <silent> <space>t :TodoQuickFix<cr>
 " Illuminate word under cursor
 nnoremap <silent> <space>l :IlluminateToggle<cr>
 hi def IlluminatedWordText gui=bold
+hi def IlluminatedWordRead gui=bold
+hi def IlluminatedWordWrite gui=bold
 
 " view symbols
 nnoremap <silent> <space>s :Vista!!<cr>
