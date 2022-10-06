@@ -29,8 +29,8 @@ set shell=zsh                      " Set bash as the prompt for Vim
 set shiftround
 set shiftwidth=2
 set showcmd                        " Display incomplete commands
-" set smartindent
-set cindent
+set smartindent
+" set cindent
 set tabstop=2
 set textwidth=120
 set timeoutlen=500
@@ -80,13 +80,12 @@ Plug 'godlygeek/tabular'                  " Tabularize
 Plug 'mg979/vim-visual-multi'             " Multiple cursors
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
 
+Plug 'mustache/vim-mustache-handlebars'
+
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
-
-" Language Support
-Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
 
 " Neovim LUA
 " Some references here: https://jdhao.github.io/nvim-config/
@@ -107,7 +106,6 @@ Plug 'nvim-lua/plenary.nvim' " lua functions I don't want to write twice
 Plug 'folke/todo-comments.nvim' " to highlight todo sections
 Plug 'kylechui/nvim-surround' " replace pair chars using lua
 Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
-Plug 'karb94/neoscroll.nvim' " smooth scroll
 Plug 'jdhao/better-escape.vim' " scape quickly
 Plug 'williamboman/mason.nvim' " easy to install language servers
 Plug 'williamboman/mason-lspconfig.nvim'
@@ -121,6 +119,7 @@ Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'RubixDev/mason-update-all' " to update all servers
 
 call plug#end()
 
@@ -282,6 +281,7 @@ nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
 nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
 nnoremap <leader>p :Telescope yank_history<cr>
+nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
 
 " Run formatter before saving
-autocmd BufWritePre * :lua vim.lsp.buf.formatting()
+autocmd BufWritePre * :lua vim.lsp.buf.format()
