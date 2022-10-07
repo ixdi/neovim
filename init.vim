@@ -119,6 +119,8 @@ Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
 Plug 'RubixDev/mason-update-all' " to update all servers
+Plug 'onsails/lspkind.nvim' " view pictograms to lsp
+Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
 
 call plug#end()
 
