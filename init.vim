@@ -289,4 +289,12 @@ function! MaybeFormat() abort
       :lua vim.lsp.buf.format()
     endif
 endfunction
+function! OrganizeImports() abort
+    let blacklist = ['javascript', 'typescript']
+    if index(blacklist, &ft) < 0
+      return
+    endif
+    :lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
+endfunction
 autocmd BufWritePre * call MaybeFormat()
+autocmd BufWritePre * call OrganizeImports()
