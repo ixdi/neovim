@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
   ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml" },
@@ -42,7 +46,7 @@ require("nvim-treesitter.configs").setup {
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.glimmer = {
-  filetype = "html",
+  filetype = "handlebars",
   used_by = {
     "handlebars",
     "html.handlebars",
@@ -51,13 +55,6 @@ parser_config.glimmer = {
   }
 }
 
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
--- empty setup using defaults
-require("nvim-tree").setup()
-
 -- OR setup with some options
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
@@ -65,7 +62,9 @@ require("nvim-tree").setup({
     adaptive_size = true,
     mappings = {
       list = {
-        { key = "u", action = "dir_up" },
+        { key = "s", action = "split" },
+        { key = "v", action = "vsplit" },
+        { key = "sy", action = "system_open" },
       },
     },
   },

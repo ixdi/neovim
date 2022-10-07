@@ -280,7 +280,16 @@ nnoremap <silent> <space>g <cmd>Telescope git_status<cr>
 nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
 nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
-nnoremap <leader>p :Telescope yank_history<cr>
+
+" Don't call organize imports on save because it is async
+function! OrganizeImports() abort
+    let blacklist = ['javascript', 'typescript']
+    if index(blacklist, &ft) < 0
+      return
+    endif
+    :lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
+endfunction
+nnoremap <leader>i :call OrganizeImports()<cr>
 
 " Run formatter before saving except for handlebars file type
 function! MaybeFormat() abort
@@ -289,12 +298,4 @@ function! MaybeFormat() abort
       :lua vim.lsp.buf.format()
     endif
 endfunction
-function! OrganizeImports() abort
-    let blacklist = ['javascript', 'typescript']
-    if index(blacklist, &ft) < 0
-      return
-    endif
-    :lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
-endfunction
 autocmd BufWritePre * call MaybeFormat()
-autocmd BufWritePre * call OrganizeImports()
