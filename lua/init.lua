@@ -238,5 +238,4 @@ require('lspconfig')['marksman'].setup {
 }
 
 -- Telescope
-require('telescope').load_extension('fzf')
 require("telescope").load_extension("yank_history")

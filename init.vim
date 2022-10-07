@@ -117,8 +117,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'RubixDev/mason-update-all' " to update all servers
 
 call plug#end()
