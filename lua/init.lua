@@ -265,4 +265,6 @@ require('lspconfig')['marksman'].setup {
 -- Telescope
 require("telescope").load_extension("yank_history")
 
-require "lsp_signature".setup({})
+require "lsp_signature".setup()
+
+require 'colorizer'.setup()
