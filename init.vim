@@ -189,8 +189,8 @@ nmap <leader>r :e<cr>
 let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
-" autoload
-au BufReadPost,BufNewFile *.html set filetype=handlebars
+" on autoload change filetypes for html to handlebars
+au BufReadPost,BufNewFile *.html set filetype=html.handlebars
 au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
@@ -283,5 +283,11 @@ nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
 nnoremap <leader>p :Telescope yank_history<cr>
 nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
 
-" Run formatter before saving
-autocmd BufWritePre * :lua vim.lsp.buf.format()
+" Run formatter before saving except for handlebars file type
+function! MaybeFormat() abort
+    let blacklist = ['html.handlebars']
+    if index(blacklist, &ft) < 0
+      :lua vim.lsp.buf.format()
+    endif
+endfunction
+autocmd BufWritePre * call MaybeFormat()
