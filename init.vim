@@ -117,7 +117,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
 Plug 'RubixDev/mason-update-all' " to update all servers
 
 call plug#end()
@@ -266,9 +266,10 @@ xmap <Tab> <Plug>(snippy-cut-text)
 " Telescope
 nnoremap <silent> <space>f <cmd>Telescope find_files<cr>
 nnoremap <silent> <space>u <cmd>Telescope oldfiles<cr>
-nnoremap <C-f> <cmd>Telescope grep_string<cr>
-nnoremap <C-l> <cmd>Telescope quickfix<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
+" Search for a string in your current working directory and get results live as you type, respects .gitignore
+nnoremap <C-f> <cmd>Telescope live_grep<cr>
+nnoremap <C-l> <cmd>Telescope resume<cr>
 nnoremap <silent> <space>b <cmd>Telescope buffers<cr>
 nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <silent> <space>err <cmd>Telescope diagnostics<cr>
@@ -280,7 +281,6 @@ nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
 nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
 nnoremap <leader>p :Telescope yank_history<cr>
-nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
 
 " Run formatter before saving except for handlebars file type
 function! MaybeFormat() abort
