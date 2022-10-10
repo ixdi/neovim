@@ -274,7 +274,6 @@ nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope resume<cr>
 nnoremap <silent> <space>b <cmd>Telescope buffers<cr>
-nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
 nnoremap <silent> <space>err <cmd>Telescope diagnostics<cr>
 nnoremap <silent> <space>d <cmd>Telescope lsp_definitions<cr>
 nnoremap <silent> <space>r <cmd>Telescope lsp_references<cr>
