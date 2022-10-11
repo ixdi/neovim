@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml" },
+  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml", "glimmer" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -127,8 +127,6 @@ vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
 vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
 vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
 vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
-vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
-vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 
 require("todo-comments").setup {}
 require("nvim-surround").setup({})
@@ -269,3 +267,80 @@ require("telescope").load_extension("yank_history")
 require "lsp_signature".setup()
 
 require 'colorizer'.setup()
+
+require("filetype").setup({
+  overrides = {
+    extensions = {
+      -- Set the filetype of *.pn files to potion
+      html = "handlebars",
+      eslintrc = "json",
+      jscsrc = "json",
+      jshintrc = "json",
+      babelrc = "json",
+      prettierrc = "json",
+      scss = "scss.css"
+    },
+    literal = {
+      -- Set the filetype of files named "MyBackupFile" to lua
+      -- MyBackupFile = "lua",
+    },
+    complex = {
+      -- Set the filetype of any full filename matching the regex to gitconfig
+      [".*git/config"] = "gitconfig", -- Included in the plugin
+      [".rc"] = "json",
+      ["*rc"] = "json"
+    },
+    function_extensions = {
+      ["pdf"] = function()
+        vim.bo.filetype = "pdf"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("zathura " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["docx"] = function()
+        vim.bo.filetype = "docx"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("libreoffice " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["odt"] = function()
+        vim.bo.filetype = "odt"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("libreoffice " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["ods"] = function()
+        vim.bo.filetype = "ods"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("libreoffice " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["xlsx"] = function()
+        vim.bo.filetype = "xlsx"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("libreoffice " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["svg"] = function()
+        vim.bo.filetype = "svg"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("inkscape " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["png"] = function()
+        vim.bo.filetype = "png"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("eog " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["jpg"] = function()
+        vim.bo.filetype = "jpg"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("eog " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["jpeg"] = function()
+        vim.bo.filetype = "jpeg"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("eog " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+      ["gif"] = function()
+        vim.bo.filetype = "gif"
+        -- Open in PDF viewer automatically
+        vim.fn.jobstart("eog " .. '"' .. vim.fn.expand("%") .. '"')
+      end,
+    }
+  }
+})

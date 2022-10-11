@@ -122,6 +122,7 @@ Plug 'RubixDev/mason-update-all' " to update all servers
 Plug 'onsails/lspkind.nvim' " view pictograms to lsp
 Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
 Plug 'norcalli/nvim-colorizer.lua' " colorizer
+Plug 'nathom/filetype.nvim' " 175x faster than vim
 
 call plug#end()
 
@@ -192,9 +193,9 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
 " on autoload change filetypes for html to handlebars
-au BufReadPost,BufNewFile *.html set filetype=html.handlebars
-au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-au BufRead,BufNewFile *.scss set filetype=scss.css
+" au BufReadPost,BufNewFile *.html set filetype=html.handlebars
+" au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+" au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
