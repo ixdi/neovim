@@ -123,6 +123,7 @@ Plug 'onsails/lspkind.nvim' " view pictograms to lsp
 Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
 Plug 'norcalli/nvim-colorizer.lua' " colorizer
 Plug 'nathom/filetype.nvim' " 175x faster than vim
+Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 
 call plug#end()
 
