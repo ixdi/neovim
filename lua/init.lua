@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml" },
+  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml", "glimmer" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -127,8 +127,6 @@ vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
 vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
 vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
 vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
-vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
-vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
 
 require("todo-comments").setup {}
 require("nvim-surround").setup({})
@@ -269,3 +267,11 @@ require("telescope").load_extension("yank_history")
 require "lsp_signature".setup()
 
 require 'colorizer'.setup()
+
+require("filetype").setup({})
+
+require("indent_blankline").setup {
+  -- for example, context is off by default, use this to turn it on
+  show_current_context = false,
+  show_current_context_start = false,
+}

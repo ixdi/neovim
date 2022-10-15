@@ -122,6 +122,8 @@ Plug 'RubixDev/mason-update-all' " to update all servers
 Plug 'onsails/lspkind.nvim' " view pictograms to lsp
 Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
 Plug 'norcalli/nvim-colorizer.lua' " colorizer
+Plug 'nathom/filetype.nvim' " 175x faster than vim
+Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 
 call plug#end()
 
@@ -192,9 +194,9 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
 " on autoload change filetypes for html to handlebars
-au BufReadPost,BufNewFile *.html set filetype=html.handlebars
-au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-au BufRead,BufNewFile *.scss set filetype=scss.css
+" au BufReadPost,BufNewFile *.html set filetype=html.handlebars
+" au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+" au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
@@ -260,11 +262,11 @@ let g:better_escape_shortcut = 'jj'
 let g:better_escape_interval = 200
 
 " snippets
-imap <expr> <Tab> snippy#can_expand_or_advance() ? '<Plug>(snippy-expand-or-advance)' : '<Tab>'
-imap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
-smap <expr> <Tab> snippy#can_jump(1) ? '<Plug>(snippy-next)' : '<Tab>'
-smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
-xmap <Tab> <Plug>(snippy-cut-text)
+" imap <expr> <Tab> snippy#can_expand_or_advance() ? '<Plug>(snippy-expand-or-advance)' : '<Tab>'
+" imap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+" smap <expr> <Tab> snippy#can_jump(1) ? '<Plug>(snippy-next)' : '<Tab>'
+" smap <expr> <S-Tab> snippy#can_jump(-1) ? '<Plug>(snippy-previous)' : '<S-Tab>'
+" xmap <Tab> <Plug>(snippy-cut-text)
 
 " Telescope
 nnoremap <silent> <space>f <cmd>Telescope find_files<cr>
