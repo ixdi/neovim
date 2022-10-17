@@ -162,7 +162,7 @@ nnoremap bda :bufdo bd<CR>
 map <silent> <leader>m <Esc>:noh<CR>
 
 " set handlebars file type
-nmap <leader>h :set filetype=handlebars<cr>
+nmap <leader>h :set filetype=mustache<cr>
 
 " Search and replace word under cursor (,*)
 nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
@@ -194,7 +194,7 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
 " on autoload change filetypes for html to handlebars
-au BufReadPost,BufNewFile *.html set filetype=html.handlebars
+au BufReadPost,BufNewFile *.html set filetype=mustache
 au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
@@ -297,7 +297,7 @@ nnoremap <leader>i :call OrganizeImports()<cr>
 
 " Run formatter before saving except for handlebars file type
 function! MaybeFormat() abort
-    let blacklist = ['html.handlebars']
+    let blacklist = ['mustache']
     if index(blacklist, &ft) < 0
       :lua vim.lsp.buf.format()
     endif
