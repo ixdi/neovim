@@ -194,9 +194,9 @@ let g:multi_cursor_exit_from_insert_mode = 1
 let g:multi_cursor_exit_from_visual_mode = 1
 
 " on autoload change filetypes for html to handlebars
-" au BufReadPost,BufNewFile *.html set filetype=html.handlebars
-" au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
-" au BufRead,BufNewFile *.scss set filetype=scss.css
+au BufReadPost,BufNewFile *.html set filetype=html.handlebars
+au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
