@@ -275,3 +275,23 @@ require("indent_blankline").setup {
   show_current_context = false,
   show_current_context_start = false,
 }
+
+require('neogen').setup({
+  languages = {
+    lua = {
+      template = {
+        annotation_convention = "emmylua"
+      }
+    },
+    python = {
+      template = {
+        annotation_convention = "reST"
+      }
+    },
+    typescript = {
+      template = {
+        annotation_convention = "jsdoc"
+      }
+    },
+  }
+})

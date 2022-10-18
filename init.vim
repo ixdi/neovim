@@ -84,8 +84,6 @@ Plug 'mustache/vim-mustache-handlebars'
 
 " Autocomplete
 Plug 'ixdi/vim-meteor-snippets'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 " Neovim LUA
 " Some references here: https://jdhao.github.io/nvim-config/
@@ -124,6 +122,7 @@ Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
 Plug 'norcalli/nvim-colorizer.lua' " colorizer
 Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
+Plug 'danymat/neogen' " add comments with lua support
 
 call plug#end()
 
@@ -200,19 +199,6 @@ au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
 nnoremap <silent> <space>m <Plug>MarkdownPreviewToggle
-
-" vim doge
-" map <leader>d :DogeGenerate<cr>
-let g:doge_mapping = '<leader>d'
-let g:doge_comment_interactive = 1
-let g:doge_mapping_comment_jump_forward = '<leader>n'
-let g:doge_mapping_comment_jump_backward = '<A-p>'
-let g:doge_doc_standard_python = 'sphinx'
-
-" pydocstring
-nmap <silent> <leader>dd <Plug>(pydocstring)
-" sphinx, google or numpy
-let g:pydocstring_formatter = 'sphinx'
 
 " LUA configs
 " ===========
@@ -303,3 +289,9 @@ function! MaybeFormat() abort
     endif
 endfunction
 autocmd BufWritePre * call MaybeFormat()
+
+" doc generation
+nmap <silent> <leader>d :Neogen<cr>
+nmap <silent> <leader>dc :Neogen class<cr>
+nmap <silent> <leader>dt :Neogen type<cr>
+nmap <silent> <leader>df :Neogen file<cr>
