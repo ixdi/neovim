@@ -3,36 +3,32 @@ let mapleader = ","
 let &runtimepath .= "," . $DOTFILES . "/nvim"  " Add DOTFILES to runtimepath
 let &packpath .= "," . $DOTFILES . "/nvim"
 
+" Review options in https://neovim.io/doc/user/options.html#option-summary
 set autowrite                      " Automatically :write before running commands
 set backspace=2                    " Backspace deletes like most programs in insert mode
 set clipboard=unnamedplus
-set completeopt=menu,menuone,noselect
+set completeopt=menu,preview
 set conceallevel=0                 " Text like " is shown normally
 set expandtab
 set foldmethod=indent
 set gdefault                       " By default add g flag to search/replace. Add g to toggle.
 set hidden
-set history=200
-set inccommand=nosplit
+set history=5000
 set laststatus=2                   " Always display the status line
 set list listchars=tab:»·,trail:·  " Display extra whitespace characters
 set mouse=a                        " Enable mouse in all in all modes.
-set nobackup
 set nofoldenable                   " Disable folding
-set nolist                         " Don't show whitespace, since saving will clean it up automatically anyway
 set noshowmode
 set noswapfile                     " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
 set nowritebackup
 set ruler                          " Show the cursor position all the time
 set scrolloff=3
-set shell=zsh                      " Set bash as the prompt for Vim
 set shiftround
-set shiftwidth=2
+set shiftwidth=0                   " Will use the tabstop value
 set showcmd                        " Display incomplete commands
-set smartindent
-" set cindent
+" set smartindent
+set cindent
 set tabstop=2
-set textwidth=120
 set timeoutlen=500
 set ttimeoutlen=0
 set undodir=~/.config/nvim/undodir
@@ -124,6 +120,7 @@ Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 Plug 'danymat/neogen' " add comments with lua support
 Plug 'folke/zen-mode.nvim'
+" Plug 'jbyuki/instant.nvim' " For Pair Programming, or collaborative editing, review this plugin
 
 call plug#end()
 
@@ -136,7 +133,7 @@ nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
 " syntax and color
 "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
+" set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
 if (has("termguicolors"))  " set true colors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -299,3 +296,6 @@ nmap <silent> <leader>df :Neogen file<cr>
 
 " zen mode
 nnoremap <leader>z :ZenMode<cr>
+
+" relative number
+nnoremap <leader>n :set invrelativenumber<cr>
