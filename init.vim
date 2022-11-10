@@ -123,6 +123,7 @@ Plug 'norcalli/nvim-colorizer.lua' " colorizer
 Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 Plug 'danymat/neogen' " add comments with lua support
+Plug 'folke/zen-mode.nvim'
 
 call plug#end()
 
@@ -295,3 +296,6 @@ nmap <silent> <leader>d :Neogen<cr>
 nmap <silent> <leader>dc :Neogen class<cr>
 nmap <silent> <leader>dt :Neogen type<cr>
 nmap <silent> <leader>df :Neogen file<cr>
+
+" zen mode
+nnoremap <leader>z :ZenMode<cr>

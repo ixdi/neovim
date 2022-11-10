@@ -300,3 +300,5 @@ require('neogen').setup({
     },
   }
 })
+
+require("zen-mode").setup({})
