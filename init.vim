@@ -120,6 +120,7 @@ Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 Plug 'danymat/neogen' " add comments with lua support
 Plug 'folke/zen-mode.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 " Plug 'jbyuki/instant.nvim' " For Pair Programming, or collaborative editing, review this plugin
 
 call plug#end()
