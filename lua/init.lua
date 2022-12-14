@@ -4,7 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml", "glimmer" },
+  ensure_installed = { "javascript", "html", "css", "scss", "json", "typescript", "yaml", "python", "toml", "glimmer",
+    "jsdoc", "tsx", "lua", "markdown", "bash", "dockerfile", "comment" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -65,6 +66,7 @@ require("nvim-tree").setup({
         { key = "s", action = "split" },
         { key = "v", action = "vsplit" },
         { key = "sy", action = "system_open" },
+        { key = "o", action = "edit_no_picker" },
       },
     },
   },
@@ -134,7 +136,8 @@ require('gitsigns').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "tsserver", "cssls", "eslint", "sumneko_lua", "emmet_ls", "html", "jsonls", "marksman" },
+  ensure_installed = { "pyright", "tsserver", "cssls", "eslint", "sumneko_lua", "emmet_ls", "html", "jsonls", "marksman",
+    "rome" },
   automatic_installation = true,
 })
 
@@ -170,6 +173,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<esc>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<Space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ['<Tab>'] = function(fallback)
       if (cmp.visible() and has_words_before()) then
         cmp.select_next_item()
@@ -253,7 +257,13 @@ require('lspconfig')['dockerls'].setup {
 -- require('lspconfig')['eslint'].setup {
 --   capabilities = capabilities
 -- }
+-- require('lspconfig')['rome'].setup {
+--   capabilities = capabilities
+-- }
 require('lspconfig')['emmet_ls'].setup {
+  capabilities = capabilities
+}
+require('lspconfig')['ember'].setup {
   capabilities = capabilities
 }
 require('lspconfig')['html'].setup {
