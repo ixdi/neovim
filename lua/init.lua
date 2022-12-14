@@ -173,7 +173,6 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<esc>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<Space>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ['<Tab>'] = function(fallback)
       if (cmp.visible() and has_words_before()) then
         cmp.select_next_item()
