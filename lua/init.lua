@@ -238,42 +238,42 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['tsserver'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['pyright'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['sumneko_lua'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['cssls'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['dockerls'].setup {
-  capabilities = capabilities
-}
--- require('lspconfig')['eslint'].setup {
+-- require('lspconfig')['tsserver'].setup {
 --   capabilities = capabilities
 -- }
--- require('lspconfig')['rome'].setup {
+-- require('lspconfig')['pyright'].setup {
 --   capabilities = capabilities
 -- }
-require('lspconfig')['emmet_ls'].setup {
-  capabilities = capabilities
-}
--- require('lspconfig')['ember'].setup {
+-- require('lspconfig')['sumneko_lua'].setup {
 --   capabilities = capabilities
 -- }
-require('lspconfig')['html'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['jsonls'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['marksman'].setup {
-  capabilities = capabilities
-}
+-- require('lspconfig')['cssls'].setup {
+--   capabilities = capabilities
+-- }
+-- require('lspconfig')['dockerls'].setup {
+--   capabilities = capabilities
+-- }
+-- -- require('lspconfig')['eslint'].setup {
+-- --   capabilities = capabilities
+-- -- }
+-- -- require('lspconfig')['rome'].setup {
+-- --   capabilities = capabilities
+-- -- }
+-- require('lspconfig')['emmet_ls'].setup {
+--   capabilities = capabilities
+-- }
+-- -- require('lspconfig')['ember'].setup {
+-- --   capabilities = capabilities
+-- -- }
+-- require('lspconfig')['html'].setup {
+--   capabilities = capabilities
+-- }
+-- require('lspconfig')['jsonls'].setup {
+--   capabilities = capabilities
+-- }
+-- require('lspconfig')['marksman'].setup {
+--   capabilities = capabilities
+-- }
 
 -- Telescope
 require("telescope").load_extension("yank_history")
@@ -315,7 +315,24 @@ require("zen-mode").setup({})
 local null_ls = require("null-ls")
 null_ls.setup({
   sources = {
+    null_ls.builtins.code_actions.eslint_d,
+    null_ls.builtins.code_actions.refactoring,
+    null_ls.builtins.diagnostics.ansiblelint,
+    null_ls.builtins.diagnostics.codespell,
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.diagnostics.luacheck,
+    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.diagnostics.pylint,
+    null_ls.builtins.diagnostics.stylelint,
+    null_ls.builtins.diagnostics.tidy,
+    null_ls.builtins.diagnostics.vint,
+    null_ls.builtins.diagnostics.zsh,
     null_ls.builtins.formatting.autopep8,
+    null_ls.builtins.formatting.beautysh,
+    null_ls.builtins.formatting.eslint_d,
+    null_ls.builtins.formatting.fixjson,
+    null_ls.builtins.formatting.lua_format,
     null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.hover.printenv,
   },
 })
