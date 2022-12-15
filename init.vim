@@ -1,7 +1,7 @@
 " terminal font: nerd-jetbrains-mono
-let mapleader = ","
-let &runtimepath .= "," . $DOTFILES . "/nvim"  " Add DOTFILES to runtimepath
-let &packpath .= "," . $DOTFILES . "/nvim"
+let mapleader = ','
+let &runtimepath .= ',' . $DOTFILES . '/nvim'  " Add DOTFILES to runtimepath
+let &packpath .= ',' . $DOTFILES . '/nvim'
 
 " Review options in https://neovim.io/doc/user/options.html#option-summary
 set autowrite                      " Automatically :write before running commands
@@ -229,7 +229,7 @@ hi def IlluminatedWordWrite gui=bold
 " view symbols
 nnoremap <silent> <space>s :Vista!!<cr>
 " Executive used when opening vista sidebar without specifying it.
-" See all the avaliable executives via `:echo g:vista#executives`.
+" See all the available executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
 
 " Comment
