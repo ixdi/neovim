@@ -331,7 +331,7 @@ null_ls.setup({
     null_ls.builtins.formatting.eslint,
     null_ls.builtins.formatting.fixjson,
     null_ls.builtins.formatting.lua_format,
-    null_ls.builtins.formatting.prettier,
+    null_ls.builtins.formatting.prettierd,
     null_ls.builtins.hover.printenv,
   },
 })
