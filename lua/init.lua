@@ -136,8 +136,7 @@ require('gitsigns').setup()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright", "tsserver", "cssls", "eslint", "sumneko_lua", "emmet_ls", "html", "jsonls", "marksman",
-    "rome" },
+  ensure_installed = { "pyright", "tsserver", "cssls", "eslint", "sumneko_lua", "emmet_ls", "html", "jsonls", "marksman", },
   automatic_installation = true,
 })
 

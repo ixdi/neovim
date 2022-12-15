@@ -135,7 +135,7 @@ nnoremap <silent> <F5> :set hlsearch! hlsearch?<CR>
 "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set t_ut=                " fix 256 colors in tmux http://sunaku.github.io/vim-256color-bce.html
-if (has("termguicolors"))  " set true colors
+if (has('termguicolors'))  " set true colors
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
@@ -145,7 +145,7 @@ set background=dark
 let g:one_allow_italics = 1 " italic for comments
 colorscheme nordfox
 
-if filereadable($DOTFILES . "/nvim/init.local.vim")
+if filereadable($DOTFILES . '/nvim/init.local.vim')
   source $DOTFILES/nvim/init.local.vim
 endif
 
@@ -193,7 +193,7 @@ let g:multi_cursor_exit_from_visual_mode = 1
 
 " on autoload change filetypes for html to handlebars
 au BufReadPost,BufNewFile *.html set filetype=mustache
-au BufRead,BufNewFile .eslintrc,.jscsrc,.jshintrc,.babelrc,.prettierrc set filetype=json
+au BufRead,BufNewFile *rc set filetype=json
 au BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Markdown preview
@@ -233,7 +233,7 @@ nnoremap <silent> <space>s :Vista!!<cr>
 let g:vista_default_executive = 'ctags'
 
 " Comment
-map <silent> <leader>c gcc
+map <silent> <leader>c gc
 
 " Hop to jump quickly
 nnoremap <silent> s :HopPattern<cr>
@@ -261,7 +261,7 @@ nnoremap <silent> <space><space> :lua vim.lsp.buf.hover()<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-l> <cmd>Telescope resume<cr>
 nnoremap <silent> <space>b <cmd>Telescope buffers<cr>
-nnoremap <silent> <space>err <cmd>Telescope diagnostics<cr>
+nnoremap <silent> <leader>e <cmd>Telescope diagnostics<cr>
 nnoremap <silent> <space>d <cmd>Telescope lsp_definitions<cr>
 nnoremap <silent> <space>r <cmd>Telescope lsp_references<cr>
 nnoremap <silent> <space>i <cmd>Telescope lsp_implementations<cr>
@@ -273,7 +273,7 @@ nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
 " Don't call organize imports on save because it is async
 function! OrganizeImports() abort
     let blacklist = ['javascript', 'typescript']
-    if index(blacklist, &ft) < 0
+    if index(blacklist, &filetype) < 0
       return
     endif
     :lua vim.lsp.buf.execute_command({command = "_typescript.organizeImports", arguments = {vim.fn.expand("%:p")}})
@@ -283,7 +283,7 @@ nnoremap <leader>i :call OrganizeImports()<cr>
 " Run formatter before saving except for handlebars file type
 function! MaybeFormat() abort
     let blacklist = ['mustache']
-    if index(blacklist, &ft) < 0
+    if index(blacklist, &filetype) < 0
       :lua vim.lsp.buf.format()
     endif
 endfunction
