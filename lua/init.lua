@@ -262,9 +262,9 @@ require('lspconfig')['dockerls'].setup {
 require('lspconfig')['emmet_ls'].setup {
   capabilities = capabilities
 }
-require('lspconfig')['ember'].setup {
-  capabilities = capabilities
-}
+-- require('lspconfig')['ember'].setup {
+--   capabilities = capabilities
+-- }
 require('lspconfig')['html'].setup {
   capabilities = capabilities
 }
