@@ -1,6 +1,7 @@
 -- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
 
 require("nvim-treesitter.configs").setup {
     -- A list of parser names, or "all"
@@ -186,7 +187,8 @@ cmp.setup({
         -- { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         {name = 'nvim_lua'}, {name = 'snippy'}, -- For snippy users.
-        {name = 'buffer'}, {name = 'path'}, {name = 'cmdline'}
+        {name = 'buffer'}, {name = 'path'}, {name = 'cmdline'},
+        {name = 'treesitter'}
     }),
     formatting = {
         format = lspkind.cmp_format({

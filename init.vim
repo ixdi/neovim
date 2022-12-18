@@ -85,8 +85,8 @@ Plug 'ixdi/vim-meteor-snippets'
 " Some references here: https://jdhao.github.io/nvim-config/
 Plug 'nvim-lualine/lualine.nvim' " Statusline using lua
 Plug 'EdenEast/nightfox.nvim' " lua theme using treesitter
-Plug 'kyazdani42/nvim-web-devicons' " icons using lua
-Plug 'kyazdani42/nvim-tree.lua' " replace for nerdtree in lua
+Plug 'nvim-tree/nvim-web-devicons' " icons using lua
+Plug 'nvim-tree/nvim-tree.lua' " replace for nerdtree in lua
 Plug 'p00f/nvim-ts-rainbow' " colorize closing brackets
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " make a tree of relations. Used by some plugins
 Plug 'liuchengxu/vista.vim' " View the code symbols references using lua
@@ -101,17 +101,18 @@ Plug 'folke/todo-comments.nvim' " to highlight todo sections
 Plug 'kylechui/nvim-surround' " replace pair chars using lua
 Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
 Plug 'jdhao/better-escape.vim' " scape quickly
-Plug 'williamboman/mason.nvim' " easy to install language servers
-Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig' " language server
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'ray-x/cmp-treesitter'
 Plug 'dcampos/nvim-snippy' " snippets using lua
 Plug 'dcampos/cmp-snippy' " to use snippy with cmp
 Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master' }
+Plug 'williamboman/mason.nvim' " easy to install language servers
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'RubixDev/mason-update-all' " to update all servers
 Plug 'onsails/lspkind.nvim' " view pictograms to lsp
 Plug 'ray-x/lsp_signature.nvim' " show signature of the functions
@@ -300,3 +301,6 @@ nnoremap <leader>z :ZenMode<cr>
 
 " relative number
 nnoremap <leader>n :set invrelativenumber<cr>
+
+" Speed load files bigger than 10MB
+source LargeFile.vim
