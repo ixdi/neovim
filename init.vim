@@ -303,4 +303,4 @@ nnoremap <leader>z :ZenMode<cr>
 nnoremap <leader>n :set invrelativenumber<cr>
 
 " Speed load files bigger than 10MB
-source LargeFile.vim
+source ~/.config/nvim/LargeFile.vim
