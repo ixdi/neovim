@@ -121,7 +121,11 @@ Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 Plug 'danymat/neogen' " add comments with lua support
 Plug 'folke/zen-mode.nvim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
+" Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+
 " Plug 'jbyuki/instant.nvim' " For Pair Programming, or collaborative editing, review this plugin
 
 call plug#end()
@@ -266,7 +270,7 @@ nnoremap <silent> <leader>e <cmd>Telescope diagnostics<cr>
 nnoremap <silent> <space>d <cmd>Telescope lsp_definitions<cr>
 nnoremap <silent> <space>r <cmd>Telescope lsp_references<cr>
 nnoremap <silent> <space>i <cmd>Telescope lsp_implementations<cr>
-nnoremap <silent> <space>g <cmd>Telescope git_status<cr>
+nnoremap <silent> <leader>g <cmd>Telescope git_status<cr>
 nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
 nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
 nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
@@ -304,3 +308,18 @@ nnoremap <leader>n :set invrelativenumber<cr>
 
 " Speed load files bigger than 10MB
 source ~/.config/nvim/LargeFile.vim
+
+" lazygit
+let g:lazygit_floating_window_winblend = 0 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
+let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
+let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
+let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
+
+let g:lazygit_use_custom_config_file_path = 0 " config file path is evaluated if this value is 1
+let g:lazygit_config_file_path = '' " custom config file path
+
+nnoremap <silent> <space>g :LazyGit<CR>
+
+" Toggle diagnostics
+nmap <leader>dv <Plug>(toggle-lsp-diag-vtext)
