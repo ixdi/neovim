@@ -244,15 +244,9 @@ local on_attach = function(client, bufnr)
 end
 
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-local util = require 'lspconfig.util'
 require('lspconfig')['tsserver'].setup {
   on_attach = on_attach,
   flags = lsp_flags,
-  init_options = { hostInfo = "neovim" },
-  filetypes = { 'javascript' },
-  root_dir = function(fname)
-    return util.root_pattern('jsconfig.json')(fname)
-  end
 }
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities
@@ -267,7 +261,8 @@ require('lspconfig')['dockerls'].setup {
   capabilities = capabilities
 }
 -- require('lspconfig')['eslint'].setup {
---   capabilities = capabilities
+--   capabilities = capabilities,
+--   on_attach = on_attach,
 -- }
 -- -- require('lspconfig')['rome'].setup {
 -- --   capabilities = capabilities
