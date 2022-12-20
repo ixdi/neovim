@@ -103,6 +103,7 @@ Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
 Plug 'jdhao/better-escape.vim' " scape quickly
 Plug 'neovim/nvim-lspconfig' " language server
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
@@ -121,7 +122,7 @@ Plug 'nathom/filetype.nvim' " 175x faster than vim
 Plug 'lukas-reineke/indent-blankline.nvim' " show indent line
 Plug 'danymat/neogen' " add comments with lua support
 Plug 'folke/zen-mode.nvim'
-" Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 Plug 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'

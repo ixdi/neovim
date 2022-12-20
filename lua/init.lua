@@ -244,26 +244,18 @@ local on_attach = function(client, bufnr)
 end
 
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['tsserver'].setup {
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
-require('lspconfig')['pyright'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['sumneko_lua'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['cssls'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['dockerls'].setup {
-  capabilities = capabilities
-}
--- require('lspconfig')['eslint'].setup {
---   capabilities = capabilities,
+-- require('lspconfig')['tsserver'].setup {
 --   on_attach = on_attach,
+--   flags = lsp_flags
 -- }
+-- require('lspconfig')['stylelint_lsp'].setup { capabilities = capabilities }
+require('lspconfig')['sumneko_lua'].setup { capabilities = capabilities }
+require('lspconfig')['cssls'].setup { capabilities = capabilities }
+require('lspconfig')['dockerls'].setup { capabilities = capabilities }
+require('lspconfig')['eslint'].setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}
 -- -- require('lspconfig')['rome'].setup {
 -- --   capabilities = capabilities
 -- -- }
@@ -271,18 +263,13 @@ require('lspconfig')['emmet_ls'].setup {
   capabilities = capabilities,
   root_dir = function() return vim.loop.cwd() end
 }
-require('lspconfig')['ember'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['html'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['jsonls'].setup {
-  capabilities = capabilities
-}
-require('lspconfig')['marksman'].setup {
-  capabilities = capabilities
-}
+require('lspconfig')['ember'].setup { capabilities = capabilities }
+require('lspconfig')['html'].setup { capabilities = capabilities }
+require('lspconfig')['jsonls'].setup { capabilities = capabilities }
+require('lspconfig')['marksman'].setup { capabilities = capabilities }
+require('lspconfig')['pyright'].setup { capabilities = capabilities }
+require('lspconfig')['vimls'].setup { capabilities = capabilities }
+require('lspconfig')['yamlls'].setup { capabilities = capabilities }
 
 -- Telescope
 require("telescope").load_extension("yank_history")
@@ -309,30 +296,38 @@ require('neogen').setup({
 
 require("zen-mode").setup({})
 
--- local null_ls = require("null-ls")
--- null_ls.setup({
---     sources = {
---         null_ls.builtins.code_actions.eslint,
---         null_ls.builtins.diagnostics.ansiblelint,
---         null_ls.builtins.diagnostics.codespell,
---         null_ls.builtins.diagnostics.eslint,
---         null_ls.builtins.diagnostics.luacheck,
---         null_ls.builtins.diagnostics.markdownlint,
---         null_ls.builtins.diagnostics.pylint,
---         null_ls.builtins.diagnostics.stylelint,
---         null_ls.builtins.diagnostics.tidy, null_ls.builtins.diagnostics.vint,
---         null_ls.builtins.diagnostics.zsh, null_ls.builtins.formatting.autopep8,
---         null_ls.builtins.formatting.beautysh,
---         null_ls.builtins.formatting.eslint, null_ls.builtins.formatting.fixjson,
---         null_ls.builtins.formatting.lua_format,
---         null_ls.builtins.formatting.prettierd, null_ls.builtins.hover.printenv
---     }
--- })
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    -- null_ls.builtins.code_actions.eslint,
+    null_ls.builtins.diagnostics.ansiblelint,
+    null_ls.builtins.diagnostics.codespell,
+    null_ls.builtins.diagnostics.djlint,
+    -- null_ls.builtins.diagnostics.eslint,
+    -- null_ls.builtins.diagnostics.luacheck,
+    null_ls.builtins.diagnostics.jsonlint,
+    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.diagnostics.misspell,
+    null_ls.builtins.diagnostics.pylint,
+    -- null_ls.builtins.diagnostics.stylelint,
+    -- null_ls.builtins.diagnostics.tidy,
+    null_ls.builtins.diagnostics.vint, -- null_ls.builtins.diagnostics.zsh,
+    null_ls.builtins.formatting.autopep8,
+    null_ls.builtins.formatting.beautysh,
+    -- null_ls.builtins.formatting.eslint,
+    null_ls.builtins.formatting.djlint, null_ls.builtins.formatting.fixjson,
+    null_ls.builtins.formatting.lua_format,
+    null_ls.builtins.formatting.markdownlint,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.yamlfmt
+    -- null_ls.builtins.hover.printenv
+  }
+})
 
 require("bufferline").setup {}
 
 -- Diagnostic symbols
-local signs = { Error = "⛔", Warn = "❗", Hint = "💡", Info = "ⓘ" }
+local signs = { Error = "◍ ", Warn = "❕", Hint = "◍ ", Info = "ⓘ" }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -341,4 +336,4 @@ end
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-require 'toggle_lsp_diagnostics'.init({ virtual_text = false, })
+require 'toggle_lsp_diagnostics'.init({ virtual_text = false })
