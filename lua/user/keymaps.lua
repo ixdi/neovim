@@ -73,7 +73,8 @@ keymap("n", "<leader>ds", "<esc>ds", opts)
 keymap("n", "<space>l", ":IlluminateToggle<cr>", opts)
 
 -- Comment
-keymap("n", "<leader>c", "gc", opts)
+keymap("n", "<leader>c", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("v", "<leader>c", '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>')
 
 -- Hop to jump quickly
 keymap("n", "s", ":HopPattern<cr>", opts)
