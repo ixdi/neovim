@@ -93,8 +93,11 @@ return packer.startup(function(use)
   use { "lewis6991/impatient.nvim" }
   
   use { 'mg979/vim-visual-multi' } -- icons using lua
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-  
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then require("packer").sync() end

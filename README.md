@@ -6,68 +6,80 @@ Clone the repo to ```~/.config/nvim```
 
 ## Installation
 
-Install ```nodejs``` required by Coc plugin
+Install ```nodejs``` 
 
-Install ```ripgrep``` command line utility (used by coc) [https://github.com/BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+Install ```ripgrep```
+
+Install ```xsel and wl-clipboard```
 
 Install ```ctags``` command line
 
-Install ```junegunn/vim-plug``` to manage plugins
+Install ```pip install pynvim``` to manage plugins
 
-```bash
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+Install ```npm install -g neovim``` to manage plugins
 
-Then run ```:PlugUpgrade``` to update vim-plug and ```:PlugUpdate``` to update all plugins
+Then run ```nvim``` to install all for the first time
 
-## Plugins
+## Plugins with Packer
 
 ```vim
-" classic vim
-Plug 'godlygeek/tabular'                  " Tabularize
-Plug 'mg979/vim-visual-multi'             " Multiple cursors
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " View markdown document while editing
+  use { "wbthomason/packer.nvim" } -- Have packer manage itself
+  use { "nvim-lua/plenary.nvim" }
+  use { 'windwp/nvim-autopairs' } -- autopairs using lua and treesitter
+  -- use { 'numToStr/Comment.nvim' }
 
-" Autocomplete
-Plug 'ixdi/vim-meteor-snippets'
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Generate jsDoc
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
+  use { 'nvim-tree/nvim-web-devicons' } -- icons using lua
+  use { 'nvim-tree/nvim-tree.lua' } -- replace for nerdtree in lua
 
-" Language Support
-Plug 'mustache/vim-mustache-handlebars'   " Handlebars and spacebars
+  use { 'nvim-lualine/lualine.nvim' } -- Statusline using lua
+  use { 'EdenEast/nightfox.nvim' } -- lua theme using treesitter
+  use { 'p00f/nvim-ts-rainbow' } -- colorize closing brackets
+  use { 'nvim-treesitter/nvim-treesitter' } -- make a tree of relations. Used by some plugins
+  use { 'liuchengxu/vista.vim' } -- View the code symbols references using lua
+  use { 'RRethy/vim-illuminate' } -- Highlight identical words using lua
+  use { 'phaazon/hop.nvim' } -- Jump quickly to a certaing part of the code using lua
+  -- use { 'numToStr/Comment.nvim' } -- Comments using lua
+  use { 'windwp/nvim-ts-autotag' } -- Close tags using lua and treesitter
+  use { 'gbprod/yanky.nvim' } -- extended yank using lua
+  use { 'folke/todo-comments.nvim' } -- to highlight todo sections
+  use { 'kylechui/nvim-surround' } -- replace pair chars using lua
+  use { 'lewis6991/gitsigns.nvim' } -- Git integration using lua
+  use { 'jdhao/better-escape.vim' } -- scape quickly
 
-" Neovim LUA
-" Some references here: https://jdhao.github.io/nvim-config/
-Plug 'nvim-lualine/lualine.nvim' " Statusline using lua
-Plug 'EdenEast/nightfox.nvim' " lua theme using treesitter
-Plug 'kyazdani42/nvim-web-devicons' " icons using lua
-Plug 'kyazdani42/nvim-tree.lua' " replace for nerdtree in lua
-Plug 'p00f/nvim-ts-rainbow' " colorize closing brackets
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " make a tree of relations. Used by some plugins
-Plug 'liuchengxu/vista.vim' " View the code symbols references using lua
-Plug 'RRethy/vim-illuminate' " Highlight identical words using lua
-Plug 'phaazon/hop.nvim' " Jump quickly to a certaing part of the code using lua
-Plug 'numToStr/Comment.nvim' " Comments using lua
-Plug 'windwp/nvim-autopairs' " autopairs using lua and treesitter
-Plug 'windwp/nvim-ts-autotag' " Close tags using lua and treesitter
-Plug 'gbprod/yanky.nvim' " extended yank using lua
-Plug 'nvim-lua/plenary.nvim' " lua functions I don't want to write twice
-Plug 'folke/todo-comments.nvim' " to highlight todo sections
-Plug 'kylechui/nvim-surround' " replace pair chars using lua
-Plug 'lewis6991/gitsigns.nvim' " Git integration using lua
-Plug 'karb94/neoscroll.nvim' " smooth scroll
-Plug 'jdhao/better-escape.vim' " scape quickly
-Plug 'williamboman/mason.nvim' " easy to install language servers
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig' " language server
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'dcampos/nvim-snippy' " snippets using lua
-Plug 'dcampos/cmp-snippy' " to use snippy with cmp
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+  use { 'neovim/nvim-lspconfig' } -- language server
+  use { 'hrsh7th/nvim-cmp' }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-nvim-lua' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { "saadparwaiz1/cmp_luasnip" }
+  use { 'ray-x/cmp-treesitter' }
+
+  use {"L3MON4D3/LuaSnip" }
+  use { "rafamadriz/friendly-snippets" }
+  --  use { 'dcampos/nvim-snippy' } -- snippets using lua
+  -- use { 'dcampos/cmp-snippy' } -- to use snippy with cmp
+  use {"ixdi/vim-meteor-snippets" }
+
+  use { 'nvim-telescope/telescope.nvim' }
+  use { 'williamboman/mason.nvim' } -- easy to install language servers
+  use { 'williamboman/mason-lspconfig.nvim' }
+  -- use { 'onsails/lspkind.nvim' } -- view pictograms to lsp
+  use { 'ray-x/lsp_signature.nvim' } -- show signature of the functions
+  use { 'norcalli/nvim-colorizer.lua' } -- colorizer
+  -- use { 'nathom/filetype.nvim' } -- 175x faster than vim
+  use { 'lukas-reineke/indent-blankline.nvim' } -- show indent line
+  use { 'danymat/neogen' } -- add comments with lua support
+  use { 'folke/zen-mode.nvim' }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
+  use { 'kdheepak/lazygit.nvim' }
+  use { 'akinsho/bufferline.nvim' }
+  use { 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim' }
+  use { "lewis6991/impatient.nvim" }
+  
+  use { 'mg979/vim-visual-multi' } -- icons using lua
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 ```
 
 ## Shortcuts
@@ -79,38 +91,33 @@ let mapleader = ","
 jj
 
 " Fast saving
-<leader>w :w!<cr>
+<leader>w
 
 " History search
-<silence> <F5> :set hlsearch! hlsearch?<CR>
+<F5>
 
 " Buffer configuration
-bp :bprevious<CR>
-bn :bnext<CR>
-bd :bdelete<CR>
-bl :buffers<CR>
-bda :bufdo bd<CR>
+bp buffer previous
+bn buffer next
+bd buffer delete
+bl buffers list
+bda buffer do
 
 " Copy/paste between vim instances and clipboard using
 y
 p
 
 " set handlebars file type
-<leader>h :set filetype=handlebars<cr>
+<leader>h
 
 " Search and replace word under cursor (,*)
-<leader>* :%s/\<<C-r><C-w>\>//<Left>
+<leader>*
 
 " lua tree
-<F3>
-" find current file in NerdTree
-<silent> <leader>f
+<space>e
 
-" Tabularize
-<leader>t :Tabularize /
-<leader>t :'<, '>Tabularize /
-<leader>T :Tabularize / \zs
-<leader>T :'<, '>Tabularize / \zs
+" find current file in NerdTree
+<leader>f
 
 " Surround
 " replace tag for anotherone
@@ -122,47 +129,63 @@ p
 
 " Indent
 " select all file and indent
-<leader>o <esc>gg=G<C-o>
+<leader>o
 " indent bracket
-<leader>oo <esc>=i}
+<leader>oo
 
 " stripwhitespace
-<F7> :%s/\s\+$//e<cr>
+<F7>
 
 " Sort css
-<leader>so vi}:sort<CR>
+<leader>so
 
-" vim doge code comment autocompletion
-<leader>d :DogeGenerate<cr>
+" comment autocompletion
+<leader>d code
+<leader>dc class
+<leader>dt type
+<leader>df file
 
-" Comment lines
+" Comment lines visually
 <leader>c
 
 " Hop to jump quickly
-nnoremap <silent> s :HopPattern<cr>
-nnoremap <silent> <space>hw :HopWord<cr>
-nnoremap <silent> <space>h1 :HopChar1<cr>
-nnoremap <silent> <space>h2 :HopChar2<cr>
-nnoremap <silent> <space>hl :HopLine<cr>
+s :HopPattern<cr>
+<space>hw find word starting with...
+<space>h1 jump char 1
+<space>h2 jump char 2
+<space>hl jump line
 
 " snippets
 imap <expr> <Tab>
 imap <expr> <S-Tab>
 
+" Markdown preview
+<space>m
+
 " Telescope
-nnoremap <silent> <space>f <cmd>Telescope find_files<cr>
-nnoremap <silent> <space>u <cmd>Telescope oldfiles<cr>
-nnoremap <C-f> <cmd>Telescope grep_string<cr>
-nnoremap <C-l> <cmd>Telescope quickfix<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <silent> <space>b <cmd>Telescope buffers<cr>
-nnoremap <leader>s <cmd>Telescope lsp_document_symbols<cr>
-nnoremap <silent> <space>err <cmd>Telescope diagnostics<cr>
-nnoremap <silent> <space>d <cmd>Telescope lsp_definitions<cr>
-nnoremap <silent> <space>r <cmd>Telescope lsp_references<cr>
-nnoremap <silent> <space>i <cmd>Telescope lsp_implementations<cr>
-nnoremap <silent> <space>g <cmd>Telescope git_status<cr>
-nnoremap <silent> <space>ri <cmd>Telescope lsp_incoming_calls<cr>
-nnoremap <silent> <space>ro <cmd>Telescope lsp_outgoing_calls<cr>
-nnoremap <leader>r :'<,'>Telescope lsp_range_code_actions<cr>
+<space>f find_files
+<space>u recent files
+<C-f> grep string in a project
+<C-l> show last list
+<leader>fg live_grep
+<space>b buffers
+<leader>s show symbols
+<space>err diagnostics
+<space>d lsp_definitions
+<space>r lsp_references
+<space>i lsp_implementations
+<space>ri lsp_incoming_calls
+<space>ro lsp_outgoing_calls
+
+" Lazzy git
+<space>g
+
+" Toggle diagnostics
+<leader>dv
+
+" Relative number
+<learder>n
+
+" Zen mode
+<leader>z
 ```
