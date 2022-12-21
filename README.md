@@ -10,6 +10,8 @@ Install ```nodejs```
 
 Install ```ripgrep```
 
+Install ```lazygit``` command line
+
 Install ```xsel and wl-clipboard```
 
 Install ```ctags``` command line
@@ -17,6 +19,8 @@ Install ```ctags``` command line
 Install ```pip install pynvim``` to manage plugins
 
 Install ```npm install -g neovim``` to manage plugins
+
+markdown-preview needs special atention ```cd ~/.local/share/nvim/site/pack/markdown-preview/app && yarn```
 
 Then run ```nvim``` to install all for the first time
 
