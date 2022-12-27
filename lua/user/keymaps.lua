@@ -47,7 +47,8 @@ keymap("n", "<F7>", ":%s/s+$//e<cr>", opts)
 keymap("n", "<leader>so", "vi}:sort<cr>", opts)
 
 -- Fast saving
-keymap("n", "<leader>w", ":w!<cr>", opts)
+keymap("n", "<leader>w", ":w<cr>", opts)
+keymap("n", "<leader>ww", ":noa w<cr>", opts)
 keymap("n", "<leader>r", ":e<cr>", opts)
 
 -- Markdown preview
