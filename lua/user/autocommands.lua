@@ -29,4 +29,4 @@ vim.cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red")
 
 -- on autoload change filetypes for html to handlebars
 -- vim.cmd("autocmd BufReadPost,BufNewFile *.html set filetype=handlebars")
-vim.cmd("autocmd BufRead,BufNewFile *rc set filetype=json")
+-- vim.cmd("autocmd BufRead,BufNewFile *rc set filetype=json")
