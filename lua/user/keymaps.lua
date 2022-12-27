@@ -57,7 +57,7 @@ keymap("n", "<space>m", "<Plug>MarkdownPreviewToggle", opts)
 keymap("n", "<space>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>f", ":NvimTreeFindFile<cr>", opts)
 
-keymap("n", "<space>t", ":TodoQuickFix<cr>", opts)
+keymap("n", "<space>t", ":TodoTelescope<cr>", opts)
 
 -- Surround
 -- change char on cursor with new one, cs"' substitute " by '
