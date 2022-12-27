@@ -4,6 +4,7 @@ if not status_ok then return end
 local luas_status_ok, luasnip = pcall(require, "luasnip")
 if not luas_status_ok then return end
 
+require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip/loaders/from_snipmate").lazy_load()
 
 local check_backspace = function()
@@ -117,8 +118,7 @@ cmp.setup({
     },
     sources = {
         {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
-        {name = "buffer"}, {name = "path"}, {name = "cmdline"},
-        {name = "treesitter"}
+        {name = "buffer"}, {name = "path"}, {name = "treesitter"}
     },
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
     experimental = {ghost_text = true}
