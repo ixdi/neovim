@@ -41,7 +41,7 @@ null_ls.setup({
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    if vim.bo.filetype == #"handlebars" then
+                    if vim.bo.filetype == #"html.handlebars" then
                         vim.lsp.buf.format({
                             bufnr = bufnr,
                             filter = function(client)
