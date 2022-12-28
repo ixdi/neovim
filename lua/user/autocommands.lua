@@ -28,5 +28,6 @@ vim.cmd("autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red")
 -- vim.cmd("autocmd InsertLeave * match ExtraWhitespace /\s\+\%#\@<!$/")
 
 -- on autoload change filetypes for html to handlebars
--- vim.cmd("autocmd BufReadPost,BufNewFile *.html set filetype=handlebars")
+vim.cmd(
+    "autocmd BufReadPost,BufNewFile *.html set filetype=html.handlebars syntax=handlebars")
 -- vim.cmd("autocmd BufRead,BufNewFile *rc set filetype=json")

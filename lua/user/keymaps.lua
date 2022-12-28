@@ -36,7 +36,7 @@ keymap("n", "<leader>h", ":set filetype=mustache<cr>", opts)
 
 -- Indent
 -- select all file and indent
-keymap("n", "<leader>o", "<esc>gg=G<C-o>", opts)
+keymap("n", "<leader>o", "<esc>gg=G", opts)
 -- indent bracket
 keymap("n", "<leader>oo", "<esc>=i", opts)
 

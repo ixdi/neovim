@@ -289,6 +289,11 @@ _G.packer_plugins = {
     path = "/home/scortes/.local/share/nvim/site/pack/packer/start/vim-meteor-snippets",
     url = "https://github.com/ixdi/vim-meteor-snippets"
   },
+  ["vim-mustache-handlebars"] = {
+    loaded = true,
+    path = "/home/scortes/.local/share/nvim/site/pack/packer/start/vim-mustache-handlebars",
+    url = "https://github.com/mustache/vim-mustache-handlebars"
+  },
   ["vim-visual-multi"] = {
     loaded = true,
     path = "/home/scortes/.local/share/nvim/site/pack/packer/start/vim-visual-multi",

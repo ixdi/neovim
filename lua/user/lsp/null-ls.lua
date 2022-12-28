@@ -29,8 +29,7 @@ null_ls.setup({
         formatting.beautysh, -- formatting.eslint.with({ prefer_local = "node_modules/.bin" }),
         -- formatting.djlint,
         -- formatting.eslint_d.with({prefer_local = "node_modules/.bin"}), -- formatting.fixjson,
-        formatting.lua_format, formatting.markdownlint,
-        formatting.prettier.with({prefer_local = "node_modules/.bin"}),
+        formatting.lua_format, formatting.markdownlint, formatting.prettier,
         formatting.yamlfmt
         -- hover.printenv
     },
@@ -42,7 +41,14 @@ null_ls.setup({
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format({bufnr = bufnr})
+                    if vim.bo.filetype == #"handlebars" then
+                        vim.lsp.buf.format({
+                            bufnr = bufnr,
+                            filter = function(client)
+                                return client.name == "null-ls"
+                            end
+                        })
+                    end
                 end
             })
         end
