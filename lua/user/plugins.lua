@@ -55,7 +55,10 @@ return packer.startup(function(use)
     use({"windwp/nvim-ts-autotag"}) -- Close tags using lua and treesitter
     use({"gbprod/yanky.nvim"}) -- extended yank using lua
     use({"folke/todo-comments.nvim"}) -- to highlight todo sections
-    use({"kylechui/nvim-surround"}) -- replace pair chars using lua
+    use({
+        "kylechui/nvim-surround",
+        tag = "*" -- Use for stability; omit to use `main` branch for the latest features
+    }) -- replace pair chars using lua
     use({"lewis6991/gitsigns.nvim"}) -- Git integration using lua
     use({"jdhao/better-escape.vim"}) -- scape quickly
 

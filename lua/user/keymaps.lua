@@ -60,16 +60,6 @@ keymap("n", "<leader>f", ":NvimTreeFindFile<cr>", opts)
 
 keymap("n", "<space>t", ":TodoTelescope<cr>", opts)
 
--- Surround
--- change char on cursor with new one, cs"' substitute " by '
-keymap("n", "<leader>sc", "<esc>cs", opts)
--- replace tag for anotherone
-keymap("n", "<leader>st", "<esc>cst", opts)
--- insert new chars wrapping word under cursor
-keymap("n", "<leader>s", "<esc>ysiw", opts)
--- delete around. Using dst will remove the enclosing tag
-keymap("n", "<leader>ds", "<esc>ds", opts)
-
 -- Illuminate word under cursor
 keymap("n", "<space>l", ":IlluminateToggle<cr>", opts)
 

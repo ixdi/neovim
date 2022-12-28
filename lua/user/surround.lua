@@ -1,0 +1,17 @@
+local sur_status_ok, surround = pcall(require, "nvim-surround")
+if not sur_status_ok then return end
+
+surround.setup({
+    keymaps = {
+        insert = "<leader>s",
+        insert_line = "<leader>S",
+        normal = "ys",
+        normal_cur = "yss",
+        normal_line = "yS",
+        normal_cur_line = "ySS",
+        visual = "S",
+        visual_line = "gS",
+        delete = "ds",
+        change = "cs"
+    }
+})
