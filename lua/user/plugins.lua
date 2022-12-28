@@ -91,7 +91,7 @@ return packer.startup(function(use)
     use({"folke/zen-mode.nvim"})
     use({"jose-elias-alvarez/null-ls.nvim"})
     use({"kdheepak/lazygit.nvim"})
-    use({"akinsho/bufferline.nvim"})
+    use({"akinsho/bufferline.nvim", tag = "v3.*" })
     use({"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"})
     use({"lewis6991/impatient.nvim"})
 
