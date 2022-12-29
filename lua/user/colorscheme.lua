@@ -3,9 +3,16 @@ local colorscheme = "nordfox"
 require('nightfox').setup({
   options = {
     styles = {
-      comments = "italic",
+      comments = "italic",    -- Value is any valid attr-list value `:help attr-list`
+      conditionals = "NONE",
+      constants = "NONE",
+      functions = "NONE",
       keywords = "bold",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
       types = "italic,bold",
+      variables = "NONE",
     }
   }
 })
