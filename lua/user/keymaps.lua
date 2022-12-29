@@ -34,6 +34,9 @@ keymap("n", "<leader>h", ":set filetype=mustache<cr>", opts)
 -- Search and replace word under cursor (,*)
 -- keymap("n", "<leader>*", ":%s/\<C-r><C-w>\>//<Left>", opts)
 
+-- select word under cursor
+keymap("n", "<leader>s", "<esc>viw", opts)
+
 -- Indent
 -- select all file and indent
 keymap("n", "<leader>i", "<esc>gg=G", opts)
