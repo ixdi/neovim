@@ -30,7 +30,7 @@ null_ls.setup({
         formatting.beautysh, -- formatting.eslint.with({ prefer_local = "node_modules/.bin" }),
         -- formatting.djlint,
         formatting.eslint_d, formatting.fixjson, formatting.lua_format,
-        formatting.markdownlint, formatting.prettier, formatting.yamlfmt
+        formatting.markdownlint, formatting.prettierd, formatting.yamlfmt
         -- hover.printenv
     },
     -- you can reuse a shared lspconfig on_attach callback here
