@@ -1,6 +1,6 @@
 local servers = {
     "sumneko_lua", "cssls", "tsserver", "pyright", "bashls", "jsonls", "yamlls",
-    "marksman", "eslint"
+    "marksman"
 }
 
 -- INSTALLED in Mason by hand as we don't want some on lspconfig
