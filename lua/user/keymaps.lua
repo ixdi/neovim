@@ -106,14 +106,18 @@ keymap("n", "<leader>df", ":Neogen file<cr>", opts)
 keymap("n", "<leader>z", ":ZenMode<cr>", opts)
 
 -- relative number
-keymap("n", "<leader>n", ":set invrelativenumber<cr>", opts)
+keymap("n", "<space>n", ":set invrelativenumber<cr>", opts)
 
 -- lazygit
 keymap("n", "<space>g", ":LazyGit<cr>", opts)
 
 -- Toggle diagnostics
-keymap("n", "<leader>ee", "<Plug>(toggle-lsp-diag-vtext)", opts)
+keymap("n", "<leader>n", "<Plug>(toggle-lsp-diag-vtext)", opts)
 
 -- Yank keymaps
-vim.keymap.set({"n", "x"}, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({"n", "x"}, "P", "<Plug>(YankyPutBefore)")
+keymap({"n", "x"}, "p", "<Plug>(YankyPutAfter)", opts)
+keymap({"n", "x"}, "P", "<Plug>(YankyPutBefore)", opts)
+
+-- toggle-diagnostics
+keymap("n", "<leader>e",
+       ":lua vim.diagnostic.open_float(nil, {focus=false}) <cr>", opts)
