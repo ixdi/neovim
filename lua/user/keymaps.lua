@@ -23,7 +23,7 @@ keymap("n", "bp", ":bprevious<cr>", opts)
 keymap("n", "bn", ":bnext<cr>", opts)
 keymap("n", "bd", ":bdelete<cr>", opts)
 keymap("n", "bl", ":buffers<cr>", opts)
-keymap("n", "bda", ":%bd|e#<cr>", opts) -- closes all except current one
+keymap("n", "bda", ":%bd|e#|bd#<cr>", opts) -- closes all except current one and remove noName
 
 -- Clear last search (,qs)
 keymap("n", "<leader>m", ":noh<cr>", opts)
