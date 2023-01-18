@@ -14,12 +14,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     debug = false,
     sources = {
-        code_actions.eslint_d,
-        -- code_actions.eslint.with({prefer_local = "node_modules/.bin"}),
+        code_actions.eslint_d, -- code_actions.eslint,
         -- diagnostics.ansiblelint,
         -- diagnostics.codespell,
         -- diagnostics.djlint,
-        diagnostics.eslint_d, diagnostics.luacheck, -- diagnostics.flake8,
+        diagnostics.eslint_d, -- diagnostics.eslint,
+        diagnostics.luacheck, -- diagnostics.flake8,
         -- diagnostics.jsonlint,
         diagnostics.markdownlint, -- diagnostics.misspell,
         diagnostics.pylint, -- diagnostics.stylelint,
@@ -27,10 +27,11 @@ null_ls.setup({
         diagnostics.vint, -- diagnostics.zsh,
         -- formatting.autopep8,
         formatting.black.with({extra_args = {"--fast"}}), formatting.stylua,
-        formatting.beautysh, -- formatting.eslint.with({ prefer_local = "node_modules/.bin" }),
-        -- formatting.djlint,
-        formatting.eslint_d, formatting.fixjson, formatting.lua_format,
-        formatting.markdownlint, formatting.prettierd, formatting.yamlfmt
+        formatting.beautysh, -- formatting.djlint,
+        -- formatting.eslint_d,
+        -- formatting.eslint,
+        formatting.fixjson, formatting.lua_format, formatting.markdownlint,
+        formatting.prettierd, formatting.yamlfmt
         -- hover.printenv
     },
     -- you can reuse a shared lspconfig on_attach callback here
