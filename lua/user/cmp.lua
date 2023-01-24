@@ -117,6 +117,7 @@ cmp.setup({
         end
     },
     sources = {
+        {name = "nvim_lsp"}, -- {name = "nvim_lua"},
         {name = "luasnip"}, {name = "treesitter"}, {
             name = "buffer",
             option = {
@@ -125,7 +126,6 @@ cmp.setup({
                 end
             }
         }, -- {name = "cmdline"},
-        {name = "nvim_lsp"}, -- {name = "nvim_lua"},
         {name = "path"}
     },
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
