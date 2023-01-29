@@ -121,3 +121,6 @@ keymap({"n", "x"}, "P", "<Plug>(YankyPutBefore)", opts)
 -- toggle-diagnostics
 keymap("n", "<leader>e",
        ":lua vim.diagnostic.open_float(nil, {focus=false}) <cr>", opts)
+
+-- Spectre replace in multiple files
+keymap("n", "<leader>r", ":Spectre open<cr>", opts)

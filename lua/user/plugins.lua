@@ -91,7 +91,7 @@ return packer.startup(function(use)
     use({"folke/zen-mode.nvim"})
     use({"jose-elias-alvarez/null-ls.nvim"})
     use({"kdheepak/lazygit.nvim"})
-    use({"akinsho/bufferline.nvim", tag = "v3.*" })
+    use({"akinsho/bufferline.nvim", tag = "v3.*"})
     use({"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"})
     use({"lewis6991/impatient.nvim"})
 
@@ -101,6 +101,8 @@ return packer.startup(function(use)
         run = function() vim.fn["mkdp#util#install"]() end
     })
     use({"mustache/vim-mustache-handlebars"})
+
+    use({"windwp/nvim-spectre"})
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

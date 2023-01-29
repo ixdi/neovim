@@ -63,11 +63,11 @@ local function lsp_keymaps(bufnr)
     keymap(bufnr, "n", "<space>a", ":lua vim.lsp.buf.code_action()<cr>", opts)
     keymap(bufnr, "n", "<leader>en",
            ":lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-    keymap(bufnr, "n", "<leader>rn", ":lua vim.lsp.buf.rename()<cr>", opts)
+    -- keymap(bufnr, {"n","v"}, "<leader>rn", ":lua vim.lsp.buf.rename()<cr>", opts)
     keymap(bufnr, "n", "<leader>ls", ":lua vim.lsp.buf.signature_help()<CR>",
            opts)
-    keymap(bufnr, "n", "<space>ri", ":Telescope lsp_incoming_calls<cr>", opts)
-    keymap(bufnr, "n", "<space>ro", ":Telescope lsp_outgoing_calls<cr>", opts)
+    keymap(bufnr, "n", "<space>ci", ":Telescope lsp_incoming_calls<cr>", opts)
+    keymap(bufnr, "n", "<space>co", ":Telescope lsp_outgoing_calls<cr>", opts)
 end
 
 M.on_attach = function(client, bufnr)
