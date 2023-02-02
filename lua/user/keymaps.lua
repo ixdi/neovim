@@ -124,3 +124,7 @@ keymap("n", "<leader>e",
 
 -- Spectre replace in multiple files
 keymap("n", "<leader>r", ":Spectre open<cr>", opts)
+
+-- Mind open notes tree
+keymap("n", "<space>n", ":MindOpenProject<cr>", opts)
+-- :h mind-config-keymaps to view the keymaps

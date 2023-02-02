@@ -102,6 +102,11 @@ return packer.startup(function(use)
     })
     use({"mustache/vim-mustache-handlebars"})
 
+    use({
+        "phaazon/mind.nvim",
+        branch = "v2.2",
+        requires = {"nvim-lua/plenary.nvim"}
+    })
     use({"windwp/nvim-spectre"})
 
     -- Automatically set up your configuration after cloning packer.nvim
