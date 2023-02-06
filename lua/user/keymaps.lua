@@ -123,7 +123,7 @@ keymap("n", "<leader>e",
        ":lua vim.diagnostic.open_float(nil, {focus=false}) <cr>", opts)
 
 -- Spectre replace in multiple files
-keymap("n", "<leader>r", ":Spectre open<cr>", opts)
+keymap("n", "<C-r>", ":Spectre open<cr>", opts)
 
 -- Mind open notes tree
 keymap("n", "<space>n", ":MindOpenProject<cr>", opts)
