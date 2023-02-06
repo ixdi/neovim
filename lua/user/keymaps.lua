@@ -52,7 +52,9 @@ keymap("n", "<leader>so", "vi}:sort<cr>", opts)
 -- Fast saving
 keymap("n", "<leader>w", ":w<cr>", opts)
 keymap("n", "<leader>ww", ":noa w<cr>", opts)
-keymap("n", "<leader>r", ":e<cr>", opts)
+
+-- Refresh the current buffer
+keymap("n", "<leader>rf", ":e<cr>", opts)
 
 -- Markdown preview
 keymap("n", "<space>m", "<Plug>MarkdownPreviewToggle", opts)
@@ -123,7 +125,7 @@ keymap("n", "<leader>e",
        ":lua vim.diagnostic.open_float(nil, {focus=false}) <cr>", opts)
 
 -- Spectre replace in multiple files
-keymap("n", "<C-r>", ":Spectre open<cr>", opts)
+keymap("n", "<leader>r", ":Spectre open<cr>", opts)
 
 -- Mind open notes tree
 keymap("n", "<space>n", ":MindOpenProject<cr>", opts)
