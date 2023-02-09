@@ -95,8 +95,8 @@ keymap("n", "<space>b", ":Telescope buffers<cr>", opts)
 -- keymap("n", "<space>r", ":Telescope lsp_references<cr>", opts)
 -- keymap("n", "<space>i", ":Telescope lsp_implementations<cr>", opts)
 -- keymap("n", "<leader>g", ":Telescope git_status<cr>", opts)
--- keymap("n", "<space>ri", ":Telescope lsp_incoming_calls<cr>", opts)
--- keymap("n", "<space>ro", ":Telescope lsp_outgoing_calls<cr>", opts)
+-- keymap("n", "<space>ci", ":Telescope lsp_incoming_calls<cr>", opts)
+-- keymap("n", "<space>co", ":Telescope lsp_outgoing_calls<cr>", opts)
 
 -- doc generation
 keymap("n", "<leader>d", ":Neogen<cr>", opts)
