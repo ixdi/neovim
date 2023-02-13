@@ -57,7 +57,7 @@ keymap("n", "<leader>ww", ":noa w<cr>", opts)
 keymap("n", "<leader>rf", ":e<cr>", opts)
 
 -- Markdown preview
-keymap("n", "<space>m", "<Plug>MarkdownPreviewToggle", opts)
+keymap("n", "<space>md", "<Plug>MarkdownPreviewToggle", opts)
 
 -- tree using lua
 keymap("n", "<space>e", ":NvimTreeToggle<cr>", opts)
@@ -130,3 +130,9 @@ keymap("n", "<leader>r", ":Spectre open<cr>", opts)
 -- Mind open notes tree
 keymap("n", "<space>n", ":MindOpenProject<cr>", opts)
 -- :h mind-config-keymaps to view the keymaps
+
+-- neoclip
+keymap("n", "<space>c",
+       ":lua require('telescope').extensions.neoclip.default()<cr>", opts)
+keymap("n", "<space>m",
+       ":lua require('telescope').extensions.macroscope.default()<cr>", opts)
