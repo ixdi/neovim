@@ -7,6 +7,7 @@ telescope.setup({
     defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
+        shorten_path = true,
         path_display = {"smart"},
         file_ignore_patterns = {
             ".git", "node_modules", ".meteor", "public", "imports/externals",
