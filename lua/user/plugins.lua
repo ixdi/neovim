@@ -112,6 +112,12 @@ return packer.startup(function(use)
         "AckslD/nvim-neoclip.lua",
         requires = {{"nvim-telescope/telescope.nvim"}}
     })
+    use({
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}
+        }
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
