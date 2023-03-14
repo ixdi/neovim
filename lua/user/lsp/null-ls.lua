@@ -14,7 +14,8 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     debug = false,
     sources = {
-        code_actions.eslint_d, -- code_actions.eslint,
+        code_actions.eslint_d, code_actions.gitsigns, code_actions.refactoring,
+        -- code_actions.eslint,
         -- diagnostics.ansiblelint,
         -- diagnostics.codespell,
         -- diagnostics.djlint,
