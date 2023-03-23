@@ -40,6 +40,7 @@ return packer.startup(function(use)
     use({"wbthomason/packer.nvim"}) -- Have packer manage itself
     use({"nvim-lua/plenary.nvim"})
     use({"windwp/nvim-autopairs"}) -- autopairs using lua and treesitter
+    use({"windwp/nvim-ts-autotag"}) -- Close tags using lua and treesitter. Is setup in treesitter
 
     use({"nvim-tree/nvim-web-devicons"}) -- icons using lua
     use({"nvim-tree/nvim-tree.lua"}) -- replace for nerdtree in lua
@@ -52,7 +53,6 @@ return packer.startup(function(use)
     use({"RRethy/vim-illuminate"}) -- Highlight identical words using lua
     use({"phaazon/hop.nvim"}) -- Jump quickly to a certaing part of the code using lua
     use({"numToStr/Comment.nvim"}) -- Comments using lua
-    use({"windwp/nvim-ts-autotag"}) -- Close tags using lua and treesitter
     use({"gbprod/yanky.nvim"}) -- extended yank using lua
     use({"folke/todo-comments.nvim"}) -- to highlight todo sections
     use({

@@ -1,8 +1,8 @@
-local status_ok, treesitter = pcall(require, "nvim-treesitter")
-if not status_ok then return end
+local status_ok_treesitter, treesitter = pcall(require, "nvim-treesitter")
+if not status_ok_treesitter then return end
 
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then return end
+local status_ok_configs, configs = pcall(require, "nvim-treesitter.configs")
+if not status_ok_configs then return end
 
 configs.setup({
     -- A list of parser names, or "all"
@@ -34,7 +34,7 @@ configs.setup({
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false
     },
-    autotag = {enable = true},
+    autotag = {enable = true, filetypes = {"html", "xml"}},
     incremental_selection = {enable = true},
     indent = {enable = true},
     rainbow = {
