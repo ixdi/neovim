@@ -34,7 +34,10 @@ configs.setup({
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false
     },
-    autotag = {enable = true, filetypes = {"html", "xml"}},
+    autotag = {
+        enable = true,
+        filetypes = {"html", "html.handlebars", "handlebars", "mustache", "xml"}
+    },
     incremental_selection = {enable = true},
     indent = {enable = true},
     rainbow = {
