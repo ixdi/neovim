@@ -1,8 +1,8 @@
 local servers = {
     "ansiblels", "bashls", "cssls", "dockerls",
-    "docker_compose_language_service", "ember", "emmet_ls", "eslint", "jsonls",
-    "lua_ls", "html", "marksman", "pyright", "stylelint_lsp", "terraformls",
-    "tsserver", "yamlls"
+    "docker_compose_language_service", "emmet_ls", "eslint", "jsonls", "lua_ls",
+    "html", "marksman", "pyright", "stylelint_lsp", "terraformls", "tsserver",
+    "yamlls"
 }
 
 -- INSTALLED in Mason by hand as we don't want some on lspconfig
