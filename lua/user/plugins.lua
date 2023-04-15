@@ -118,6 +118,7 @@ return packer.startup(function(use)
             {"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}
         }
     })
+    use({"nvim-telescope/telescope-fzf-native.nvim", run = "make"})
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

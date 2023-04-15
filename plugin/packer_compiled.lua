@@ -279,6 +279,11 @@ _G.packer_plugins = {
     path = "/home/scortes/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
     url = "https://github.com/ThePrimeagen/refactoring.nvim"
   },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/home/scortes/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+  },
   ["telescope-ui-select.nvim"] = {
     loaded = true,
     path = "/home/scortes/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
