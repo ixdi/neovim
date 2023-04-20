@@ -90,6 +90,8 @@ keymap("n", "<space><space>", ":lua vim.lsp.buf.hover()<cr>", opts)
 keymap("n", "<C-f>", ":Telescope live_grep<cr>", opts)
 keymap("n", "<C-l>", ":Telescope resume<cr>", opts)
 keymap("n", "<space>b", ":Telescope buffers<cr>", opts)
+keymap("n", "<space>ss", ":Telescope luasnip<cr>", opts)
+
 -- keymap("n", "<leader>e", ":Telescope diagnostics<cr>", opts)
 -- keymap("n", "<space>d", ":Telescope lsp_definitions<cr>", opts)
 -- keymap("n", "<space>r", ":Telescope lsp_references<cr>", opts)

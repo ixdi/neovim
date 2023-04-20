@@ -108,7 +108,7 @@ cmp.setup({
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
-                luasnip = "[LuaSnip]",
+                -- luasnip = "[LuaSnip]",
                 buffer = "[Buffer]",
                 path = "[Path]",
                 emoji = ""
@@ -118,7 +118,8 @@ cmp.setup({
     },
     sources = {
         {name = "nvim_lsp"}, -- {name = "nvim_lua"},
-        {name = "luasnip"}, {name = "treesitter"}, {
+        -- {name = "luasnip"},
+        {name = "treesitter"}, {
             name = "buffer",
             option = {
                 get_bufnrs = function()
