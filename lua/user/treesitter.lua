@@ -35,8 +35,8 @@ configs.setup({
         additional_vim_regex_highlighting = false
     },
     autotag = {
-        enable = true,
-        filetypes = {"html", "html.handlebars", "handlebars", "mustache", "xml"}
+        enable = true
+        -- filetypes = {"html", "html.handlebars", "handlebars", "mustache", "xml"}
     },
     incremental_selection = {enable = true},
     indent = {enable = true},
@@ -50,8 +50,8 @@ configs.setup({
     }
 })
 
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-parser_config.glimmer = {
-    filetype = "handlebars",
-    used_by = {"mustache", "handlebars", "html.handlebars", "spacebars", "html"}
-}
+-- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+-- parser_config.glimmer = {
+--     filetype = "handlebars",
+--     used_by = {"mustache", "handlebars", "html.handlebars", "spacebars", "html"}
+-- }

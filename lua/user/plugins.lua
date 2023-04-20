@@ -62,6 +62,12 @@ return packer.startup(function(use)
     use({"lewis6991/gitsigns.nvim"}) -- Git integration using lua
     use({"jdhao/better-escape.vim"}) -- scape quickly
 
+    use({
+        "L3MON4D3/LuaSnip",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
+
     use({"neovim/nvim-lspconfig"}) -- language server
     use({"hrsh7th/nvim-cmp"})
     use({"hrsh7th/cmp-nvim-lsp"})
@@ -71,8 +77,6 @@ return packer.startup(function(use)
     use({"hrsh7th/cmp-cmdline"})
     use({"saadparwaiz1/cmp_luasnip"})
     use({"ray-x/cmp-treesitter"})
-
-    use({"L3MON4D3/LuaSnip"})
     use({"rafamadriz/friendly-snippets"})
     --  use { 'dcampos/nvim-snippy' } -- snippets using lua
     -- use { 'dcampos/cmp-snippy' } -- to use snippy with cmp
@@ -118,7 +122,7 @@ return packer.startup(function(use)
             {"nvim-lua/plenary.nvim"}, {"nvim-treesitter/nvim-treesitter"}
         }
     })
-    use({"nvim-telescope/telescope-fzf-native.nvim", build = "make"})
+    use({"nvim-telescope/telescope-fzf-native.nvim", run = "make"})
     use({"benfowler/telescope-luasnip.nvim"})
 
     -- Automatically set up your configuration after cloning packer.nvim

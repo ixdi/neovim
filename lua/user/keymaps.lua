@@ -34,9 +34,6 @@ keymap("n", "<leader>h", ":set filetype=mustache<cr>", opts)
 -- Search and replace word under cursor (,*)
 -- keymap("n", "<leader>*", ":%s/\<C-r><C-w>\>//<Left>", opts)
 
--- select word under cursor
-keymap("n", "<leader>s", "<esc>viw", opts)
-
 -- Indent
 -- select all file and indent
 keymap("n", "<leader>i", "<esc>gg=G", opts)
@@ -75,7 +72,7 @@ keymap("v", "<leader>c",
        '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>')
 
 -- Hop to jump quickly
-keymap("n", "s", ":HopPattern<cr>", opts)
+keymap("n", "<space>h", ":HopPattern<cr>", opts)
 keymap("n", "<space>hw", ":HopWord<cr>", opts)
 keymap("n", "<space>h1", ":HopChar1<cr>", opts)
 keymap("n", "<space>h2", ":HopChar2<cr>", opts)

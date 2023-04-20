@@ -40,6 +40,15 @@ local kind_icons = {
     TypeParameter = ""
 }
 
+local has_words_before = function()
+    unpack = unpack or table.unpack
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and
+               vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col,
+                                                                          col)
+                   :match("%s") == nil
+end
+
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -47,15 +56,30 @@ cmp.setup({
         end
     },
     window = {
-        completion = cmp.config.window.bordered(),
+        -- completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered()
     },
+    sources = {
+        {name = "nvim_lsp"}, -- {name = "nvim_lua"},
+        {name = "luasnip"}, {name = "treesitter"}, {
+            name = "buffer",
+            option = {
+                get_bufnrs = function()
+                    return vim.api.nvim_list_bufs()
+                end
+            }
+        }, -- {name = "cmdline"},
+        {name = "path"}
+    },
+    confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
+    experimental = {ghost_text = true},
     mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<esc>"] = cmp.mapping.abort(),
+        ["<esc>"] = cmp.mapping.close(),
+
         -- salta al proximo snippet
         ["<C-d>"] = cmp.mapping(function(fallback)
             if luasnip.jumpable(1) then
@@ -64,6 +88,7 @@ cmp.setup({
                 fallback()
             end
         end, {"i", "s"}),
+
         ["<C-b>"] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
@@ -71,26 +96,47 @@ cmp.setup({
                 fallback()
             end
         end, {"i", "s"}),
-        ["<CR>"] = cmp.mapping.confirm({select = true}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+        ["<CR>"] = cmp.mapping({
+            i = function(fallback)
+                if cmp.visible() and cmp.get_active_entry() then
+                    cmp.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = false
+                    })
+                else
+                    fallback()
+                end
+            end,
+            s = cmp.mapping.confirm({select = true}),
+            c = cmp.mapping.confirm({
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true
+            })
+        }),
+
         ["<Down>"] = cmp.mapping(function(fallback)
             if cmp.visible() then cmp.select_next_item() end
         end, {"i", "s"}),
+
         ["<Up>"] = cmp.mapping(function(fallback)
             if cmp.visible() then cmp.select_prev_item() end
         end, {"i", "s"}),
+
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expandable() then
-                luasnip.expand()
+                -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+                -- they way you will only jump inside the snippet region
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif check_backspace() then
-                fallback()
+            elseif has_words_before() then
+                cmp.complete()
             else
                 fallback()
             end
         end, {"i", "s"}),
+
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -108,29 +154,14 @@ cmp.setup({
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[Lua]",
-                -- luasnip = "[LuaSnip]",
+                luasnip = "[LuaSnip]",
                 buffer = "[Buffer]",
                 path = "[Path]",
                 emoji = ""
             })[entry.source.name]
             return vim_item
         end
-    },
-    sources = {
-        {name = "nvim_lsp"}, -- {name = "nvim_lua"},
-        -- {name = "luasnip"},
-        {name = "treesitter"}, {
-            name = "buffer",
-            option = {
-                get_bufnrs = function()
-                    return vim.api.nvim_list_bufs()
-                end
-            }
-        }, -- {name = "cmdline"},
-        {name = "path"}
-    },
-    confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
-    experimental = {ghost_text = true}
+    }
 })
 
 -- -- Set configuration for specific filetype.

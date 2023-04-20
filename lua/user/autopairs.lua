@@ -3,7 +3,7 @@ if not status_ok then return end
 
 npairs.setup({
     check_ts = true, -- treesitter integration
-    disable_filetype = {"TelescopePrompt"},
+    disable_filetype = {"TelescopePrompt", "spectre_panel"},
     ts_config = {
         lua = {"string", "source"},
         javascript = {"string", "template_string"},
