@@ -135,3 +135,7 @@ keymap("n", "<space>c",
        ":lua require('telescope').extensions.neoclip.default()<cr>", opts)
 keymap("n", "<space>m",
        ":lua require('telescope').extensions.macroscope.default()<cr>", opts)
+
+-- signature
+keymap("n", "<leader>k", ":lua require('lsp_signature').toggle_float_win()<cr>",
+       opts)
