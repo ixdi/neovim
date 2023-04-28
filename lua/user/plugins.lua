@@ -124,6 +124,15 @@ return packer.startup(function(use)
     })
     use({"nvim-telescope/telescope-fzf-native.nvim", run = "make"})
     use({"benfowler/telescope-luasnip.nvim"})
+    use({
+        "anuvyklack/windows.nvim",
+        requires = {"anuvyklack/middleclass", "anuvyklack/animation.nvim"},
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+        end
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

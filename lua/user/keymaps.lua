@@ -139,3 +139,9 @@ keymap("n", "<space>m",
 -- signature
 keymap("n", "<leader>k", ":lua require('lsp_signature').toggle_float_win()<cr>",
        opts)
+
+-- windows
+keymap("n", "<space>w", ":WindowsMaximize<cr>")
+keymap("n", "<space>_", ":WindowsMaximizeVertically<cr>")
+keymap("n", "<space>|", ":WindowsMaximizeHorizontally<cr>")
+keymap("n", "<space>=", ":WindowsEqualize<cr>")
