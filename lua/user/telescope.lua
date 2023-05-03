@@ -1,7 +1,7 @@
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then return end
 
-local actions = require("telescope.actions")
+-- local actions = require("telescope.actions")
 
 telescope.setup({
     defaults = {
@@ -12,6 +12,10 @@ telescope.setup({
         file_ignore_patterns = {
             ".git", "node_modules", ".meteor", "public", "imports/externals",
             "packages"
+        },
+        vimgrep_arguments = {
+            "rg", "--color=never", "--no-heading", "--with-filename",
+            "--line-number", "--column", "--smart-case"
         }
     },
     extensions = {
