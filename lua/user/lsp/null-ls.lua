@@ -27,7 +27,7 @@ null_ls.setup({
         -- diagnostics.tidy,
         diagnostics.vint, -- diagnostics.zsh,
         -- formatting.autopep8,
-        formatting.black.with({extra_args = {"--fast"}}), formatting.stylua,
+        formatting.isort, formatting.black, formatting.stylua,
         formatting.beautysh, -- formatting.djlint,
         -- formatting.eslint_d,
         -- formatting.eslint,
