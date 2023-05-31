@@ -38,8 +38,8 @@ nvim_tree.setup({
         icons = {hint = "", info = "", warning = "", error = ""}
     },
     view = {
-        adaptive_size = true,
-        -- width = 30
+        -- adaptive_size = true,
+        width = 40,
         side = "left"
     },
     filters = {dotfiles = false}
