@@ -42,7 +42,7 @@ nvim_tree.setup({
         -- width = 30
         side = "left"
     },
-    filters = {dotfiles = true}
+    filters = {dotfiles = false}
 })
 
 local function on_attach(bufnr)
