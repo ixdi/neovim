@@ -28,11 +28,21 @@ packer.init({
     display = {
         open_fn = function()
             return require("packer.util").float({border = "rounded"})
-        end
+        end,
+        keybindings = { -- Keybindings for the display window
+            quit = "q",
+            toggle_update = "u", -- only in preview
+            continue = "c", -- only in preview
+            toggle_info = "<CR>",
+            diff = "d",
+            prompt_revert = "r"
+        }
     },
     git = {
-        clone_timeout = 300 -- Timeout, in seconds, for git clones
-    }
+        clone_timeout = 800 -- Timeout, in seconds, for git clones
+    },
+    plugin_package = "packer",
+    max_jobs = 10
 })
 
 -- Install your plugins here
