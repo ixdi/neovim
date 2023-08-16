@@ -29,8 +29,7 @@ null_ls.setup({
         -- formatting.autopep8,
         formatting.isort, formatting.black, formatting.stylua,
         formatting.beautysh, -- formatting.djlint,
-        -- formatting.eslint_d,
-        -- formatting.eslint,
+        formatting.eslint_d, -- formatting.eslint,
         formatting.fixjson, formatting.lua_format, formatting.markdownlint,
         formatting.prettierd, formatting.yamlfmt
         -- hover.printenv
