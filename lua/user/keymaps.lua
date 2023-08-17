@@ -92,14 +92,6 @@ keymap("n", "<C-l>", ":Telescope resume<cr>", opts)
 keymap("n", "<space>b", ":Telescope buffers<cr>", opts)
 keymap("n", "<space>ss", ":Telescope luasnip<cr>", opts)
 
--- keymap("n", "<leader>e", ":Telescope diagnostics<cr>", opts)
--- keymap("n", "<space>d", ":Telescope lsp_definitions<cr>", opts)
--- keymap("n", "<space>r", ":Telescope lsp_references<cr>", opts)
--- keymap("n", "<space>i", ":Telescope lsp_implementations<cr>", opts)
--- keymap("n", "<leader>g", ":Telescope git_status<cr>", opts)
--- keymap("n", "<space>ci", ":Telescope lsp_incoming_calls<cr>", opts)
--- keymap("n", "<space>co", ":Telescope lsp_outgoing_calls<cr>", opts)
-
 -- doc generation
 keymap("n", "<leader>d", ":Neogen<cr>", opts)
 keymap("n", "<leader>dc", ":Neogen class<cr>", opts)
@@ -148,3 +140,9 @@ keymap("n", "<space>w", ":WindowsMaximize<cr>")
 keymap("n", "<space>_", ":WindowsMaximizeVertically<cr>")
 keymap("n", "<space>|", ":WindowsMaximizeHorizontally<cr>")
 keymap("n", "<space>=", ":WindowsEqualize<cr>")
+
+-- typescript-tools
+keymap("n", "<leader>tf", ":TSToolsFixAll<cr>", opts)
+keymap("n", "<leader>td", ":TSToolsGoToSourceDefinition<cr>", opts)
+keymap("n", "<leader>tai", ":TSToolsAddMissingImports<cr>", opts)
+keymap("n", "<leader>toi", ":TSToolsOrganizeImports<cr>", opts)
