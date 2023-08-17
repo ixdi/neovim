@@ -57,7 +57,7 @@ return packer.startup(function(use)
 
     use({"nvim-lualine/lualine.nvim"}) -- Statusline using lua
     use({"EdenEast/nightfox.nvim"}) -- lua theme using treesitter
-    use({"p00f/nvim-ts-rainbow"}) -- colorize closing brackets
+    use({"HiPhish/nvim-ts-rainbow2"}) -- colorize closing brackets
     use({"nvim-treesitter/nvim-treesitter"}) -- make a tree of relations. Used by some plugins
     use({"liuchengxu/vista.vim"}) -- View the code symbols references using lua
     use({"RRethy/vim-illuminate"}) -- Highlight identical words using lua
