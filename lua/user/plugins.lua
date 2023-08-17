@@ -143,6 +143,11 @@ return packer.startup(function(use)
             vim.o.equalalways = false
         end
     })
+    use({
+        "pmizio/typescript-tools.nvim",
+        requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"},
+        config = function() require("typescript-tools").setup({}) end
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

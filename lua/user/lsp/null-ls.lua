@@ -14,12 +14,14 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     debug = false,
     sources = {
-        code_actions.eslint_d, code_actions.gitsigns, code_actions.refactoring,
+        -- code_actions.eslint_d,
+        code_actions.gitsigns, code_actions.refactoring,
         -- code_actions.eslint,
         -- diagnostics.ansiblelint,
         -- diagnostics.codespell,
         -- diagnostics.djlint,
-        diagnostics.eslint_d, -- diagnostics.eslint,
+        -- diagnostics.eslint_d,
+        -- diagnostics.eslint,
         diagnostics.luacheck, -- diagnostics.flake8,
         -- diagnostics.jsonlint,
         diagnostics.markdownlint, -- diagnostics.misspell,
@@ -29,7 +31,7 @@ null_ls.setup({
         -- formatting.autopep8,
         formatting.isort, formatting.black, formatting.stylua,
         formatting.beautysh, -- formatting.djlint,
-        formatting.eslint_d, -- formatting.eslint,
+        -- formatting.eslint_d, -- formatting.eslint,
         formatting.fixjson, formatting.lua_format, formatting.markdownlint,
         formatting.prettierd, formatting.yamlfmt
         -- hover.printenv
