@@ -19,7 +19,7 @@ null_ls.setup({
         -- diagnostics.ansiblelint,
         -- diagnostics.codespell,
         -- diagnostics.djlint,
-        diagnostics.eslint_d, -- diagnostics.eslint,
+        diagnostics.eslint_d.with({disabled_filetypes = {"typescript"}}), -- diagnostics.eslint,
         diagnostics.luacheck, -- diagnostics.flake8,
         -- diagnostics.jsonlint,
         diagnostics.markdownlint, -- diagnostics.misspell,
