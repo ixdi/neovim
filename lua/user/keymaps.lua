@@ -140,9 +140,3 @@ keymap("n", "<space>w", ":WindowsMaximize<cr>")
 keymap("n", "<space>_", ":WindowsMaximizeVertically<cr>")
 keymap("n", "<space>|", ":WindowsMaximizeHorizontally<cr>")
 keymap("n", "<space>=", ":WindowsEqualize<cr>")
-
--- typescript-tools
-keymap("n", "<leader>tf", ":TSToolsFixAll<cr>", opts)
-keymap("n", "<leader>td", ":TSToolsGoToSourceDefinition<cr>", opts)
-keymap("n", "<leader>tai", ":TSToolsAddMissingImports<cr>", opts)
-keymap("n", "<leader>toi", ":TSToolsOrganizeImports<cr>", opts)
