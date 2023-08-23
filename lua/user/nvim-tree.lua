@@ -3,6 +3,7 @@ if not status_ok then return end
 
 nvim_tree.setup({
     update_focused_file = {enable = true, update_cwd = true},
+
     renderer = {
         group_empty = true,
         root_folder_modifier = ":t",
@@ -38,8 +39,8 @@ nvim_tree.setup({
         icons = {hint = "", info = "", warning = "", error = ""}
     },
     view = {
-        -- adaptive_size = true,
-        width = 40,
+        adaptive_size = true,
+        -- width = 60,
         side = "left"
     },
     filters = {dotfiles = false}
