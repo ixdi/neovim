@@ -34,6 +34,6 @@ refactoring.setup({
 require("telescope").load_extension("refactoring")
 
 -- prompt for a refactor to apply when the remap is triggered
-vim.api.nvim_set_keymap("v", "<leader>rr",
-                        "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-                        {noremap = true})
+vim.keymap.set({"v", "n", "x"}, "<leader>rr", function()
+    require("telescope").extensions.refactoring.refactors()
+end)
